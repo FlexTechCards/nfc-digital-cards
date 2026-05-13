@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Clients Dashboard</title>
+<title>Auto Clients Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -16,30 +16,43 @@ body{
 
 h1{
     text-align:center;
-    margin-bottom:20px;
 }
 
-.card{
-    background:#1e293b;
-    padding:15px;
-    border-radius:12px;
-    margin-bottom:10px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.container{
+    max-width:500px;
+    margin:auto;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+    border:none;
 }
 
 button{
     background:#3b82f6;
     border:none;
-    padding:8px 12px;
+    padding:10px;
     border-radius:8px;
     color:white;
     cursor:pointer;
+    width:100%;
 }
 
-button:hover{
-    background:#2563eb;
+.card{
+    background:#1e293b;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+small{
+    color:#94a3b8;
 }
 </style>
 
@@ -47,27 +60,38 @@ button:hover{
 
 <body>
 
-<h1>📊 Clients Links Dashboard</h1>
+<h1>📊 Auto Client Link Generator</h1>
 
-<div class="card">
-    <div>Ahmad</div>
-    <button onclick="copy('https://flextechcards.github.io/nfc-digital-cards/clients/ahmad/')">Copy Link</button>
-</div>
+<div class="container">
 
-<div class="card">
-    <div>Feras</div>
-    <button onclick="copy('https://flextechcards.github.io/nfc-digital-cards/clients/feras/')">Copy Link</button>
-</div>
+<input id="name" placeholder="Enter client name (e.g. feras)">
 
-<div class="card">
-    <div>Sara (example)</div>
-    <button onclick="copy('https://flextechcards.github.io/nfc-digital-cards/clients/sara/')">Copy Link</button>
+<button onclick="generate()">Generate Link</button>
+
+<div id="result"></div>
+
 </div>
 
 <script>
-function copy(text){
-    navigator.clipboard.writeText(text);
-    alert("Link copied: " + text);
+function generate(){
+    let name = document.getElementById("name").value.trim().toLowerCase();
+
+    if(!name){
+        alert("Enter client name");
+        return;
+    }
+
+    let link = `https://flextechcards.github.io/nfc-digital-cards/clients/${name}/`;
+
+    document.getElementById("result").innerHTML = `
+        <div class="card">
+            <div>
+                <b>${name}</b><br>
+                <small>${link}</small>
+            </div>
+            <button onclick="navigator.clipboard.writeText('${link}')">Copy</button>
+        </div>
+    `;
 }
 </script>
 
