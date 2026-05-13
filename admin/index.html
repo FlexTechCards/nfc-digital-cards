@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clients Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial;
+    background:#0f172a;
+    color:white;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.card{
+    background:#1e293b;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+button{
+    background:#3b82f6;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2563eb;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>📊 Clients Links Dashboard</h1>
+
+<div class="card">
+    <div>Ahmad</div>
+    <button onclick="copy('https://flextechcards.github.io/nfc-digital-cards/clients/ahmad/')">Copy Link</button>
+</div>
+
+<div class="card">
+    <div>Feras</div>
+    <button onclick="copy('https://flextechcards.github.io/nfc-digital-cards/clients/feras/')">Copy Link</button>
+</div>
+
+<div class="card">
+    <div>Sara (example)</div>
+    <button onclick="copy('https://flextechcards.github.io/nfc-digital-cards/clients/sara/')">Copy Link</button>
+</div>
+
+<script>
+function copy(text){
+    navigator.clipboard.writeText(text);
+    alert("Link copied: " + text);
+}
+</script>
+
+</body>
+</html>
