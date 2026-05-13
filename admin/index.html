@@ -5,6 +5,10 @@
 <title>FlexTech Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- PWA SETUP -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3b82f6">
+
 <style>
 body{
     font-family: Arial;
@@ -124,6 +128,12 @@ function generate(){
 function openQR(link){
     let qr = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(link)}`;
     window.open(qr, "_blank");
+}
+
+/* PWA SERVICE WORKER */
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker Registered"));
 }
 </script>
 
