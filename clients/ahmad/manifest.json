@@ -1,10 +1,11 @@
 {
-  "name": "FlexTech NFC Dashboard",
-  "short_name": "FlexTech",
+  "name": "FlexTech NFC Cards",
+  "short_name": "FlexTech Cards",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",
-  "theme_color": "#3b82f6",
+  "theme_color": "#6366f1",
+  "description": "Digital NFC Business Cards",
   "icons": [
     {
       "src": "https://i.imgur.com/gBpfXPZ.jpeg",
