@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Card</title>
+<title>Digital Business Card</title>
 
 <style>
 
@@ -18,21 +18,21 @@ body{
     color:white;
 }
 
-/* APP CARD */
-.card{
+/* APP FRAME */
+.app{
     width:360px;
-    border-radius:26px;
+    border-radius:28px;
     overflow:hidden;
     background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(22px);
     border:1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 30px 90px rgba(0,0,0,0.75);
+    box-shadow:0 30px 100px rgba(0,0,0,0.75);
     animation: fadeIn 0.6s ease;
 }
 
 /* HEADER */
 .header{
-    height:120px;
+    height:130px;
     background: linear-gradient(135deg, #6366f1, #06b6d4);
     position:relative;
 }
@@ -42,7 +42,7 @@ body{
     width:110px;
     height:110px;
     border-radius:50%;
-    border:4px solid rgba(255,255,255,0.2);
+    border:4px solid rgba(255,255,255,0.25);
     object-fit:cover;
     position:absolute;
     bottom:-55px;
@@ -52,12 +52,12 @@ body{
 
 /* CONTENT */
 .content{
-    padding:65px 20px 20px;
+    padding:65px 18px 20px;
     text-align:center;
 }
 
 h1{
-    margin:10px 0 4px;
+    margin:10px 0 5px;
     font-size:22px;
 }
 
@@ -67,28 +67,40 @@ p{
     color:#a1a1aa;
 }
 
-/* QUICK ACTIONS */
-.actions{
+/* INFO BOX */
+.info{
+    margin-top:15px;
+    padding:12px;
+    border-radius:16px;
+    background: rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+/* QUICK ICONS */
+.icons{
     display:flex;
     justify-content:center;
     gap:12px;
     margin:18px 0;
 }
 
-.action{
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    background: rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.1);
+.icon{
+    width:46px;
+    height:46px;
+    border-radius:16px;
     display:flex;
     justify-content:center;
     align-items:center;
     text-decoration:none;
+    font-size:18px;
+    background: rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
     transition:0.25s;
 }
 
-.action:hover{
+.icon:hover{
     transform:translateY(-4px);
     background: rgba(255,255,255,0.15);
 }
@@ -111,7 +123,7 @@ p{
 }
 
 .btn:hover{
-    transform: scale(1.03);
+    transform:scale(1.03);
     background: rgba(255,255,255,0.12);
 }
 
@@ -123,7 +135,7 @@ p{
 
 /* ANIMATION */
 @keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
+    from{opacity:0; transform:translateY(15px);}
     to{opacity:1; transform:translateY(0);}
 }
 
@@ -133,7 +145,7 @@ p{
 
 <body>
 
-<div class="card">
+<div class="app">
 
     <div class="header">
         <img class="profile" src="https://i.imgur.com/gBpfXPZ.jpeg">
@@ -144,19 +156,22 @@ p{
         <h1>Ahmad Shkri</h1>
         <p>Bank Teller | Digital Banking Specialist</p>
 
-        <!-- QUICK ACTIONS -->
-        <div class="actions">
-
-            <a class="action" href="https://wa.me/000000000">💬</a>
-            <a class="action" href="tel:000000000">📞</a>
-            <a class="action" href="mailto:test@email.com">✉️</a>
-
+        <div class="info">
+            📍 Available for business contact anytime<br>
+            ⚡ Digital NFC Business Card
         </div>
 
-        <!-- MAIN BUTTONS -->
+        <!-- QUICK ICONS -->
+        <div class="icons">
+            <a class="icon" href="https://wa.me/000000000">💬</a>
+            <a class="icon" href="tel:000000000">📞</a>
+            <a class="icon" href="mailto:test@email.com">✉️</a>
+        </div>
+
+        <!-- BUTTONS -->
         <a class="btn whatsapp" href="https://wa.me/000000000">WhatsApp</a>
-        <a class="btn call" href="tel:000000000">Call</a>
-        <a class="btn email" href="mailto:test@email.com">Email</a>
+        <a class="btn call" href="tel:000000000">Call Now</a>
+        <a class="btn email" href="mailto:test@email.com">Send Email</a>
         <a class="btn save" href="contact.vcf" download>Save Contact</a>
 
     </div>
