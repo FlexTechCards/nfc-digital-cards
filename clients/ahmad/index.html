@@ -18,7 +18,7 @@ body{
     color:white;
 }
 
-/* APP FRAME */
+/* CARD */
 .app{
     width:360px;
     border-radius:28px;
@@ -27,12 +27,11 @@ body{
     backdrop-filter: blur(22px);
     border:1px solid rgba(255,255,255,0.08);
     box-shadow:0 30px 100px rgba(0,0,0,0.75);
-    animation: fadeIn 0.6s ease;
 }
 
 /* HEADER */
 .header{
-    height:130px;
+    height:120px;
     background: linear-gradient(135deg, #6366f1, #06b6d4);
     position:relative;
 }
@@ -67,40 +66,26 @@ p{
     color:#a1a1aa;
 }
 
-/* INFO BOX */
-.info{
-    margin-top:15px;
-    padding:12px;
-    border-radius:16px;
-    background: rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
-    font-size:13px;
-    color:#cbd5e1;
-}
-
-/* QUICK ICONS */
-.icons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
+/* ACTION GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
     margin:18px 0;
 }
 
-.icon{
-    width:46px;
-    height:46px;
-    border-radius:16px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    font-size:18px;
+.icon-btn{
     background: rgba(255,255,255,0.08);
     border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:12px;
+    text-align:center;
+    cursor:pointer;
     transition:0.25s;
+    font-size:18px;
 }
 
-.icon:hover{
+.icon-btn:hover{
     transform:translateY(-4px);
     background: rgba(255,255,255,0.15);
 }
@@ -127,16 +112,19 @@ p{
     background: rgba(255,255,255,0.12);
 }
 
-/* COLORS */
-.whatsapp{ box-shadow:0 0 0 1px #22c55e33 inset; }
-.call{ box-shadow:0 0 0 1px #f59e0b33 inset; }
-.email{ box-shadow:0 0 0 1px #3b82f633 inset; }
-.save{ box-shadow:0 0 0 1px #a855f733 inset; }
+/* QR */
+.qr{
+    margin-top:10px;
+    border-radius:12px;
+}
 
-/* ANIMATION */
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(15px);}
-    to{opacity:1; transform:translateY(0);}
+/* MAP */
+.map{
+    width:100%;
+    height:140px;
+    border-radius:14px;
+    border:none;
+    margin-top:10px;
 }
 
 </style>
@@ -156,27 +144,52 @@ p{
         <h1>Ahmad Shkri</h1>
         <p>Bank Teller | Digital Banking Specialist</p>
 
-        <div class="info">
-            📍 Available for business contact anytime<br>
-            ⚡ Digital NFC Business Card
-        </div>
+        <!-- QUICK ACTIONS -->
+        <div class="grid">
 
-        <!-- QUICK ICONS -->
-        <div class="icons">
-            <a class="icon" href="https://wa.me/000000000">💬</a>
-            <a class="icon" href="tel:000000000">📞</a>
-            <a class="icon" href="mailto:test@email.com">✉️</a>
+            <div class="icon-btn" onclick="copyNumber()">📋</div>
+            <div class="icon-btn" onclick="shareCard()">📤</div>
+            <a class="icon-btn" href="tel:000000000">📞</a>
+
         </div>
 
         <!-- BUTTONS -->
-        <a class="btn whatsapp" href="https://wa.me/000000000">WhatsApp</a>
-        <a class="btn call" href="tel:000000000">Call Now</a>
-        <a class="btn email" href="mailto:test@email.com">Send Email</a>
-        <a class="btn save" href="contact.vcf" download>Save Contact</a>
+        <a class="btn" href="https://wa.me/000000000">💬 WhatsApp</a>
+        <a class="btn" href="mailto:test@email.com">✉️ Email</a>
+        <a class="btn" href="contact.vcf" download>💾 Save Contact</a>
+        <a class="btn" href="https://maps.google.com/?q=New York">📍 Open Map</a>
+
+        <!-- QR -->
+        <img class="qr"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://flextechcards.github.io"
+        >
 
     </div>
 
 </div>
+
+<script>
+
+// COPY NUMBER
+function copyNumber(){
+    navigator.clipboard.writeText("000000000");
+    alert("Number copied!");
+}
+
+// SHARE CARD
+function shareCard(){
+    if(navigator.share){
+        navigator.share({
+            title: "My Digital Card",
+            text: "Check my business card",
+            url: window.location.href
+        });
+    } else {
+        alert("Sharing not supported");
+    }
+}
+
+</script>
 
 </body>
 </html>
