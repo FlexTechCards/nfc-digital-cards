@@ -19,6 +19,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 }
 
 body{
+
     font-family:system-ui,-apple-system,Segoe UI,Roboto;
 
     background:
@@ -41,7 +42,7 @@ body{
 
     background:#f8fafc;
 
-    border-radius:40px;
+    border-radius:42px;
 
     overflow:hidden;
 
@@ -55,37 +56,92 @@ body{
 
 .header{
 
+    height:340px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+}
+
+/* LEFT SIDE */
+
+.left-side{
+
+    width:58%;
+
     background:
-    linear-gradient(rgba(1,15,45,.88),rgba(1,15,45,.94)),
-    url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
+    radial-gradient(circle at top,#0f3b94,#02142f);
 
-    background-size:cover;
-    background-position:center;
+    padding:34px 24px;
 
-    min-height:300px;
+    position:relative;
 
-    padding:30px 24px;
+    z-index:2;
 
-    border-bottom-left-radius:70px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+/* RIGHT IMAGE */
+
+.right-side{
+
+    width:42%;
 
     position:relative;
 
     overflow:hidden;
 }
 
-/* HEADER EFFECT */
+/* IMAGE */
 
-.header::after{
+.right-side img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* CURVED SPLIT */
+
+.right-side::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-70px;
+    top:-20px;
+
+    width:140px;
+    height:120%;
+
+    background:#02142f;
+
+    border-radius:50%;
+
+    z-index:2;
+
+    transform:rotate(8deg);
+}
+
+/* DECORATION */
+
+.left-side::after{
 
     content:"";
 
     position:absolute;
 
     top:-120px;
-    right:-120px;
+    left:-120px;
 
-    width:420px;
-    height:420px;
+    width:300px;
+    height:300px;
 
     border-radius:50%;
 
@@ -93,98 +149,105 @@ body{
 
     box-shadow:
     0 0 0 35px rgba(255,255,255,.03),
-    0 0 0 70px rgba(255,255,255,.025),
-    0 0 0 105px rgba(255,255,255,.02);
+    0 0 0 70px rgba(255,255,255,.02);
 
 }
 
-/* PROFILE SECTION */
-
-.profile-section{
-
-    display:flex;
-    align-items:center;
-    gap:18px;
-
-    position:relative;
-    z-index:2;
-}
-
-/* PROFILE IMAGE */
-
-.profile{
-
-    width:165px;
-    height:165px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:6px solid rgba(255,255,255,.95);
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.35);
-
-}
-
-/* INFO */
-
-.info{
-    flex:1;
-}
+/* NAME */
 
 .name{
-    font-size:32px;
+
+    font-size:34px;
     font-weight:800;
+
     color:white;
-    margin-bottom:10px;
+
+    line-height:1.1;
+
+    margin-bottom:14px;
+
+    position:relative;
+    z-index:3;
 }
+
+/* ROLE */
 
 .role{
-    font-size:17px;
+
     color:#dbeafe;
+
+    font-size:16px;
+
+    line-height:1.6;
+
     margin-bottom:18px;
+
+    position:relative;
+    z-index:3;
 }
+
+/* LINE */
 
 .line{
-    width:52px;
+
+    width:58px;
     height:5px;
+
     background:#22d3ee;
+
     border-radius:50px;
+
     margin-bottom:18px;
+
+    position:relative;
+    z-index:3;
 }
 
+/* JOB */
+
 .job{
-    color:#e2e8f0;
-    line-height:1.5;
+
+    color:#cbd5e1;
+
+    line-height:1.7;
+
     font-size:15px;
+
+    position:relative;
+    z-index:3;
 }
 
 /* CONTENT */
 
 .content{
-    padding:24px 22px 20px;
+
+    padding:24px 22px 22px;
 }
 
 /* BIO */
 
 .bio{
+
     font-size:16px;
+
     color:#4b5563;
-    line-height:1.7;
+
+    line-height:1.8;
+
     margin-bottom:20px;
 }
 
 /* CONTACT */
 
 .contact{
+
     display:flex;
     flex-direction:column;
+
     gap:12px;
 }
 
-/* CONTACT BUTTONS */
+/* CONTACT BOX */
 
 .contact-box{
 
@@ -209,9 +272,13 @@ body{
     transform:translateY(-3px);
 }
 
+/* LEFT */
+
 .contact-left{
+
     display:flex;
     align-items:center;
+
     gap:14px;
 }
 
@@ -237,29 +304,38 @@ body{
 
     box-shadow:
     0 8px 18px rgba(0,0,0,.15);
-
 }
 
 /* TEXT */
 
 .contact-text{
+
     display:flex;
     flex-direction:column;
 }
 
 .label{
+
     font-size:13px;
+
     color:#64748b;
 }
 
 .value{
+
     font-size:16px;
+
     font-weight:800;
+
     color:#0f172a;
 }
 
+/* ARROW */
+
 .arrow{
+
     color:#64748b;
+
     font-size:20px;
 }
 
@@ -269,10 +345,13 @@ body{
 
     display:flex;
     justify-content:center;
+
     gap:14px;
 
     margin:22px 0;
 }
+
+/* SOCIAL */
 
 .social{
 
@@ -295,14 +374,16 @@ body{
 
     box-shadow:
     0 10px 20px rgba(0,0,0,.15);
-
 }
 
 .social:hover{
-    transform:translateY(-5px) scale(1.04);
+
+    transform:
+    translateY(-5px)
+    scale(1.04);
 }
 
-/* SOCIAL COLORS */
+/* COLORS */
 
 .instagram{
     background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
@@ -328,11 +409,13 @@ body{
     background:#229ED9;
 }
 
-/* ACTION BUTTONS */
+/* ACTIONS */
 
 .actions{
+
     display:flex;
     flex-direction:column;
+
     gap:12px;
 }
 
@@ -354,6 +437,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+
     gap:12px;
 
     transition:.25s;
@@ -367,10 +451,6 @@ body{
     color:white;
 }
 
-.primary:hover{
-    transform:scale(1.02);
-}
-
 .secondary{
 
     background:
@@ -379,7 +459,7 @@ body{
     color:#173a7a;
 }
 
-.secondary:hover{
+.btn:hover{
     transform:scale(1.02);
 }
 
@@ -396,6 +476,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+
     gap:12px;
 
     text-decoration:none;
@@ -407,17 +488,21 @@ body{
     transform:scale(1.02);
 }
 
-/* CREATED BY */
+/* CREATED */
 
 .created{
+
     color:#64748b;
+
     font-size:15px;
 }
 
 /* LOGO */
 
 .footer img{
+
     width:155px;
+
     object-fit:contain;
 }
 
@@ -427,18 +512,20 @@ body{
 
     .card{
         width:100%;
-        border-radius:32px;
+        border-radius:34px;
     }
 
-    .profile-section{
-        flex-direction:row;
-        align-items:center;
-        gap:14px;
+    .header{
+        height:320px;
     }
 
-    .profile{
-        width:140px;
-        height:140px;
+    .left-side{
+        width:56%;
+        padding:28px 18px;
+    }
+
+    .right-side{
+        width:44%;
     }
 
     .name{
@@ -446,11 +533,11 @@ body{
     }
 
     .role{
-        font-size:15px;
+        font-size:14px;
     }
 
     .job{
-        font-size:14px;
+        font-size:13px;
     }
 
     .social{
@@ -472,31 +559,32 @@ body{
     <!-- HEADER -->
     <div class="header">
 
-        <div class="profile-section">
+        <!-- LEFT -->
+        <div class="left-side">
 
-            <!-- PROFILE -->
-            <img class="profile"
-            src="https://i.imgur.com/gBpfXPZ.jpeg">
-
-            <!-- INFO -->
-            <div class="info">
-
-                <div class="name">
-                    Ahmad Shkri
-                </div>
-
-                <div class="role">
-                    Digital Banking Specialist
-                </div>
-
-                <div class="line"></div>
-
-                <div class="job">
-                    NFC Business Cards<br>
-                    FlexTech
-                </div>
-
+            <div class="name">
+                Ahmad<br>
+                Shkri
             </div>
+
+            <div class="role">
+                Digital Banking Specialist
+            </div>
+
+            <div class="line"></div>
+
+            <div class="job">
+                NFC Business Cards<br>
+                FlexTech
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-side">
+
+            <img
+            src="https://i.imgur.com/gBpfXPZ.jpeg">
 
         </div>
 
@@ -580,23 +668,19 @@ body{
         <!-- SOCIALS -->
         <div class="socials">
 
-            <a class="social instagram"
-            href="#">
+            <a class="social instagram" href="#">
                 <i class="fab fa-instagram"></i>
             </a>
 
-            <a class="social whatsapp"
-            href="#">
+            <a class="social whatsapp" href="#">
                 <i class="fab fa-whatsapp"></i>
             </a>
 
-            <a class="social linkedin"
-            href="#">
+            <a class="social linkedin" href="#">
                 <i class="fab fa-linkedin-in"></i>
             </a>
 
-            <a class="social tiktok"
-            href="#">
+            <a class="social tiktok" href="#">
                 <i class="fab fa-tiktok"></i>
             </a>
 
