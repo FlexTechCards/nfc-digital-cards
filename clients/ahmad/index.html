@@ -3,166 +3,368 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Business Card</title>
+<title>FlexTech Digital Card</title>
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-    margin:0;
     font-family: system-ui, -apple-system, Segoe UI, Roboto;
-    background: radial-gradient(circle at top, #0b1220, #020617);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:#0f172a;
     min-height:100vh;
-    color:white;
-}
-
-/* CARD */
-.app{
-    width:360px;
-    border-radius:28px;
-    overflow:hidden;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(22px);
-    border:1px solid rgba(255,255,255,0.08);
-    box-shadow:0 30px 100px rgba(0,0,0,0.75);
-}
-
-/* HEADER */
-.header{
-    height:120px;
-    background: linear-gradient(135deg, #6366f1, #06b6d4);
-    position:relative;
-}
-
-/* PROFILE */
-.profile{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    border:4px solid rgba(255,255,255,0.25);
-    object-fit:cover;
-    position:absolute;
-    bottom:-55px;
-    left:50%;
-    transform:translateX(-50%);
-}
-
-/* CONTENT */
-.content{
-    padding:65px 18px 20px;
-    text-align:center;
-}
-
-h1{
-    margin:10px 0 5px;
-    font-size:22px;
-}
-
-p{
-    margin:0;
-    font-size:13px;
-    color:#a1a1aa;
-}
-
-/* ACTION GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin:18px 0;
-}
-
-.icon-btn{
-    background: rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:16px;
-    padding:12px;
-    text-align:center;
-    cursor:pointer;
-    transition:0.25s;
-    font-size:18px;
-}
-
-.icon-btn:hover{
-    transform:translateY(-4px);
-    background: rgba(255,255,255,0.15);
-}
-
-/* BUTTONS */
-.btn{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:10px;
-    margin:10px 0;
-    padding:14px;
-    border-radius:16px;
-    text-decoration:none;
+    padding:20px;
     color:white;
-    font-weight:600;
-    background: rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.1);
-    transition:0.25s;
 }
 
-.btn:hover{
-    transform:scale(1.03);
-    background: rgba(255,255,255,0.12);
+/* MAIN CARD */
+
+.card{
+    width:360px;
+    border-radius:30px;
+    overflow:hidden;
+    background:#ffffff;
+    color:#111827;
+    box-shadow:0 30px 80px rgba(0,0,0,0.45);
+    animation:fadeIn .6s ease;
+}
+
+/* TOP SECTION */
+
+.top{
+    background:linear-gradient(180deg,#02142f,#031d47);
+    padding:26px 22px 90px;
+    position:relative;
+    color:white;
+}
+
+/* LOGO */
+
+.logo{
+    font-size:15px;
+    opacity:.9;
+    margin-bottom:25px;
+    font-weight:600;
+    letter-spacing:.4px;
+}
+
+/* NAME */
+
+.name{
+    font-size:28px;
+    font-weight:700;
+    line-height:1.1;
+}
+
+.pronouns{
+    color:#cbd5e1;
+    font-size:14px;
+    margin-top:5px;
+}
+
+.job{
+    margin-top:18px;
+    color:#dbeafe;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* PROFILE IMAGE */
+
+.profile-wrap{
+    position:absolute;
+    right:18px;
+    bottom:-55px;
+}
+
+.profile{
+    width:115px;
+    height:115px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* BOTTOM CONTENT */
+
+.content{
+    padding:75px 22px 24px;
+}
+
+/* BIO */
+
+.bio{
+    font-size:14px;
+    color:#4b5563;
+    line-height:1.7;
+    margin-bottom:22px;
+}
+
+/* CONTACT ITEMS */
+
+.contact{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:22px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:#111827;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    padding:13px;
+    border-radius:16px;
+    transition:.25s;
+}
+
+.contact-item:hover{
+    transform:translateY(-2px);
+    background:#f1f5f9;
+}
+
+/* ICONS */
+
+.icon{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    background:#02142f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:18px;
+    flex-shrink:0;
+}
+
+/* CONTACT TEXT */
+
+.contact-text{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.label{
+    font-size:12px;
+    color:#64748b;
+}
+
+.value{
+    font-size:14px;
+    font-weight:600;
+}
+
+/* SOCIALS */
+
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:22px;
+}
+
+.social{
+    width:48px;
+    height:48px;
+    border-radius:16px;
+    background:#02142f;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:18px;
+    transition:.25s;
+}
+
+.social:hover{
+    transform:translateY(-4px);
+}
+
+/* ACTION BUTTONS */
+
+.actions{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.btn{
+    border:none;
+    border-radius:18px;
+    padding:15px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.primary{
+    background:#02142f;
+    color:white;
+}
+
+.primary:hover{
+    transform:scale(1.02);
+}
+
+.secondary{
+    background:#eef2ff;
+    color:#02142f;
+}
+
+.secondary:hover{
+    background:#dbeafe;
 }
 
 /* QR */
-.qr{
-    margin-top:10px;
-    border-radius:12px;
+
+.qr-box{
+    margin-top:22px;
+    text-align:center;
 }
 
-/* MAP */
-.map{
-    width:100%;
-    height:140px;
-    border-radius:14px;
-    border:none;
-    margin-top:10px;
+.qr-box img{
+    width:120px;
+    border-radius:16px;
+    border:1px solid #e2e8f0;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="app">
+<div class="card">
 
-    <div class="header">
-        <img class="profile" src="https://i.imgur.com/gBpfXPZ.jpeg">
+    <!-- TOP -->
+    <div class="top">
+
+        <div class="logo">
+            ✦ FlexTech Media
+        </div>
+
+        <div class="name">
+            Ahmad Shkri
+        </div>
+
+        <div class="pronouns">
+            Digital Banking Specialist
+        </div>
+
+        <div class="job">
+            NFC Business Cards<br>
+            FlexTech
+        </div>
+
+        <div class="profile-wrap">
+            <img class="profile"
+            src="https://i.imgur.com/gBpfXPZ.jpeg">
+        </div>
+
     </div>
 
+    <!-- CONTENT -->
     <div class="content">
 
-        <h1>Ahmad Shkri</h1>
-        <p>Bank Teller | Digital Banking Specialist</p>
+        <div class="bio">
+            Passionate digital banking specialist focused on modern NFC business solutions and smart networking experiences.
+        </div>
 
-        <!-- QUICK ACTIONS -->
-        <div class="grid">
+        <!-- CONTACT -->
+        <div class="contact">
 
-            <div class="icon-btn" onclick="copyNumber()">📋</div>
-            <div class="icon-btn" onclick="shareCard()">📤</div>
-            <a class="icon-btn" href="tel:000000000">📞</a>
+            <a class="contact-item" href="tel:000000000">
+
+                <div class="icon">📞</div>
+
+                <div class="contact-text">
+                    <div class="label">Phone</div>
+                    <div class="value">+44 123 456 578</div>
+                </div>
+
+            </a>
+
+            <a class="contact-item" href="mailto:test@email.com">
+
+                <div class="icon">✉️</div>
+
+                <div class="contact-text">
+                    <div class="label">Email</div>
+                    <div class="value">ahmad@flextech.com</div>
+                </div>
+
+            </a>
+
+            <a class="contact-item" href="https://flextechcards.github.io" target="_blank">
+
+                <div class="icon">🌐</div>
+
+                <div class="contact-text">
+                    <div class="label">Website</div>
+                    <div class="value">www.flextechcards.com</div>
+                </div>
+
+            </a>
 
         </div>
 
-        <!-- BUTTONS -->
-        <a class="btn" href="https://wa.me/000000000">💬 WhatsApp</a>
-        <a class="btn" href="mailto:test@email.com">✉️ Email</a>
-        <a class="btn" href="contact.vcf" download>💾 Save Contact</a>
-        <a class="btn" href="https://maps.google.com/?q=New York">📍 Open Map</a>
+        <!-- SOCIALS -->
+        <div class="socials">
+
+            <a class="social" href="#">💬</a>
+            <a class="social" href="#">📸</a>
+            <a class="social" href="#">💼</a>
+            <a class="social" href="#">🎵</a>
+
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+
+            <button class="btn primary" onclick="saveContact()">
+                + Add To Contacts
+            </button>
+
+            <button class="btn secondary" onclick="shareCard()">
+                Share Card
+            </button>
+
+        </div>
 
         <!-- QR -->
-        <img class="qr"
-        src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://flextechcards.github.io"
-        >
+        <div class="qr-box">
+
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://flextechcards.github.io">
+
+        </div>
 
     </div>
 
@@ -170,23 +372,26 @@ p{
 
 <script>
 
-// COPY NUMBER
-function copyNumber(){
-    navigator.clipboard.writeText("000000000");
-    alert("Number copied!");
-}
-
-// SHARE CARD
+// SHARE
 function shareCard(){
+
     if(navigator.share){
+
         navigator.share({
-            title: "My Digital Card",
-            text: "Check my business card",
-            url: window.location.href
+            title:"FlexTech Digital Card",
+            text:"Check my digital business card",
+            url:window.location.href
         });
-    } else {
+
+    }else{
         alert("Sharing not supported");
     }
+}
+
+// SAVE CONTACT
+function saveContact(){
+
+    window.location.href = "contact.vcf";
 }
 
 </script>
