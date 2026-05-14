@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>FlexTech Digital Card</title>
+
+<!-- ICONS -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
@@ -47,12 +53,25 @@ body{
 
 /* LOGO */
 
-.logo{
+.logo-wrap{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:28px;
+}
+
+.logo-img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.logo-text{
     font-size:15px;
-    opacity:.9;
-    margin-bottom:25px;
-    font-weight:600;
-    letter-spacing:.4px;
+    font-weight:700;
+    letter-spacing:.5px;
+    color:white;
 }
 
 /* NAME */
@@ -93,7 +112,7 @@ body{
     box-shadow:0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* BOTTOM CONTENT */
+/* CONTENT */
 
 .content{
     padding:75px 22px 24px;
@@ -108,7 +127,7 @@ body{
     margin-bottom:22px;
 }
 
-/* CONTACT ITEMS */
+/* CONTACT */
 
 .contact{
     display:flex;
@@ -135,7 +154,7 @@ body{
     background:#f1f5f9;
 }
 
-/* ICONS */
+/* ICON */
 
 .icon{
     width:42px;
@@ -174,25 +193,42 @@ body{
     display:flex;
     justify-content:center;
     gap:12px;
-    margin-bottom:22px;
+    margin-bottom:24px;
 }
 
 .social{
-    width:48px;
-    height:48px;
-    border-radius:16px;
-    background:#02142f;
-    color:white;
+    width:50px;
+    height:50px;
+    border-radius:18px;
     display:flex;
     justify-content:center;
     align-items:center;
     text-decoration:none;
-    font-size:18px;
+    font-size:20px;
+    color:white;
     transition:.25s;
 }
 
 .social:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px) scale(1.05);
+}
+
+/* SOCIAL COLORS */
+
+.instagram{
+    background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
+}
+
+.whatsapp{
+    background:#22c55e;
+}
+
+.linkedin{
+    background:#0077b5;
+}
+
+.tiktok{
+    background:#111827;
 }
 
 /* ACTION BUTTONS */
@@ -258,6 +294,7 @@ body{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -267,10 +304,19 @@ body{
     <!-- TOP -->
     <div class="top">
 
-        <div class="logo">
-            ✦ FlexTech Media
+        <!-- LOGO -->
+        <div class="logo-wrap">
+
+            <img class="logo-img"
+            src="https://i.imgur.com/gBpfXPZ.jpeg">
+
+            <div class="logo-text">
+                FlexTech
+            </div>
+
         </div>
 
+        <!-- NAME -->
         <div class="name">
             Ahmad Shkri
         </div>
@@ -284,9 +330,12 @@ body{
             FlexTech
         </div>
 
+        <!-- PROFILE -->
         <div class="profile-wrap">
+
             <img class="profile"
             src="https://i.imgur.com/gBpfXPZ.jpeg">
+
         </div>
 
     </div>
@@ -294,6 +343,7 @@ body{
     <!-- CONTENT -->
     <div class="content">
 
+        <!-- BIO -->
         <div class="bio">
             Passionate digital banking specialist focused on modern NFC business solutions and smart networking experiences.
         </div>
@@ -301,35 +351,54 @@ body{
         <!-- CONTACT -->
         <div class="contact">
 
-            <a class="contact-item" href="tel:000000000">
+            <!-- PHONE -->
+            <a class="contact-item"
+            href="tel:000000000">
 
-                <div class="icon">📞</div>
+                <div class="icon">
+                    <i class="fas fa-phone"></i>
+                </div>
 
                 <div class="contact-text">
                     <div class="label">Phone</div>
-                    <div class="value">+44 123 456 578</div>
+                    <div class="value">
+                        +44 123 456 578
+                    </div>
                 </div>
 
             </a>
 
-            <a class="contact-item" href="mailto:test@email.com">
+            <!-- EMAIL -->
+            <a class="contact-item"
+            href="mailto:test@email.com">
 
-                <div class="icon">✉️</div>
+                <div class="icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
 
                 <div class="contact-text">
                     <div class="label">Email</div>
-                    <div class="value">ahmad@flextech.com</div>
+                    <div class="value">
+                        ahmad@flextech.com
+                    </div>
                 </div>
 
             </a>
 
-            <a class="contact-item" href="https://flextechcards.github.io" target="_blank">
+            <!-- WEBSITE -->
+            <a class="contact-item"
+            href="https://flextechcards.github.io"
+            target="_blank">
 
-                <div class="icon">🌐</div>
+                <div class="icon">
+                    <i class="fas fa-globe"></i>
+                </div>
 
                 <div class="contact-text">
                     <div class="label">Website</div>
-                    <div class="value">www.flextechcards.com</div>
+                    <div class="value">
+                        www.flextechcards.com
+                    </div>
                 </div>
 
             </a>
@@ -339,22 +408,51 @@ body{
         <!-- SOCIALS -->
         <div class="socials">
 
-            <a class="social" href="#">💬</a>
-            <a class="social" href="#">📸</a>
-            <a class="social" href="#">💼</a>
-            <a class="social" href="#">🎵</a>
+            <a class="social instagram"
+            href="#">
+
+                <i class="fab fa-instagram"></i>
+
+            </a>
+
+            <a class="social whatsapp"
+            href="#">
+
+                <i class="fab fa-whatsapp"></i>
+
+            </a>
+
+            <a class="social linkedin"
+            href="#">
+
+                <i class="fab fa-linkedin-in"></i>
+
+            </a>
+
+            <a class="social tiktok"
+            href="#">
+
+                <i class="fab fa-tiktok"></i>
+
+            </a>
 
         </div>
 
         <!-- ACTIONS -->
         <div class="actions">
 
-            <button class="btn primary" onclick="saveContact()">
+            <button class="btn primary"
+            onclick="saveContact()">
+
                 + Add To Contacts
+
             </button>
 
-            <button class="btn secondary" onclick="shareCard()">
+            <button class="btn secondary"
+            onclick="shareCard()">
+
                 Share Card
+
             </button>
 
         </div>
@@ -362,7 +460,8 @@ body{
         <!-- QR -->
         <div class="qr-box">
 
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://flextechcards.github.io">
+            <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://flextechcards.github.io">
 
         </div>
 
@@ -384,7 +483,9 @@ function shareCard(){
         });
 
     }else{
+
         alert("Sharing not supported");
+
     }
 }
 
@@ -392,6 +493,7 @@ function shareCard(){
 function saveContact(){
 
     window.location.href = "contact.vcf";
+
 }
 
 </script>
