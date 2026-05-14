@@ -20,23 +20,28 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 body{
     font-family:system-ui,-apple-system,Segoe UI,Roboto;
+
     background:
     radial-gradient(circle at center,#07245f 0%,#020817 100%);
+
     min-height:100vh;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    padding:30px 18px;
+    padding:26px 16px;
 }
 
 /* CARD */
 
 .card{
     width:390px;
+
     background:#f8fafc;
+
     border-radius:40px;
+
     overflow:hidden;
 
     box-shadow:
@@ -56,9 +61,9 @@ body{
     background-size:cover;
     background-position:center;
 
-    min-height:300px;
+    min-height:290px;
 
-    padding:34px 28px;
+    padding:32px 26px;
 
     border-bottom-left-radius:70px;
 
@@ -67,7 +72,7 @@ body{
     overflow:hidden;
 }
 
-/* DECORATION */
+/* HEADER EFFECT */
 
 .header::after{
 
@@ -95,15 +100,16 @@ body{
 /* PROFILE SECTION */
 
 .profile-section{
+
     display:flex;
     align-items:center;
-    gap:22px;
+    gap:18px;
 
     position:relative;
     z-index:2;
 }
 
-/* PROFILE IMAGE */
+/* PROFILE */
 
 .profile{
 
@@ -128,45 +134,45 @@ body{
 }
 
 .name{
-    font-size:34px;
+    font-size:32px;
     font-weight:800;
     color:white;
     margin-bottom:10px;
 }
 
 .role{
-    font-size:18px;
+    font-size:17px;
     color:#dbeafe;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .line{
-    width:55px;
+    width:52px;
     height:5px;
     background:#22d3ee;
     border-radius:50px;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .job{
     color:#e2e8f0;
-    line-height:1.6;
-    font-size:16px;
+    line-height:1.5;
+    font-size:15px;
 }
 
 /* CONTENT */
 
 .content{
-    padding:30px 24px 24px;
+    padding:26px 22px 22px;
 }
 
 /* BIO */
 
 .bio{
-    font-size:17px;
+    font-size:16px;
     color:#4b5563;
     line-height:1.7;
-    margin-bottom:24px;
+    margin-bottom:20px;
 }
 
 /* CONTACT */
@@ -174,16 +180,18 @@ body{
 .contact{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:12px;
 }
+
+/* SMALLER CONTACT BUTTONS */
 
 .contact-box{
 
     background:white;
 
-    border-radius:22px;
+    border-radius:18px;
 
-    padding:15px;
+    padding:12px 14px;
 
     display:flex;
     align-items:center;
@@ -203,15 +211,17 @@ body{
 .contact-left{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:14px;
 }
+
+/* SMALLER ICON */
 
 .icon{
 
-    width:58px;
-    height:58px;
+    width:48px;
+    height:48px;
 
-    border-radius:18px;
+    border-radius:16px;
 
     background:
     linear-gradient(145deg,#02142f,#07245f);
@@ -222,12 +232,14 @@ body{
 
     color:white;
 
-    font-size:25px;
+    font-size:20px;
 
     box-shadow:
     0 8px 18px rgba(0,0,0,.15);
 
 }
+
+/* TEXT */
 
 .contact-text{
     display:flex;
@@ -235,35 +247,36 @@ body{
 }
 
 .label{
-    font-size:15px;
+    font-size:13px;
     color:#64748b;
 }
 
 .value{
-    font-size:18px;
+    font-size:16px;
     font-weight:800;
     color:#0f172a;
 }
 
 .arrow{
     color:#64748b;
-    font-size:22px;
+    font-size:20px;
 }
 
 /* SOCIALS */
 
 .socials{
+
     display:flex;
     justify-content:center;
-    gap:16px;
+    gap:14px;
 
-    margin:24px 0;
+    margin:22px 0;
 }
 
 .social{
 
-    width:70px;
-    height:70px;
+    width:68px;
+    height:68px;
 
     border-radius:22px;
 
@@ -273,7 +286,7 @@ body{
 
     text-decoration:none;
 
-    font-size:38px;
+    font-size:36px;
 
     color:white;
 
@@ -287,6 +300,8 @@ body{
 .social:hover{
     transform:translateY(-5px) scale(1.04);
 }
+
+/* SOCIAL COLORS */
 
 .instagram{
     background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
@@ -317,20 +332,20 @@ body{
 .actions{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:12px;
 }
 
-/* BTN */
+/* ACTION BUTTON */
 
 .btn{
 
     border:none;
 
-    border-radius:22px;
+    border-radius:20px;
 
-    padding:19px;
+    padding:17px;
 
-    font-size:18px;
+    font-size:17px;
     font-weight:800;
 
     cursor:pointer;
@@ -338,7 +353,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:14px;
+    gap:12px;
 
     transition:.25s;
 }
@@ -371,12 +386,12 @@ body{
 
 .qr{
     text-align:center;
-    margin-top:22px;
+    margin-top:20px;
 }
 
 .qr img{
 
-    width:145px;
+    width:135px;
 
     border-radius:18px;
 
@@ -394,16 +409,16 @@ body{
 
 .footer{
 
-    margin-top:26px;
+    margin-top:22px;
 
-    padding-top:22px;
+    padding-top:18px;
 
     border-top:1px solid #dbe2ea;
 
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:14px;
+    gap:12px;
 
     text-decoration:none;
 
@@ -416,11 +431,13 @@ body{
 
 .designed{
     color:#64748b;
-    font-size:16px;
+    font-size:15px;
 }
 
+/* TRANSPARENT LOGO */
+
 .footer img{
-    width:170px;
+    width:155px;
     object-fit:contain;
 }
 
@@ -436,7 +453,7 @@ body{
     .profile-section{
         flex-direction:row;
         align-items:center;
-        gap:16px;
+        gap:14px;
     }
 
     .profile{
@@ -449,7 +466,7 @@ body{
     }
 
     .role{
-        font-size:16px;
+        font-size:15px;
     }
 
     .job{
@@ -457,9 +474,9 @@ body{
     }
 
     .social{
-        width:62px;
-        height:62px;
-        font-size:34px;
+        width:60px;
+        height:60px;
+        font-size:32px;
     }
 
 }
@@ -647,9 +664,9 @@ body{
                 Designed by
             </span>
 
-            <!-- NEW TRANSPARENT LOGO -->
+            <!-- TRANSPARENT LOGO -->
             <img
-            src="https://i.imgur.com/0K6Ywqs.png">
+            src="https://i.imgur.com/LmWt6sc.png">
 
         </a>
 
