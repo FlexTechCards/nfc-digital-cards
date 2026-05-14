@@ -7,7 +7,7 @@
 
 <title>FlexTech Digital Card</title>
 
-<!-- ICONS -->
+<!-- FONT AWESOME -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -51,27 +51,41 @@ body{
     color:white;
 }
 
-/* LOGO */
+/* BRAND */
 
-.logo-wrap{
+.brand{
     display:flex;
     align-items:center;
-    gap:10px;
-    margin-bottom:28px;
+    gap:12px;
+    margin-bottom:30px;
 }
 
-.logo-img{
-    width:34px;
-    height:34px;
+.brand-logo{
+    width:48px;
+    height:48px;
     object-fit:contain;
-    border-radius:10px;
+    border-radius:14px;
+    background:white;
+    padding:5px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.25);
 }
 
-.logo-text{
-    font-size:15px;
-    font-weight:700;
-    letter-spacing:.5px;
+.brand-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.brand-title{
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:1px;
     color:white;
+}
+
+.brand-sub{
+    font-size:11px;
+    color:#cbd5e1;
+    letter-spacing:1px;
 }
 
 /* NAME */
@@ -133,7 +147,7 @@ body{
     display:flex;
     flex-direction:column;
     gap:14px;
-    margin-bottom:22px;
+    margin-bottom:24px;
 }
 
 .contact-item{
@@ -304,14 +318,23 @@ body{
     <!-- TOP -->
     <div class="top">
 
-        <!-- LOGO -->
-        <div class="logo-wrap">
+        <!-- BRAND -->
+        <div class="brand">
 
-            <img class="logo-img"
-            src="https://i.imgur.com/gBpfXPZ.jpeg">
+            <!-- FLEXTECH LOGO -->
+            <img class="brand-logo"
+            src="https://i.imgur.com/ctcrPQl.jpeg">
 
-            <div class="logo-text">
-                FlexTech
+            <div class="brand-text">
+
+                <span class="brand-title">
+                    FLEXTECH
+                </span>
+
+                <span class="brand-sub">
+                    NFC DIGITAL CARDS
+                </span>
+
             </div>
 
         </div>
@@ -345,7 +368,9 @@ body{
 
         <!-- BIO -->
         <div class="bio">
+
             Passionate digital banking specialist focused on modern NFC business solutions and smart networking experiences.
+
         </div>
 
         <!-- CONTACT -->
@@ -360,10 +385,15 @@ body{
                 </div>
 
                 <div class="contact-text">
-                    <div class="label">Phone</div>
+
+                    <div class="label">
+                        Phone
+                    </div>
+
                     <div class="value">
                         +44 123 456 578
                     </div>
+
                 </div>
 
             </a>
@@ -377,10 +407,15 @@ body{
                 </div>
 
                 <div class="contact-text">
-                    <div class="label">Email</div>
+
+                    <div class="label">
+                        Email
+                    </div>
+
                     <div class="value">
                         ahmad@flextech.com
                     </div>
+
                 </div>
 
             </a>
@@ -395,10 +430,15 @@ body{
                 </div>
 
                 <div class="contact-text">
-                    <div class="label">Website</div>
+
+                    <div class="label">
+                        Website
+                    </div>
+
                     <div class="value">
                         www.flextechcards.com
                     </div>
+
                 </div>
 
             </a>
@@ -410,30 +450,22 @@ body{
 
             <a class="social instagram"
             href="#">
-
                 <i class="fab fa-instagram"></i>
-
             </a>
 
             <a class="social whatsapp"
             href="#">
-
                 <i class="fab fa-whatsapp"></i>
-
             </a>
 
             <a class="social linkedin"
             href="#">
-
                 <i class="fab fa-linkedin-in"></i>
-
             </a>
 
             <a class="social tiktok"
             href="#">
-
                 <i class="fab fa-tiktok"></i>
-
             </a>
 
         </div>
@@ -471,7 +503,7 @@ body{
 
 <script>
 
-// SHARE
+// SHARE CARD
 function shareCard(){
 
     if(navigator.share){
