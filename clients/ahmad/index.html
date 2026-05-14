@@ -20,21 +20,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 }
 
 body{
-    font-family: system-ui, -apple-system, Segoe UI, Roboto;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto;
     background:#0f172a;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     padding:20px;
-    color:white;
 }
 
-/* MAIN CARD */
+/* CARD */
 
 .card{
     width:360px;
-    border-radius:30px;
+    border-radius:32px;
     overflow:hidden;
     background:#ffffff;
     color:#111827;
@@ -42,11 +41,14 @@ body{
     animation:fadeIn .6s ease;
 }
 
-/* TOP SECTION */
+/* TOP */
 
 .top{
-    background:linear-gradient(180deg,#02142f,#031d47);
-    padding:26px 22px 90px;
+    background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 40%),
+    linear-gradient(180deg,#02142f,#031d47);
+
+    padding:26px 22px 95px;
     position:relative;
     color:white;
 }
@@ -61,8 +63,8 @@ body{
 }
 
 .brand-logo{
-    width:48px;
-    height:48px;
+    width:52px;
+    height:52px;
     object-fit:contain;
     border-radius:14px;
     background:white;
@@ -76,10 +78,9 @@ body{
 }
 
 .brand-title{
-    font-size:16px;
+    font-size:17px;
     font-weight:800;
     letter-spacing:1px;
-    color:white;
 }
 
 .brand-sub{
@@ -91,35 +92,35 @@ body{
 /* NAME */
 
 .name{
-    font-size:28px;
+    font-size:31px;
     font-weight:700;
     line-height:1.1;
 }
 
 .pronouns{
-    color:#cbd5e1;
-    font-size:14px;
-    margin-top:5px;
+    color:#dbeafe;
+    font-size:15px;
+    margin-top:8px;
 }
 
 .job{
     margin-top:18px;
     color:#dbeafe;
-    font-size:14px;
-    line-height:1.5;
+    font-size:15px;
+    line-height:1.6;
 }
 
-/* PROFILE IMAGE */
+/* PROFILE */
 
 .profile-wrap{
     position:absolute;
-    right:18px;
-    bottom:-55px;
+    right:20px;
+    bottom:-58px;
 }
 
 .profile{
-    width:115px;
-    height:115px;
+    width:118px;
+    height:118px;
     border-radius:50%;
     object-fit:cover;
     border:5px solid white;
@@ -129,16 +130,16 @@ body{
 /* CONTENT */
 
 .content{
-    padding:75px 22px 24px;
+    padding:78px 22px 26px;
 }
 
 /* BIO */
 
 .bio{
-    font-size:14px;
+    font-size:15px;
     color:#4b5563;
-    line-height:1.7;
-    margin-bottom:22px;
+    line-height:1.8;
+    margin-bottom:24px;
 }
 
 /* CONTACT */
@@ -158,22 +159,20 @@ body{
     color:#111827;
     background:#f8fafc;
     border:1px solid #e2e8f0;
-    padding:13px;
-    border-radius:16px;
+    padding:14px;
+    border-radius:18px;
     transition:.25s;
 }
 
 .contact-item:hover{
-    transform:translateY(-2px);
+    transform:translateY(-3px);
     background:#f1f5f9;
 }
 
-/* ICON */
-
 .icon{
-    width:42px;
-    height:42px;
-    border-radius:14px;
+    width:46px;
+    height:46px;
+    border-radius:15px;
     background:#02142f;
     display:flex;
     justify-content:center;
@@ -183,12 +182,9 @@ body{
     flex-shrink:0;
 }
 
-/* CONTACT TEXT */
-
 .contact-text{
     display:flex;
     flex-direction:column;
-    align-items:flex-start;
 }
 
 .label{
@@ -197,8 +193,8 @@ body{
 }
 
 .value{
-    font-size:14px;
-    font-weight:600;
+    font-size:15px;
+    font-weight:700;
 }
 
 /* SOCIALS */
@@ -206,19 +202,19 @@ body{
 .socials{
     display:flex;
     justify-content:center;
-    gap:12px;
-    margin-bottom:24px;
+    gap:14px;
+    margin-bottom:26px;
 }
 
 .social{
-    width:50px;
-    height:50px;
+    width:54px;
+    height:54px;
     border-radius:18px;
     display:flex;
     justify-content:center;
     align-items:center;
     text-decoration:none;
-    font-size:20px;
+    font-size:22px;
     color:white;
     transition:.25s;
 }
@@ -226,8 +222,6 @@ body{
 .social:hover{
     transform:translateY(-5px) scale(1.05);
 }
-
-/* SOCIAL COLORS */
 
 .instagram{
     background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
@@ -245,22 +239,26 @@ body{
     background:#111827;
 }
 
-/* ACTION BUTTONS */
+/* BUTTONS */
 
 .actions{
     display:flex;
     flex-direction:column;
-    gap:12px;
+    gap:14px;
 }
 
 .btn{
     border:none;
     border-radius:18px;
-    padding:15px;
-    font-size:15px;
+    padding:16px;
+    font-size:16px;
     font-weight:700;
     cursor:pointer;
     transition:.25s;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
 }
 
 .primary{
@@ -284,14 +282,47 @@ body{
 /* QR */
 
 .qr-box{
-    margin-top:22px;
+    margin-top:24px;
     text-align:center;
 }
 
 .qr-box img{
-    width:120px;
+    width:125px;
     border-radius:16px;
     border:1px solid #e2e8f0;
+    padding:5px;
+    background:white;
+}
+
+/* FOOTER */
+
+.footer-brand{
+    margin-top:28px;
+    padding-top:18px;
+    border-top:1px solid #e2e8f0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+    transition:.25s;
+}
+
+.footer-brand:hover{
+    transform:scale(1.03);
+    opacity:.9;
+}
+
+.designed{
+    color:#64748b;
+    font-size:14px;
+}
+
+.footer-logo{
+    width:120px;
+    object-fit:contain;
 }
 
 /* ANIMATION */
@@ -301,6 +332,7 @@ body{
         opacity:0;
         transform:translateY(20px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
@@ -321,7 +353,6 @@ body{
         <!-- BRAND -->
         <div class="brand">
 
-            <!-- FLEXTECH LOGO -->
             <img class="brand-logo"
             src="https://i.imgur.com/ctcrPQl.jpeg">
 
@@ -476,13 +507,15 @@ body{
             <button class="btn primary"
             onclick="saveContact()">
 
-                + Add To Contacts
+                <i class="fas fa-user-plus"></i>
+                Add To Contacts
 
             </button>
 
             <button class="btn secondary"
             onclick="shareCard()">
 
+                <i class="fas fa-share-alt"></i>
                 Share Card
 
             </button>
@@ -496,6 +529,21 @@ body{
             src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://flextechcards.github.io">
 
         </div>
+
+        <!-- FOOTER -->
+
+        <a class="footer-brand"
+        href="https://www.instagram.com/flex.tech1?igsh=MWxoajk3aDg5Y3BqYQ%3D%3D&utm_source=qr"
+        target="_blank">
+
+            <span class="designed">
+                Designed by
+            </span>
+
+            <img class="footer-logo"
+            src="https://i.imgur.com/ctcrPQl.jpeg">
+
+        </a>
 
     </div>
 
