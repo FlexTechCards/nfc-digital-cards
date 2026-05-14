@@ -5,11 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FlexTech Digital Card</title>
+<title>FlexTech Premium Card</title>
 
-<!-- FONT AWESOME -->
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
@@ -21,165 +20,211 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 body{
     font-family:system-ui,-apple-system,Segoe UI,Roboto;
-    background:#0f172a;
+    background:
+    radial-gradient(circle at center,#07245f 0%,#020817 100%);
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:20px;
+
+    padding:40px 20px;
 }
 
 /* CARD */
 
 .card{
-    width:360px;
-    border-radius:32px;
+    width:390px;
+    background:#f8fafc;
+    border-radius:40px;
     overflow:hidden;
-    background:#ffffff;
-    color:#111827;
-    box-shadow:0 30px 80px rgba(0,0,0,0.45);
-    animation:fadeIn .6s ease;
-}
+    box-shadow:
+    0 40px 100px rgba(0,0,0,.55);
 
-/* TOP */
-
-.top{
-    background:
-    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 40%),
-    linear-gradient(180deg,#02142f,#031d47);
-
-    padding:26px 22px 95px;
     position:relative;
-    color:white;
 }
 
-/* BRAND */
+/* HEADER */
 
-.brand{
+.header{
+
+    background:
+    linear-gradient(rgba(1,15,45,.88),rgba(1,15,45,.94)),
+    url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
+
+    background-size:cover;
+    background-position:center;
+
+    min-height:320px;
+
+    padding:38px 34px;
+
+    border-bottom-left-radius:70px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+/* decorative lines */
+
+.header::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+    right:-120px;
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 0 35px rgba(255,255,255,.03),
+    0 0 0 70px rgba(255,255,255,.025),
+    0 0 0 105px rgba(255,255,255,.02);
+
+}
+
+/* PROFILE SECTION */
+
+.profile-section{
     display:flex;
     align-items:center;
-    gap:12px;
-    margin-bottom:30px;
+    gap:24px;
+    position:relative;
+    z-index:2;
 }
 
-.brand-logo{
-    width:52px;
-    height:52px;
-    object-fit:contain;
-    border-radius:14px;
-    background:white;
-    padding:5px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.25);
+/* PROFILE IMAGE */
+
+.profile{
+
+    width:140px;
+    height:140px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:6px solid rgba(255,255,255,.95);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
 }
 
-.brand-text{
-    display:flex;
-    flex-direction:column;
-}
+/* INFO */
 
-.brand-title{
-    font-size:17px;
-    font-weight:800;
-    letter-spacing:1px;
+.info{
+    flex:1;
 }
-
-.brand-sub{
-    font-size:11px;
-    color:#cbd5e1;
-    letter-spacing:1px;
-}
-
-/* NAME */
 
 .name{
-    font-size:31px;
-    font-weight:700;
-    line-height:1.1;
+    font-size:33px;
+    font-weight:800;
+    color:white;
+    margin-bottom:10px;
 }
 
-.pronouns{
+.role{
+    font-size:18px;
     color:#dbeafe;
-    font-size:15px;
-    margin-top:8px;
+    margin-bottom:20px;
+}
+
+.line{
+    width:55px;
+    height:5px;
+    background:#22d3ee;
+    border-radius:50px;
+    margin-bottom:20px;
 }
 
 .job{
-    margin-top:18px;
-    color:#dbeafe;
-    font-size:15px;
+    color:#e2e8f0;
     line-height:1.6;
-}
-
-/* PROFILE */
-
-.profile-wrap{
-    position:absolute;
-    right:20px;
-    bottom:-58px;
-}
-
-.profile{
-    width:118px;
-    height:118px;
-    border-radius:50%;
-    object-fit:cover;
-    border:5px solid white;
-    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+    font-size:16px;
 }
 
 /* CONTENT */
 
 .content{
-    padding:78px 22px 26px;
+    padding:36px 28px 26px;
 }
 
 /* BIO */
 
 .bio{
-    font-size:15px;
+    font-size:17px;
     color:#4b5563;
-    line-height:1.8;
-    margin-bottom:24px;
+    line-height:1.7;
+    margin-bottom:28px;
 }
 
-/* CONTACT */
+/* CONTACT ITEMS */
 
 .contact{
     display:flex;
     flex-direction:column;
-    gap:14px;
-    margin-bottom:24px;
+    gap:16px;
 }
 
-.contact-item{
+.contact-box{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:16px;
+
     display:flex;
     align-items:center;
-    gap:14px;
+    justify-content:space-between;
+
+    border:1px solid #dbe2ea;
+
     text-decoration:none;
-    color:#111827;
-    background:#f8fafc;
-    border:1px solid #e2e8f0;
-    padding:14px;
-    border-radius:18px;
+
     transition:.25s;
 }
 
-.contact-item:hover{
+.contact-box:hover{
     transform:translateY(-3px);
-    background:#f1f5f9;
+}
+
+.contact-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
 }
 
 .icon{
-    width:46px;
-    height:46px;
-    border-radius:15px;
-    background:#02142f;
+
+    width:62px;
+    height:62px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(145deg,#02142f,#07245f);
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     color:white;
-    font-size:18px;
-    flex-shrink:0;
+
+    font-size:28px;
+
+    box-shadow:
+    inset 0 0 10px rgba(255,255,255,.05),
+    0 8px 18px rgba(0,0,0,.15);
+
 }
 
 .contact-text{
@@ -188,13 +233,19 @@ body{
 }
 
 .label{
-    font-size:12px;
+    font-size:16px;
     color:#64748b;
 }
 
 .value{
-    font-size:15px;
-    font-weight:700;
+    font-size:18px;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.arrow{
+    color:#64748b;
+    font-size:24px;
 }
 
 /* SOCIALS */
@@ -202,25 +253,37 @@ body{
 .socials{
     display:flex;
     justify-content:center;
-    gap:14px;
-    margin-bottom:26px;
+    gap:18px;
+
+    margin:28px 0;
 }
 
 .social{
-    width:54px;
-    height:54px;
-    border-radius:18px;
+
+    width:74px;
+    height:74px;
+
+    border-radius:22px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     text-decoration:none;
-    font-size:22px;
+
+    font-size:42px;
+
     color:white;
+
     transition:.25s;
+
+    box-shadow:
+    0 10px 20px rgba(0,0,0,.15);
+
 }
 
 .social:hover{
-    transform:translateY(-5px) scale(1.05);
+    transform:translateY(-5px) scale(1.04);
 }
 
 .instagram{
@@ -236,7 +299,7 @@ body{
 }
 
 .tiktok{
-    background:#111827;
+    background:black;
 }
 
 /* BUTTONS */
@@ -244,25 +307,37 @@ body{
 .actions{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:16px;
 }
 
+/* BTN */
+
 .btn{
+
     border:none;
-    border-radius:18px;
-    padding:16px;
-    font-size:16px;
-    font-weight:700;
+
+    border-radius:22px;
+
+    padding:20px;
+
+    font-size:19px;
+    font-weight:800;
+
     cursor:pointer;
-    transition:.25s;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:10px;
+    gap:14px;
+
+    transition:.25s;
 }
 
 .primary{
-    background:#02142f;
+
+    background:
+    linear-gradient(145deg,#02142f,#07245f);
+
     color:white;
 }
 
@@ -271,72 +346,95 @@ body{
 }
 
 .secondary{
-    background:#eef2ff;
-    color:#02142f;
+
+    background:
+    linear-gradient(145deg,#eef2ff,#dbe7ff);
+
+    color:#173a7a;
 }
 
 .secondary:hover{
-    background:#dbeafe;
+    transform:scale(1.02);
 }
 
 /* QR */
 
-.qr-box{
-    margin-top:24px;
+.qr{
     text-align:center;
+    margin-top:28px;
 }
 
-.qr-box img{
-    width:125px;
-    border-radius:16px;
-    border:1px solid #e2e8f0;
-    padding:5px;
+.qr img{
+
+    width:155px;
+
+    border-radius:18px;
+
     background:white;
+
+    padding:10px;
+
+    border:1px solid #dbe2ea;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 /* FOOTER */
 
-.footer-brand{
-    margin-top:28px;
-    padding-top:18px;
-    border-top:1px solid #e2e8f0;
+.footer{
+
+    margin-top:32px;
+
+    padding-top:24px;
+
+    border-top:1px solid #dbe2ea;
 
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:12px;
+    gap:18px;
 
     text-decoration:none;
-    transition:.25s;
-}
-
-.footer-brand:hover{
-    transform:scale(1.03);
-    opacity:.9;
 }
 
 .designed{
     color:#64748b;
-    font-size:14px;
+    font-size:16px;
 }
 
-.footer-logo{
-    width:120px;
+.footer img{
+    width:170px;
     object-fit:contain;
 }
 
-/* ANIMATION */
+/* MOBILE */
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
+@media(max-width:450px){
+
+    .card{
+        width:100%;
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    .profile-section{
+        flex-direction:column;
+        align-items:flex-start;
     }
+
+    .profile{
+        width:120px;
+        height:120px;
+    }
+
+    .name{
+        font-size:28px;
+    }
+
+    .social{
+        width:65px;
+        height:65px;
+        font-size:36px;
+    }
+
 }
 
 </style>
@@ -347,48 +445,34 @@ body{
 
 <div class="card">
 
-    <!-- TOP -->
-    <div class="top">
+    <!-- HEADER -->
+    <div class="header">
 
-        <!-- BRAND -->
-        <div class="brand">
+        <div class="profile-section">
 
-            <img class="brand-logo"
-            src="https://i.imgur.com/ctcrPQl.jpeg">
-
-            <div class="brand-text">
-
-                <span class="brand-title">
-                    FLEXTECH
-                </span>
-
-                <span class="brand-sub">
-                    NFC DIGITAL CARDS
-                </span>
-
-            </div>
-
-        </div>
-
-        <!-- NAME -->
-        <div class="name">
-            Ahmad Shkri
-        </div>
-
-        <div class="pronouns">
-            Digital Banking Specialist
-        </div>
-
-        <div class="job">
-            NFC Business Cards<br>
-            FlexTech
-        </div>
-
-        <!-- PROFILE -->
-        <div class="profile-wrap">
-
+            <!-- PROFILE -->
             <img class="profile"
             src="https://i.imgur.com/gBpfXPZ.jpeg">
+
+            <!-- INFO -->
+            <div class="info">
+
+                <div class="name">
+                    Ahmad Shkri
+                </div>
+
+                <div class="role">
+                    Digital Banking Specialist
+                </div>
+
+                <div class="line"></div>
+
+                <div class="job">
+                    NFC Business Cards<br>
+                    FlexTech
+                </div>
+
+            </div>
 
         </div>
 
@@ -408,68 +492,92 @@ body{
         <div class="contact">
 
             <!-- PHONE -->
-            <a class="contact-item"
-            href="tel:000000000">
+            <a class="contact-box"
+            href="tel:+44123456578">
 
-                <div class="icon">
-                    <i class="fas fa-phone"></i>
+                <div class="contact-left">
+
+                    <div class="icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+
+                    <div class="contact-text">
+
+                        <div class="label">
+                            Phone
+                        </div>
+
+                        <div class="value">
+                            +44 123 456 578
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="contact-text">
-
-                    <div class="label">
-                        Phone
-                    </div>
-
-                    <div class="value">
-                        +44 123 456 578
-                    </div>
-
+                <div class="arrow">
+                    <i class="fas fa-angle-right"></i>
                 </div>
 
             </a>
 
             <!-- EMAIL -->
-            <a class="contact-item"
-            href="mailto:test@email.com">
+            <a class="contact-box"
+            href="mailto:ahmad@flextech.com">
 
-                <div class="icon">
-                    <i class="fas fa-envelope"></i>
+                <div class="contact-left">
+
+                    <div class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+
+                    <div class="contact-text">
+
+                        <div class="label">
+                            Email
+                        </div>
+
+                        <div class="value">
+                            ahmad@flextech.com
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="contact-text">
-
-                    <div class="label">
-                        Email
-                    </div>
-
-                    <div class="value">
-                        ahmad@flextech.com
-                    </div>
-
+                <div class="arrow">
+                    <i class="fas fa-angle-right"></i>
                 </div>
 
             </a>
 
             <!-- WEBSITE -->
-            <a class="contact-item"
+            <a class="contact-box"
             href="https://flextechcards.github.io"
             target="_blank">
 
-                <div class="icon">
-                    <i class="fas fa-globe"></i>
+                <div class="contact-left">
+
+                    <div class="icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+
+                    <div class="contact-text">
+
+                        <div class="label">
+                            Website
+                        </div>
+
+                        <div class="value">
+                            www.flextechcards.com
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="contact-text">
-
-                    <div class="label">
-                        Website
-                    </div>
-
-                    <div class="value">
-                        www.flextechcards.com
-                    </div>
-
+                <div class="arrow">
+                    <i class="fas fa-angle-right"></i>
                 </div>
 
             </a>
@@ -479,23 +587,19 @@ body{
         <!-- SOCIALS -->
         <div class="socials">
 
-            <a class="social instagram"
-            href="#">
+            <a class="social instagram" href="#">
                 <i class="fab fa-instagram"></i>
             </a>
 
-            <a class="social whatsapp"
-            href="#">
+            <a class="social whatsapp" href="#">
                 <i class="fab fa-whatsapp"></i>
             </a>
 
-            <a class="social linkedin"
-            href="#">
+            <a class="social linkedin" href="#">
                 <i class="fab fa-linkedin-in"></i>
             </a>
 
-            <a class="social tiktok"
-            href="#">
+            <a class="social tiktok" href="#">
                 <i class="fab fa-tiktok"></i>
             </a>
 
@@ -523,16 +627,15 @@ body{
         </div>
 
         <!-- QR -->
-        <div class="qr-box">
+        <div class="qr">
 
             <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://flextechcards.github.io">
+            src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://flextechcards.github.io">
 
         </div>
 
         <!-- FOOTER -->
-
-        <a class="footer-brand"
+        <a class="footer"
         href="https://www.instagram.com/flex.tech1?igsh=MWxoajk3aDg5Y3BqYQ%3D%3D&utm_source=qr"
         target="_blank">
 
@@ -540,7 +643,7 @@ body{
                 Designed by
             </span>
 
-            <img class="footer-logo"
+            <img
             src="https://i.imgur.com/ctcrPQl.jpeg">
 
         </a>
@@ -551,7 +654,6 @@ body{
 
 <script>
 
-// SHARE CARD
 function shareCard(){
 
     if(navigator.share){
@@ -569,10 +671,9 @@ function shareCard(){
     }
 }
 
-// SAVE CONTACT
 function saveContact(){
 
-    window.location.href = "contact.vcf";
+    window.location.href="contact.vcf";
 
 }
 
