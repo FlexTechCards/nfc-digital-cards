@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FlexTech Card</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#061630;
+display:flex;
+justify-content:center;
+padding:20px;
+}
+
+.card{
+width:400px;
+background:white;
+border-radius:30px;
+overflow:hidden;
+}
+
+.header{
+background:#041b45;
+padding:30px 20px;
+color:white;
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.profile{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+}
+
+.name{
+font-size:32px;
+font-weight:bold;
+}
+
+.role{
+margin-top:10px;
+font-size:18px;
+opacity:.9;
+}
+
+.content{
+padding:20px;
+}
+
+.contact-box{
+background:#f3f4f6;
+padding:16px;
+border-radius:18px;
+margin-bottom:14px;
+text-decoration:none;
+color:black;
+display:block;
+}
+
+.socials{
+display:flex;
+justify-content:center;
+gap:14px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.social{
+width:60px;
+height:60px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+}
+
+.instagram{background:#E1306C;}
+.whatsapp{background:#25D366;}
+.linkedin{background:#0077B5;}
+.facebook{background:#1877F2;}
+.telegram{background:#229ED9;}
+.tiktok{background:black;}
+
+.footer{
+text-align:center;
+padding:20px;
+}
+
+.footer img{
+width:160px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="header">
+
+<img id="profileImage"
+class="profile">
+
+<div>
+
+<div id="name"
+class="name"></div>
+
+<div id="role"
+class="role"></div>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<a id="phoneLink"
+class="contact-box">
+
+📞
+<span id="phone"></span>
+
+</a>
+
+<a id="emailLink"
+class="contact-box">
+
+✉️
+<span id="email"></span>
+
+</a>
+
+<div id="socials"
+class="socials"></div>
+
+</div>
+
+<div class="footer">
+
+<a href="https://instagram.com/flex.tech1"
+target="_blank">
+
+<img src="https://i.imgur.com/LmWt6sc.png">
+
+</a>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+
+authDomain: "flextech-2324d.firebaseapp.com",
+
+projectId: "flextech-2324d",
+
+storageBucket: "flextech-2324d.firebasestorage.app",
+
+messagingSenderId: "511190640221",
+
+appId: "1:511190640221:web:20701272956f01e22c0fb4"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const params =
+new URLSearchParams(window.location.search);
+
+const clientId =
+params.get("id");
+
+async function loadClient(){
+
+const querySnapshot =
+await getDocs(collection(db,"clients"));
+
+querySnapshot.forEach((doc)=>{
+
+const client = doc.data();
+
+if(client.id === clientId){
+
+document.getElementById("name").innerHTML =
+client.name || "";
+
+document.getElementById("role").innerHTML =
+client.role || "";
+
+document.getElementById("phone").innerHTML =
+client.phone || "";
+
+document.getElementById("email").innerHTML =
+client.email || "";
+
+document.getElementById("profileImage").src =
+client.image || "";
+
+document.getElementById("phoneLink").href =
+`tel:${client.phone}`;
+
+document.getElementById("emailLink").href =
+`mailto:${client.email}`;
+
+let socialsHTML = "";
+
+const icons = {
+
+instagram:"fab fa-instagram",
+
+whatsapp:"fab fa-whatsapp",
+
+linkedin:"fab fa-linkedin-in",
+
+facebook:"fab fa-facebook-f",
+
+telegram:"fab fa-telegram-plane",
+
+tiktok:"fab fa-tiktok"
+
+};
+
+if(client.socials){
+
+for(let social in client.socials){
+
+if(client.socials[social]){
+
+socialsHTML += `
+
+<a class="social ${social}"
+href="${client.socials[social]}"
+target="_blank">
+
+<i class="${icons[social]}"></i>
+
+</a>
+
+`;
+
+}
+
+}
+
+}
+
+document.getElementById("socials").innerHTML =
+socialsHTML;
+
+}
+
+});
+
+}
+
+loadClient();
+
+</script>
+
+</body>
+</html>
