@@ -6,152 +6,284 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FlexTech SaaS</title>
+<title>FlexTech Dashboard</title>
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
 
-    font-family:Arial;
-    background:#020817;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto;
+
+    background:
+    linear-gradient(135deg,#020617,#07245f);
+
+    min-height:100vh;
+
+    padding:30px 16px;
+
     color:white;
-
-    padding:30px;
 }
 
-.container{
+/* TITLE */
 
-    max-width:900px;
-    margin:auto;
+.title{
+
+    text-align:center;
+
+    font-size:38px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
 }
 
-h1{
+.subtitle{
 
-    margin-bottom:25px;
-}
+    text-align:center;
 
-.form{
-
-    background:#0f172a;
-
-    padding:20px;
-
-    border-radius:20px;
+    color:#cbd5e1;
 
     margin-bottom:30px;
 }
 
-input{
+/* FORM */
 
-    width:100%;
+.form{
 
-    padding:14px;
+    max-width:700px;
 
-    margin-bottom:14px;
+    margin:auto;
 
-    border:none;
+    background:rgba(255,255,255,.06);
 
-    border-radius:12px;
+    backdrop-filter:blur(12px);
 
-    background:#1e293b;
+    padding:24px;
 
-    color:white;
+    border-radius:30px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    margin-bottom:30px;
 }
 
-button{
+/* GRID */
 
-    background:#2563eb;
-
-    border:none;
-
-    padding:14px 20px;
-
-    border-radius:12px;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-weight:bold;
-}
-
-.clients{
+.grid{
 
     display:grid;
 
-    gap:18px;
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
 }
 
-.client{
+@media(max-width:700px){
 
-    background:#0f172a;
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* INPUT */
+
+.input{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.1);
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+.input::placeholder{
+    color:#cbd5e1;
+}
+
+/* BUTTON */
+
+.btn{
+
+    width:100%;
+
+    margin-top:18px;
 
     padding:18px;
 
+    border:none;
+
     border-radius:18px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    background:
+    linear-gradient(145deg,#06b6d4,#2563eb);
+
+    color:white;
+
+    font-size:17px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
 }
 
-.client-left{
+.btn:hover{
+    transform:scale(1.02);
+}
+
+/* CLIENTS */
+
+.clients{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:20px;
+}
+
+/* CARD */
+
+.client-card{
+
+    background:white;
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    color:#0f172a;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.3);
+}
+
+/* TOP */
+
+.top{
+
+    background:
+    linear-gradient(rgba(2,20,47,.88),
+    rgba(2,20,47,.92)),
+    url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
+
+    background-size:cover;
+
+    padding:20px;
 
     display:flex;
     align-items:center;
-    gap:15px;
+
+    gap:14px;
 }
 
-.client img{
+/* IMAGE */
 
-    width:70px;
-    height:70px;
+.top img{
+
+    width:90px;
+    height:90px;
 
     border-radius:50%;
 
     object-fit:cover;
+
+    border:4px solid white;
 }
 
-.client-name{
+/* INFO */
 
-    font-size:20px;
-    font-weight:bold;
+.info h2{
+
+    color:white;
+
+    font-size:24px;
+
+    margin-bottom:6px;
 }
 
-.client-role{
+.info p{
 
-    color:#94a3b8;
-    margin-top:5px;
+    color:#cbd5e1;
 }
+
+/* CONTENT */
+
+.content{
+    padding:18px;
+}
+
+/* ACTIONS */
 
 .actions{
 
     display:flex;
+
     gap:10px;
+
+    margin-top:16px;
 }
+
+/* ACTION BUTTON */
 
 .action-btn{
 
-    padding:10px 14px;
+    flex:1;
 
-    border-radius:10px;
+    text-align:center;
+
+    padding:14px;
+
+    border-radius:14px;
 
     text-decoration:none;
 
-    color:white;
+    font-weight:700;
 
-    font-size:14px;
+    transition:.25s;
 }
 
 .view{
-    background:#2563eb;
+
+    background:#07245f;
+
+    color:white;
 }
 
 .qr{
-    background:#9333ea;
+
+    background:#06b6d4;
+
+    color:white;
+}
+
+.action-btn:hover{
+    transform:translateY(-2px);
 }
 
 </style>
@@ -160,122 +292,231 @@ button{
 
 <body>
 
-<div class="container">
+<h1 class="title">
+    FlexTech Dashboard
+</h1>
 
-    <h1>🚀 FlexTech SaaS Dashboard</h1>
+<p class="subtitle">
+    Firebase SaaS System
+</p>
 
-    <!-- FORM -->
-    <div class="form">
+<!-- FORM -->
 
-        <input id="clientId"
-        placeholder="Client ID (feras)">
+<div class="form">
 
-        <input id="clientName"
-        placeholder="Full Name">
+<div class="grid">
 
-        <input id="clientRole"
-        placeholder="Role">
+<input class="input"
+id="id"
+placeholder="Client ID">
 
-        <input id="clientPhone"
-        placeholder="Phone">
+<input class="input"
+id="name"
+placeholder="Full Name">
 
-        <input id="clientEmail"
-        placeholder="Email">
+<input class="input"
+id="role"
+placeholder="Job Title">
 
-        <input id="clientImage"
-        placeholder="Image URL">
+<input class="input"
+id="phone"
+placeholder="Phone">
 
-        <button onclick="addClient()">
-            Add Client
-        </button>
+<input class="input"
+id="email"
+placeholder="Email">
 
-    </div>
+<input class="input"
+id="image"
+placeholder="Profile Image URL">
 
-    <!-- CLIENTS -->
-    <div class="clients"
-    id="clientsList"></div>
+<input class="input"
+id="instagram"
+placeholder="Instagram Link">
+
+<input class="input"
+id="whatsapp"
+placeholder="WhatsApp Link">
 
 </div>
 
-<script>
+<button class="btn"
+onclick="addClient()">
 
-let clients = [];
+<i class="fas fa-plus"></i>
+Add Client
 
-function addClient(){
+</button>
 
-    let client = {
+</div>
 
-        id:
-        document.getElementById("clientId").value,
+<!-- CLIENTS -->
 
-        name:
-        document.getElementById("clientName").value,
+<div class="clients"
+id="clientsList"></div>
 
-        role:
-        document.getElementById("clientRole").value,
+<!-- FIREBASE -->
 
-        phone:
-        document.getElementById("clientPhone").value,
+<script type="module">
 
-        email:
-        document.getElementById("clientEmail").value,
-
-        image:
-        document.getElementById("clientImage").value
-    };
-
-    clients.push(client);
-
-    renderClients();
+import {
+initializeApp
 }
 
-function renderClients(){
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+
+getFirestore,
+collection,
+addDoc,
+getDocs
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* CONFIG */
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+
+  authDomain: "flextech-2324d.firebaseapp.com",
+
+  projectId: "flextech-2324d",
+
+  storageBucket: "flextech-2324d.firebasestorage.app",
+
+  messagingSenderId: "511190640221",
+
+  appId: "1:511190640221:web:20701272956f01e22c0fb4"
+
+};
+
+/* INIT */
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+/* ADD CLIENT */
+
+window.addClient =
+async function(){
+
+    const client = {
+
+        id:
+        document.getElementById("id").value,
+
+        name:
+        document.getElementById("name").value,
+
+        role:
+        document.getElementById("role").value,
+
+        phone:
+        document.getElementById("phone").value,
+
+        email:
+        document.getElementById("email").value,
+
+        image:
+        document.getElementById("image").value,
+
+        socials:{
+
+            instagram:
+            document.getElementById("instagram").value,
+
+            whatsapp:
+            document.getElementById("whatsapp").value
+
+        }
+
+    };
+
+    await addDoc(
+    collection(db,"clients"),
+    client
+    );
+
+    alert("Client Added 🔥");
+
+    loadClients();
+}
+
+/* LOAD CLIENTS */
+
+async function loadClients(){
+
+    const querySnapshot =
+    await getDocs(collection(db,"clients"));
 
     let html = "";
 
-    clients.forEach(client => {
+    querySnapshot.forEach((doc)=>{
 
-        let link =
-        `clients/template.html?id=${client.id}`;
+        const client = doc.data();
 
-        let qr =
-        `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(link)}`;
+        const link =
+`clients/template.html?id=${client.id}`;
+
+        const qr =
+`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${window.location.origin}/${link}`;
 
         html += `
 
-        <div class="client">
+        <div class="client-card">
 
-            <div class="client-left">
+            <div class="top">
 
                 <img src="${client.image}">
 
-                <div>
+                <div class="info">
 
-                    <div class="client-name">
+                    <h2>
                         ${client.name}
-                    </div>
+                    </h2>
 
-                    <div class="client-role">
+                    <p>
                         ${client.role}
-                    </div>
+                    </p>
 
                 </div>
 
             </div>
 
-            <div class="actions">
+            <div class="content">
 
-                <a class="action-btn view"
-                target="_blank"
-                href="${link}">
-                    View
-                </a>
+                <p>
+                    ${client.email}
+                </p>
 
-                <a class="action-btn qr"
-                target="_blank"
-                href="${qr}">
-                    QR
-                </a>
+                <div class="actions">
+
+                    <a class="action-btn view"
+                    target="_blank"
+                    href="${link}">
+
+                        View
+
+                    </a>
+
+                    <a class="action-btn qr"
+                    target="_blank"
+                    href="${qr}">
+
+                        QR
+
+                    </a>
+
+                </div>
 
             </div>
 
@@ -284,8 +525,13 @@ function renderClients(){
         `;
     });
 
-    document.getElementById("clientsList").innerHTML = html;
+    document.getElementById("clientsList").innerHTML =
+    html;
 }
+
+/* START */
+
+loadClients();
 
 </script>
 
