@@ -1,0 +1,18 @@
+[
+  {
+    "id": "ahmad",
+    "name": "Ahmad Shkri",
+    "role": "Digital Banking Specialist",
+    "phone": "+44123456578",
+    "email": "ahmad@flextech.com",
+    "bio": "Passionate digital banking specialist focused on modern NFC business solutions and smart networking experiences.",
+    "image": "https://i.imgur.com/gBpfXPZ.jpeg",
+
+    "socials": {
+      "instagram": "#",
+      "whatsapp": "#",
+      "linkedin": "#",
+      "tiktok": "#"
+    }
+  }
+]
