@@ -1,678 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+<script type="module">
 
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FlexTech Digital Card</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+import {
+initializeApp
 }
 
-body{
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-    font-family:system-ui,-apple-system,Segoe UI,Roboto;
+import {
 
-    background:
-    radial-gradient(circle at center,#07245f 0%,#020817 100%);
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:24px 14px;
-}
-
-/* CARD */
-
-.card{
-
-    width:390px;
-
-    background:#f8fafc;
-
-    border-radius:40px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 40px 100px rgba(0,0,0,.55);
-
-    position:relative;
-}
-
-/* HEADER */
-
-.header{
-
-    background:
-    linear-gradient(rgba(1,15,45,.88),rgba(1,15,45,.94)),
-    url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
-
-    background-size:cover;
-    background-position:center;
-
-    min-height:350px;
-
-    padding:26px 22px;
-
-    border-bottom-left-radius:70px;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-/* HEADER EFFECT */
-
-.header::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:-120px;
-    right:-120px;
-
-    width:420px;
-    height:420px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-    0 0 0 35px rgba(255,255,255,.03),
-    0 0 0 70px rgba(255,255,255,.025),
-    0 0 0 105px rgba(255,255,255,.02);
+getFirestore,
+collection,
+getDocs
 
 }
 
-/* PROFILE SECTION */
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-.profile-section{
+/* FIREBASE CONFIG */
 
-    display:flex;
-    align-items:center;
+const firebaseConfig = {
 
-    gap:18px;
+  apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
 
-    position:relative;
-    z-index:2;
-}
+  authDomain: "flextech-2324d.firebaseapp.com",
 
-/* PROFILE IMAGE */
+  projectId: "flextech-2324d",
 
-.profile{
+  storageBucket: "flextech-2324d.firebasestorage.app",
 
-    width:220px;
-    height:220px;
+  messagingSenderId: "511190640221",
 
-    border-radius:50%;
+  appId: "1:511190640221:web:20701272956f01e22c0fb4"
 
-    object-fit:cover;
+};
 
-    object-position:center top;
+/* INIT */
 
-    border:6px solid rgba(255,255,255,.98);
+const app =
+initializeApp(firebaseConfig);
 
-    box-shadow:
-    0 15px 35px rgba(0,0,0,.38);
-
-    position:relative;
-
-    top:-8px;
-}
-
-/* INFO */
-
-.info{
-    flex:1;
-}
-
-.name{
-
-    font-size:34px;
-    font-weight:800;
-
-    color:white;
-
-    line-height:1.1;
-
-    margin-bottom:12px;
-}
-
-.role{
-
-    font-size:16px;
-
-    color:#dbeafe;
-
-    line-height:1.6;
-
-    margin-bottom:18px;
-}
-
-.line{
-
-    width:56px;
-    height:5px;
-
-    background:#22d3ee;
-
-    border-radius:50px;
-
-    margin-bottom:18px;
-}
-
-.job{
-
-    color:#cbd5e1;
-
-    line-height:1.7;
-
-    font-size:15px;
-}
-
-/* CONTENT */
-
-.content{
-
-    padding:24px 22px 20px;
-}
-
-/* BIO */
-
-.bio{
-
-    font-size:16px;
-
-    color:#4b5563;
-
-    line-height:1.8;
-
-    margin-bottom:20px;
-}
-
-/* CONTACT */
-
-.contact{
-
-    display:flex;
-    flex-direction:column;
-
-    gap:12px;
-}
-
-/* CONTACT BOX */
-
-.contact-box{
-
-    background:white;
-
-    border-radius:18px;
-
-    padding:12px 14px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    border:1px solid #dbe2ea;
-
-    text-decoration:none;
-
-    transition:.25s;
-}
-
-.contact-box:hover{
-    transform:translateY(-3px);
-}
-
-/* CONTACT LEFT */
-
-.contact-left{
-
-    display:flex;
-    align-items:center;
-
-    gap:14px;
-}
-
-/* ICON */
-
-.icon{
-
-    width:48px;
-    height:48px;
-
-    border-radius:16px;
-
-    background:
-    linear-gradient(145deg,#02142f,#07245f);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    color:white;
-
-    font-size:20px;
-
-    box-shadow:
-    0 8px 18px rgba(0,0,0,.15);
-}
-
-/* TEXT */
-
-.contact-text{
-
-    display:flex;
-    flex-direction:column;
-}
-
-.label{
-
-    font-size:13px;
-
-    color:#64748b;
-}
-
-.value{
-
-    font-size:16px;
-
-    font-weight:800;
-
-    color:#0f172a;
-}
-
-/* ARROW */
-
-.arrow{
-
-    color:#64748b;
-
-    font-size:20px;
-}
-
-/* SOCIALS */
-
-.socials{
-
-    display:flex;
-    justify-content:center;
-
-    gap:14px;
-
-    margin:22px 0;
-
-    flex-wrap:wrap;
-}
-
-/* SOCIAL */
-
-.social{
-
-    width:68px;
-    height:68px;
-
-    border-radius:22px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-decoration:none;
-
-    font-size:36px;
-
-    color:white;
-
-    transition:.25s;
-
-    box-shadow:
-    0 10px 20px rgba(0,0,0,.15);
-}
-
-.social:hover{
-
-    transform:
-    translateY(-5px)
-    scale(1.04);
-}
-
-/* COLORS */
-
-.instagram{
-    background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
-}
-
-.whatsapp{
-    background:#22c55e;
-}
-
-.linkedin{
-    background:#0077b5;
-}
-
-.tiktok{
-    background:black;
-}
-
-.facebook{
-    background:#1877f2;
-}
-
-.telegram{
-    background:#229ED9;
-}
-
-/* ACTIONS */
-
-.actions{
-
-    display:flex;
-    flex-direction:column;
-
-    gap:12px;
-}
-
-/* BUTTON */
-
-.btn{
-
-    border:none;
-
-    border-radius:20px;
-
-    padding:17px;
-
-    font-size:17px;
-    font-weight:800;
-
-    cursor:pointer;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:12px;
-
-    transition:.25s;
-}
-
-.primary{
-
-    background:
-    linear-gradient(145deg,#02142f,#07245f);
-
-    color:white;
-}
-
-.secondary{
-
-    background:
-    linear-gradient(145deg,#eef2ff,#dbe7ff);
-
-    color:#173a7a;
-}
-
-.btn:hover{
-    transform:scale(1.02);
-}
-
-/* FOOTER */
-
-.footer{
-
-    margin-top:22px;
-
-    padding-top:18px;
-
-    border-top:1px solid #dbe2ea;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:12px;
-
-    text-decoration:none;
-
-    transition:.25s;
-}
-
-.footer:hover{
-    transform:scale(1.02);
-}
-
-/* CREATED */
-
-.created{
-
-    color:#64748b;
-
-    font-size:15px;
-}
-
-/* LOGO */
-
-.footer img{
-
-    width:155px;
-
-    object-fit:contain;
-}
-
-/* MOBILE */
-
-@media(max-width:450px){
-
-    .card{
-        width:100%;
-        border-radius:34px;
-    }
-
-    .profile-section{
-
-        flex-direction:row;
-        align-items:center;
-
-        gap:12px;
-    }
-
-    .profile{
-
-        width:190px;
-        height:190px;
-    }
-
-    .name{
-        font-size:28px;
-    }
-
-    .role{
-        font-size:14px;
-    }
-
-    .job{
-        font-size:13px;
-    }
-
-    .social{
-        width:60px;
-        height:60px;
-        font-size:32px;
-    }
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="card">
-
-    <!-- HEADER -->
-    <div class="header">
-
-        <div class="profile-section">
-
-            <!-- PROFILE -->
-            <img class="profile"
-            id="profileImage">
-
-            <!-- INFO -->
-            <div class="info">
-
-                <div class="name"
-                id="name"></div>
-
-                <div class="role"
-                id="role"></div>
-
-                <div class="line"></div>
-
-                <div class="job">
-                    NFC Business Cards<br>
-                    FlexTech
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- CONTENT -->
-    <div class="content">
-
-        <!-- BIO -->
-        <div class="bio"
-        id="bio"></div>
-
-        <!-- CONTACT -->
-        <div class="contact">
-
-            <!-- PHONE -->
-            <a class="contact-box"
-            id="phoneLink">
-
-                <div class="contact-left">
-
-                    <div class="icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-
-                    <div class="contact-text">
-
-                        <div class="label">
-                            Phone
-                        </div>
-
-                        <div class="value"
-                        id="phone"></div>
-
-                    </div>
-
-                </div>
-
-                <div class="arrow">
-                    <i class="fas fa-angle-right"></i>
-                </div>
-
-            </a>
-
-            <!-- EMAIL -->
-            <a class="contact-box"
-            id="emailLink">
-
-                <div class="contact-left">
-
-                    <div class="icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-
-                    <div class="contact-text">
-
-                        <div class="label">
-                            Email
-                        </div>
-
-                        <div class="value"
-                        id="email"></div>
-
-                    </div>
-
-                </div>
-
-                <div class="arrow">
-                    <i class="fas fa-angle-right"></i>
-                </div>
-
-            </a>
-
-        </div>
-
-        <!-- SOCIALS -->
-        <div class="socials"
-        id="socials"></div>
-
-        <!-- ACTIONS -->
-        <div class="actions">
-
-            <button class="btn primary"
-            onclick="saveContact()">
-
-                <i class="fas fa-user-plus"></i>
-                Add To Contacts
-
-            </button>
-
-            <button class="btn secondary"
-            onclick="shareCard()">
-
-                <i class="fas fa-share-alt"></i>
-                Share Card
-
-            </button>
-
-        </div>
-
-        <!-- FOOTER -->
-        <a class="footer"
-        href="https://www.instagram.com/flex.tech1?igsh=MWxoajk3aDg5Y3BqYQ%3D%3D&utm_source=qr"
-        target="_blank">
-
-            <span class="created">
-                Created by
-            </span>
-
-            <img
-            src="https://i.imgur.com/LmWt6sc.png">
-
-        </a>
-
-    </div>
-
-</div>
-
-<script>
+const db =
+getFirestore(app);
 
 /* GET CLIENT ID */
 
@@ -682,126 +52,159 @@ new URLSearchParams(window.location.search);
 const clientId =
 params.get("id");
 
-/* LOAD JSON */
+/* LOAD CLIENT */
 
-fetch("../data/clients.json")
+async function loadClient(){
 
-.then(response => response.json())
+    const querySnapshot =
+    await getDocs(collection(db,"clients"));
 
-.then(clients => {
+    let found = false;
 
-    const client =
-    clients.find(c => c.id === clientId);
+    querySnapshot.forEach((doc)=>{
 
-    if(!client){
+        const client = doc.data();
 
-        document.body.innerHTML =
-        "<h1 style='color:white'>Client Not Found</h1>";
+        if(client.id === clientId){
 
-        return;
-    }
+            found = true;
 
-    /* SET DATA */
+            /* DATA */
 
-    document.getElementById("name").innerHTML =
-    client.name;
+            document.getElementById("name").innerHTML =
+            client.name || "";
 
-    document.getElementById("role").innerHTML =
-    client.role;
+            document.getElementById("role").innerHTML =
+            client.role || "";
 
-    document.getElementById("bio").innerHTML =
-    client.bio;
+            document.getElementById("bio").innerHTML =
+            client.bio || "";
 
-    document.getElementById("phone").innerHTML =
-    client.phone;
+            document.getElementById("phone").innerHTML =
+            client.phone || "";
 
-    document.getElementById("email").innerHTML =
-    client.email;
+            document.getElementById("email").innerHTML =
+            client.email || "";
 
-    document.getElementById("profileImage").src =
-    client.image;
+            document.getElementById("profileImage").src =
+            client.image || "";
 
-    document.getElementById("phoneLink").href =
-    `tel:${client.phone}`;
+            /* LINKS */
 
-    document.getElementById("emailLink").href =
-    `mailto:${client.email}`;
+            document.getElementById("phoneLink").href =
+            `tel:${client.phone}`;
 
-    /* SOCIALS */
+            document.getElementById("emailLink").href =
+            `mailto:${client.email}`;
 
-    let socialsHTML = "";
+            /* SOCIALS */
 
-    const icons = {
+            let socialsHTML = "";
 
-        instagram:
-        "fab fa-instagram",
+            const icons = {
 
-        whatsapp:
-        "fab fa-whatsapp",
+                instagram:
+                "fab fa-instagram",
 
-        linkedin:
-        "fab fa-linkedin-in",
+                whatsapp:
+                "fab fa-whatsapp",
 
-        tiktok:
-        "fab fa-tiktok",
+                linkedin:
+                "fab fa-linkedin-in",
 
-        facebook:
-        "fab fa-facebook-f",
+                tiktok:
+                "fab fa-tiktok",
 
-        telegram:
-        "fab fa-telegram-plane"
-    };
+                facebook:
+                "fab fa-facebook-f",
 
-    for(let social in client.socials){
+                telegram:
+                "fab fa-telegram-plane"
+            };
 
-        if(client.socials[social]){
+            if(client.socials){
 
-            socialsHTML += `
+                for(let social in client.socials){
 
-            <a class="social ${social}"
-            href="${client.socials[social]}"
-            target="_blank">
+                    if(client.socials[social]){
 
-                <i class="${icons[social]}"></i>
+                        socialsHTML += `
 
-            </a>
+                        <a class="social ${social}"
+                        href="${client.socials[social]}"
+                        target="_blank">
 
-            `;
+                            <i class="${icons[social]}"></i>
+
+                        </a>
+
+                        `;
+                    }
+                }
+
+            }
+
+            document.getElementById("socials").innerHTML =
+            socialsHTML;
+
         }
+
+    });
+
+    /* NOT FOUND */
+
+    if(!found){
+
+        document.body.innerHTML = `
+
+        <div style="
+        color:white;
+        text-align:center;
+        margin-top:120px;
+        font-family:Arial;
+        ">
+
+            <h1>
+                Client Not Found
+            </h1>
+
+        </div>
+
+        `;
     }
 
-    document.getElementById("socials").innerHTML =
-    socialsHTML;
+}
 
-});
+/* START */
+
+loadClient();
 
 /* SHARE */
 
-function shareCard(){
+window.shareCard = function(){
 
     if(navigator.share){
 
         navigator.share({
+
             title:"FlexTech Digital Card",
+
             text:"Check my digital business card",
+
             url:window.location.href
+
         });
 
-    }else{
-
-        alert("Sharing not supported");
-
     }
+
 }
 
 /* SAVE CONTACT */
 
-function saveContact(){
+window.saveContact = function(){
 
-    alert("VCF system coming next 🔥");
+    alert("VCF System Coming Soon 🔥");
+
 }
 
 </script>
-
-</body>
-</html>
