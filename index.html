@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FlexTech SaaS</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+
+    font-family:Arial;
+    background:#020817;
+    color:white;
+
+    padding:30px;
+}
+
+.container{
+
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+
+    margin-bottom:25px;
+}
+
+.form{
+
+    background:#0f172a;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    margin-bottom:30px;
+}
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#1e293b;
+
+    color:white;
+}
+
+button{
+
+    background:#2563eb;
+
+    border:none;
+
+    padding:14px 20px;
+
+    border-radius:12px;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.clients{
+
+    display:grid;
+
+    gap:18px;
+}
+
+.client{
+
+    background:#0f172a;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.client-left{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.client img{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+}
+
+.client-name{
+
+    font-size:20px;
+    font-weight:bold;
+}
+
+.client-role{
+
+    color:#94a3b8;
+    margin-top:5px;
+}
+
+.actions{
+
+    display:flex;
+    gap:10px;
+}
+
+.action-btn{
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:14px;
+}
+
+.view{
+    background:#2563eb;
+}
+
+.qr{
+    background:#9333ea;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚀 FlexTech SaaS Dashboard</h1>
+
+    <!-- FORM -->
+    <div class="form">
+
+        <input id="clientId"
+        placeholder="Client ID (feras)">
+
+        <input id="clientName"
+        placeholder="Full Name">
+
+        <input id="clientRole"
+        placeholder="Role">
+
+        <input id="clientPhone"
+        placeholder="Phone">
+
+        <input id="clientEmail"
+        placeholder="Email">
+
+        <input id="clientImage"
+        placeholder="Image URL">
+
+        <button onclick="addClient()">
+            Add Client
+        </button>
+
+    </div>
+
+    <!-- CLIENTS -->
+    <div class="clients"
+    id="clientsList"></div>
+
+</div>
+
+<script>
+
+let clients = [];
+
+function addClient(){
+
+    let client = {
+
+        id:
+        document.getElementById("clientId").value,
+
+        name:
+        document.getElementById("clientName").value,
+
+        role:
+        document.getElementById("clientRole").value,
+
+        phone:
+        document.getElementById("clientPhone").value,
+
+        email:
+        document.getElementById("clientEmail").value,
+
+        image:
+        document.getElementById("clientImage").value
+    };
+
+    clients.push(client);
+
+    renderClients();
+}
+
+function renderClients(){
+
+    let html = "";
+
+    clients.forEach(client => {
+
+        let link =
+        `clients/template.html?id=${client.id}`;
+
+        let qr =
+        `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(link)}`;
+
+        html += `
+
+        <div class="client">
+
+            <div class="client-left">
+
+                <img src="${client.image}">
+
+                <div>
+
+                    <div class="client-name">
+                        ${client.name}
+                    </div>
+
+                    <div class="client-role">
+                        ${client.role}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="actions">
+
+                <a class="action-btn view"
+                target="_blank"
+                href="${link}">
+                    View
+                </a>
+
+                <a class="action-btn qr"
+                target="_blank"
+                href="${qr}">
+                    QR
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+    });
+
+    document.getElementById("clientsList").innerHTML = html;
+}
+
+</script>
+
+</body>
+</html>
