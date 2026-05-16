@@ -300,6 +300,20 @@ body{
     Firebase SaaS System
 </p>
 
+    ```html id="logout_button_html"
+<button class="btn"
+style="
+max-width:220px;
+margin:0 auto 30px;
+display:block;
+"
+onclick="logout()">
+
+Logout
+
+</button>
+```
+
 <!-- FORM -->
 
 <div class="form">
@@ -368,6 +382,19 @@ id="clientsList"></div>
 
 <script type="module">
 
+    ```javascript id="auth_import_add"
+import {
+
+getAuth,
+onAuthStateChanged,
+signOut
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+```
+
 import {
 initializeApp
 }
@@ -412,6 +439,25 @@ initializeApp(firebaseConfig);
 
 const db =
 getFirestore(app);
+
+    ```javascript id="auth_system_add"
+const auth =
+getAuth(app);
+
+/* CHECK LOGIN */
+
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.href =
+"login.html";
+
+}
+
+});
+```
+
 
 /* ADD CLIENT */
 
@@ -462,6 +508,19 @@ document.getElementById("bio").value,
     );
 
     alert("Client Added 🔥");
+
+    ```javascript id="logout_function_js"
+window.logout =
+async function(){
+
+await signOut(auth);
+
+window.location.href =
+"login.html";
+
+}
+```
+
 
     loadClients();
 }
