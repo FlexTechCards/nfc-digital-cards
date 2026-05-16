@@ -480,6 +480,18 @@ class="company"></div>
 
 <div id="bio"
 class="bio"></div>
+<div
+id="landlineBox"
+class="bio"
+style="
+font-size:15px;
+margin-top:-10px;
+margin-bottom:25px;
+color:#64748b;
+">
+</div>
+```
+
 
 <a id="phoneLink"
 class="contact-box">
@@ -645,6 +657,19 @@ client.company || "";
 
 document.getElementById("bio").innerHTML =
 client.bio || "";
+  
+document.getElementById("landlineBox").innerHTML =
+
+client.landline
+
+?
+
+`Landline: ${client.landline}
+${client.extension ? " | EXT: " + client.extension : ""}`
+
+:
+
+"";
 
 document.getElementById("phone").innerHTML =
 client.phone || "";
