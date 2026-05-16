@@ -1,0 +1,270 @@
+```html id="firebase_login_page"
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FlexTech Login</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Arial,sans-serif;
+
+background:
+linear-gradient(135deg,#020617,#07245f);
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:20px;
+}
+
+/* CARD */
+
+.login-card{
+
+width:100%;
+max-width:420px;
+
+background:
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(14px);
+
+border:1px solid rgba(255,255,255,.1);
+
+border-radius:32px;
+
+padding:35px 25px;
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.4);
+}
+
+/* TITLE */
+
+.logo{
+
+text-align:center;
+
+font-size:38px;
+font-weight:800;
+
+color:white;
+
+margin-bottom:10px;
+}
+
+.subtitle{
+
+text-align:center;
+
+color:#cbd5e1;
+
+margin-bottom:30px;
+}
+
+/* INPUT */
+
+.input{
+
+width:100%;
+
+padding:18px;
+
+margin-bottom:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.1);
+
+color:white;
+
+font-size:16px;
+
+outline:none;
+}
+
+.input::placeholder{
+color:#cbd5e1;
+}
+
+/* BUTTON */
+
+.btn{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+border-radius:20px;
+
+background:
+linear-gradient(145deg,#06b6d4,#2563eb);
+
+color:white;
+
+font-size:18px;
+font-weight:800;
+
+cursor:pointer;
+
+transition:.25s;
+}
+
+.btn:hover{
+transform:scale(1.02);
+}
+
+/* ERROR */
+
+#error{
+
+margin-top:16px;
+
+text-align:center;
+
+color:#fca5a5;
+
+font-size:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+<div class="logo">
+FlexTech
+</div>
+
+<div class="subtitle">
+Dashboard Login
+</div>
+
+<input
+class="input"
+id="email"
+type="email"
+placeholder="Email">
+
+<input
+class="input"
+id="password"
+type="password"
+placeholder="Password">
+
+<button
+class="btn"
+onclick="login()">
+
+Login
+
+</button>
+
+<div id="error"></div>
+
+</div>
+
+<script type="module">
+
+import {
+initializeApp
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+
+getAuth,
+signInWithEmailAndPassword
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+
+authDomain: "flextech-2324d.firebaseapp.com",
+
+projectId: "flextech-2324d",
+
+storageBucket: "flextech-2324d.firebasestorage.app",
+
+messagingSenderId: "511190640221",
+
+appId: "1:511190640221:web:20701272956f01e22c0fb4"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+window.login =
+async function(){
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+window.location.href =
+"index.html";
+
+}
+
+catch(error){
+
+document.getElementById("error").innerHTML =
+"Invalid Email or Password";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
