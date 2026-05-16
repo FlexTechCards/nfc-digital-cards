@@ -319,6 +319,15 @@ id="role"
 placeholder="Job Title">
 
 <input class="input"
+id="company"
+placeholder="Company">
+
+<textarea class="input"
+id="bio"
+placeholder="Bio"
+style="min-height:120px"></textarea>
+
+<input class="input"
 id="phone"
 placeholder="Phone">
 
@@ -419,6 +428,12 @@ async function(){
 
         role:
         document.getElementById("role").value,
+        
+        company:
+document.getElementById("company").value,
+
+bio:
+document.getElementById("bio").value,
 
         phone:
         document.getElementById("phone").value,
