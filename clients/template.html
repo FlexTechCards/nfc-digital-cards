@@ -453,12 +453,8 @@ class="role"></div>
 
 <div class="line"></div>
 
-<div class="company">
-
-NFC Business Cards<br>
-FlexTech
-
-</div>
+<div id="company"
+class="company"></div>
 
 </div>
 
@@ -468,11 +464,8 @@ FlexTech
 
 <div class="content">
 
-<div class="bio">
-
-Passionate digital banking specialist focused on modern NFC business solutions and smart networking experiences.
-
-</div>
+<div id="bio"
+class="bio"></div>
 
 <a id="phoneLink"
 class="contact-box">
@@ -632,6 +625,12 @@ client.name || "";
 
 document.getElementById("role").innerHTML =
 client.role || "";
+
+document.getElementById("company").innerHTML =
+client.company || "";
+
+document.getElementById("bio").innerHTML =
+client.bio || "";
 
 document.getElementById("phone").innerHTML =
 client.phone || "";
