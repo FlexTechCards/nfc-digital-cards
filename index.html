@@ -56,6 +56,37 @@ color:#cbd5e1;
 margin-bottom:30px;
 }
 
+/* BUTTON */
+
+.btn{
+
+width:100%;
+
+margin-top:18px;
+
+padding:18px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+linear-gradient(145deg,#06b6d4,#2563eb);
+
+color:white;
+
+font-size:17px;
+font-weight:800;
+
+cursor:pointer;
+
+transition:.25s;
+}
+
+.btn:hover{
+transform:scale(1.02);
+}
+
 /* FORM */
 
 .form{
@@ -119,37 +150,6 @@ outline:none;
 
 .input::placeholder{
 color:#cbd5e1;
-}
-
-/* BUTTON */
-
-.btn{
-
-width:100%;
-
-margin-top:18px;
-
-padding:18px;
-
-border:none;
-
-border-radius:18px;
-
-background:
-linear-gradient(145deg,#06b6d4,#2563eb);
-
-color:white;
-
-font-size:17px;
-font-weight:800;
-
-cursor:pointer;
-
-transition:.25s;
-}
-
-.btn:hover{
-transform:scale(1.02);
 }
 
 /* CLIENTS */
@@ -458,7 +458,7 @@ await signOut(auth);
 window.location.href =
 "login.html";
 
-}
+};
 
 /* ADD CLIENT */
 
@@ -512,7 +512,7 @@ alert("Client Added 🔥");
 
 loadClients();
 
-}
+};
 
 /* LOAD CLIENTS */
 
@@ -557,7 +557,10 @@ ${client.role}
 
 <div class="content">
 
-<p>
+<p style="
+word-break:break-word;
+overflow-wrap:anywhere;
+">
 ${client.email}
 </p>
 
@@ -591,6 +594,7 @@ QR
 
 document.getElementById("clientsList").innerHTML =
 html;
+
 }
 
 /* START */
