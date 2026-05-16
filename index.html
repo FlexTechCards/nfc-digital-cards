@@ -363,8 +363,7 @@ style="min-height:120px"></textarea>
 
 <input class="input"
 id="phone"
-placeholder="Phone"> 
-
+placeholder="Mobile Phone">
 
 <input class="input"
 id="landline"
@@ -372,7 +371,7 @@ placeholder="Landline Phone">
 
 <input class="input"
 id="extension"
-placeholder="Extension"> 
+placeholder="Extension">
 
 <input class="input"
 id="email"
@@ -650,10 +649,8 @@ ${JSON.stringify(client.role)},
 ${JSON.stringify(client.company)},
 ${JSON.stringify(client.bio)},
 ${JSON.stringify(client.phone)},
-'${client.landline || ""}',
-'${client.extension || ""}',
-
-
+${JSON.stringify(client.landline || "")},
+${JSON.stringify(client.extension || "")},
 ${JSON.stringify(client.email)},
 ${JSON.stringify(client.image)},
 ${JSON.stringify(client.socials?.instagram || "")},
@@ -700,7 +697,6 @@ phone,
 landline,
 extension,
 email,
-
 image,
 instagram,
 whatsapp
@@ -717,8 +713,6 @@ document.getElementById("bio").value = bio;
 document.getElementById("phone").value = phone;
 document.getElementById("landline").value = landline;
 document.getElementById("extension").value = extension;
-
-  
 document.getElementById("email").value = email;
 document.getElementById("image").value = image;
 document.getElementById("instagram").value = instagram;
