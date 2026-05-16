@@ -6,611 +6,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FlexTech Dashboard</title>
+<title>FlexTech Card</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
-
-background:
-linear-gradient(135deg,#020617,#07245f);
-
-min-height:100vh;
-
-padding:30px 16px;
-
-color:white;
-}
-
-/* TITLE */
-
-.title{
-
-text-align:center;
-
-font-size:38px;
-
-font-weight:800;
-
-margin-bottom:10px;
-}
-
-.subtitle{
-
-text-align:center;
-
-color:#cbd5e1;
-
-margin-bottom:30px;
-}
-
-/* BUTTON */
-
-.btn{
-
-width:100%;
-
-margin-top:18px;
-
-padding:18px;
-
-border:none;
-
-border-radius:18px;
-
-background:
-linear-gradient(145deg,#06b6d4,#2563eb);
-
-color:white;
-
-font-size:17px;
-font-weight:800;
-
-cursor:pointer;
-
-transition:.25s;
-}
-
-.btn:hover{
-transform:scale(1.02);
-}
-
-/* FORM */
-
-.form{
-
-max-width:700px;
-
-margin:auto;
-
-background:rgba(255,255,255,.06);
-
-backdrop-filter:blur(12px);
-
-padding:24px;
-
-border-radius:30px;
-
-border:1px solid rgba(255,255,255,.08);
-
-margin-bottom:30px;
-}
-
-/* GRID */
-
-.grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:14px;
-}
-
-@media(max-width:700px){
-
-.grid{
-grid-template-columns:1fr;
-}
-
-}
-
-/* INPUT */
-
-.input{
-
-width:100%;
-
-padding:16px;
-
-border:none;
-
-border-radius:16px;
-
-background:rgba(255,255,255,.1);
-
-color:white;
-
-font-size:15px;
-
-outline:none;
-}
-
-.input::placeholder{
-color:#cbd5e1;
-}
-
-/* CLIENTS */
-
-.clients{
-
-max-width:1100px;
-
-margin:auto;
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(300px,1fr));
-
-gap:20px;
-}
-
-/* CARD */
-
-.client-card{
-
-background:white;
-
-border-radius:26px;
-
-overflow:hidden;
-
-color:#0f172a;
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.3);
-}
-
-/* TOP */
-
-.top{
-
-background:
-linear-gradient(rgba(2,20,47,.88),
-rgba(2,20,47,.92)),
-url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
-
-background-size:cover;
-
-padding:20px;
-
-display:flex;
-align-items:center;
-
-gap:14px;
-}
-
-/* IMAGE */
-
-.top img{
-
-width:90px;
-height:90px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-border:4px solid white;
-}
-
-/* INFO */
-
-.info h2{
-
-color:white;
-
-font-size:24px;
-
-margin-bottom:6px;
-}
-
-.info p{
-
-color:#cbd5e1;
-}
-
-/* CONTENT */
-
-.content{
-padding:18px;
-}
-
-/* EMAIL */
-
-.email{
-
-word-break:break-word;
-overflow-wrap:anywhere;
-}
-
-/* ACTIONS */
-
-.actions{
-
-display:flex;
-flex-wrap:wrap;
-
-gap:10px;
-
-margin-top:16px;
-}
-
-/* ACTION BUTTON */
-
-.action-btn{
-
-flex:1;
-
-min-width:120px;
-
-text-align:center;
-
-padding:14px;
-
-border:none;
-
-border-radius:14px;
-
-text-decoration:none;
-
-font-weight:700;
-
-cursor:pointer;
-
-transition:.25s;
-}
-
-.view{
-
-background:#07245f;
-
-color:white;
-}
-
-.qr{
-
-background:#06b6d4;
-
-color:white;
-}
-
-.delete{
-
-background:#ef4444;
-
-color:white;
-}
-
-.action-btn:hover{
-transform:translateY(-2px);
-}
-
+/* ——— نفس التنسيق الذي أرسلته ——— */
+(ضع هنا نفس CSS الذي لديك بدون أي تعديل)
 </style>
 
 </head>
 
 <body>
 
-<h1 class="title">
-FlexTech Dashboard
-</h1>
+<div class="card">
 
-<p class="subtitle">
-Firebase SaaS System
-</p>
+<div class="header">
 
-<button class="btn"
-style="
-max-width:220px;
-margin:0 auto 30px;
-display:block;
-"
-onclick="logout()">
+<div class="profile-area">
 
-Logout
-
-</button>
-
-<!-- FORM -->
-
-<div class="form">
-
-<div class="grid">
-
-<input class="input"
-id="id"
-placeholder="Client ID">
-
-<input class="input"
-id="name"
-placeholder="Full Name">
-
-<input class="input"
-id="role"
-placeholder="Job Title">
-
-<input class="input"
-id="company"
-placeholder="Company">
-
-<textarea class="input"
-id="bio"
-placeholder="Bio"
-style="min-height:120px"></textarea>
-
-<input class="input"
-id="phone"
-placeholder="Mobile Phone">
-
-<input class="input"
-id="landline"
-placeholder="Landline Phone">
-
-<input class="input"
-id="extension"
-placeholder="Extension">
-
-<input class="input"
-id="email"
-placeholder="Email">
-
-<input class="input"
-id="image"
-placeholder="Profile Image URL">
-
-<input class="input"
-id="instagram"
-placeholder="Instagram Link">
-
-<input class="input"
-id="whatsapp"
-placeholder="WhatsApp Link">
-
-</div>
-
-<button class="btn"
-onclick="addClient()">
-
-<i class="fas fa-plus"></i>
-Save Client
-
-</button>
-
-</div>
-
-<!-- CLIENTS -->
-
-<div class="clients"
-id="clientsList"></div>
-
-<script type="module">
-
-import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-
-getFirestore,
-collection,
-addDoc,
-getDocs,
-doc,
-deleteDoc,
-updateDoc
-
-}
-from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-import {
-
-getAuth,
-onAuthStateChanged,
-signOut
-
-}
-from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-/* CONFIG */
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
-
-authDomain: "flextech-2324d.firebaseapp.com",
-
-projectId: "flextech-2324d",
-
-storageBucket: "flextech-2324d.firebasestorage.app",
-
-messagingSenderId: "511190640221",
-
-appId: "1:511190640221:web:20701272956f01e22c0fb4"
-
-};
-
-/* INIT */
-
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getFirestore(app);
-
-const auth =
-getAuth(app);
-
-let editingDocId = null;
-
-/* CHECK LOGIN */
-
-onAuthStateChanged(auth,(user)=>{
-
-if(!user){
-
-window.location.href =
-"login.html";
-
-}
-
-});
-
-/* LOGOUT */
-
-window.logout =
-async function(){
-
-await signOut(auth);
-
-window.location.href =
-"login.html";
-
-};
-
-/* ADD OR UPDATE CLIENT */
-
-window.addClient =
-async function(){
-
-const client = {
-
-id:
-document.getElementById("id").value,
-
-name:
-document.getElementById("name").value,
-
-role:
-document.getElementById("role").value,
-
-company:
-document.getElementById("company").value,
-
-bio:
-document.getElementById("bio").value,
-
-phone:
-document.getElementById("phone").value,
-
-landline:
-document.getElementById("landline").value,
-
-extension:
-document.getElementById("extension").value,
-
-email:
-document.getElementById("email").value,
-
-image:
-document.getElementById("image").value,
-
-socials:{
-
-instagram:
-document.getElementById("instagram").value,
-
-whatsapp:
-document.getElementById("whatsapp").value
-
-}
-
-};
-
-if(editingDocId){
-
-await updateDoc(
-doc(db,"clients",editingDocId),
-client
-);
-
-alert("Client Updated ✅");
-
-editingDocId = null;
-
-}else{
-
-await addDoc(
-collection(db,"clients"),
-client
-);
-
-alert("Client Added 🔥");
-
-}
-
-document.querySelectorAll(".input").forEach(input=>{
-
-input.value = "";
-
-});
-
-loadClients();
-
-};
-
-/* LOAD CLIENTS */
-
-async function loadClients(){
-
-const querySnapshot =
-await getDocs(collection(db,"clients"));
-
-let html = "";
-
-querySnapshot.forEach((documentItem)=>{
-
-const client = documentItem.data();
-
-const link =
-`clients/template.html?id=${client.id}`;
-
-const qr =
-`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${window.location.origin}/${link}`;
-
-html += `
-
-<div class="client-card">
-
-<div class="top">
-
-<img src="${client.image}">
+<img id="profileImage" class="profile">
 
 <div class="info">
 
-<h2>
-${client.name}
-</h2>
+<div id="name" class="name"></div>
+<div id="role" class="role"></div>
+<div class="line"></div>
+<div id="company" class="company"></div>
 
-<p>
-${client.role}
-</p>
+</div>
 
 </div>
 
@@ -618,136 +43,181 @@ ${client.role}
 
 <div class="content">
 
-<p class="email">
-${client.email}
-</p>
+<div id="bio" class="bio"></div>
+
+<div id="landlineBox"
+class="bio"
+style="font-size:15px;margin-top:-10px;margin-bottom:25px;color:#64748b;">
+</div>
+
+<a id="phoneLink" class="contact-box">
+<div class="contact-left">
+<div class="icon"><i class="fas fa-phone"></i></div>
+<div class="contact-text">
+<div class="label">Mobile</div>
+<div id="phone" class="value"></div>
+</div>
+</div>
+<div class="arrow">›</div>
+</a>
+
+<a id="emailLink" class="contact-box">
+<div class="contact-left">
+<div class="icon"><i class="fas fa-envelope"></i></div>
+<div class="contact-text">
+<div class="label">Email</div>
+<div id="email" class="value"></div>
+</div>
+</div>
+<div class="arrow">›</div>
+</a>
+
+<div id="socials" class="socials"></div>
 
 <div class="actions">
-
-<a class="action-btn view"
-target="_blank"
-href="${link}">
-
-View
-
-</a>
-
-<a class="action-btn qr"
-target="_blank"
-href="${qr}">
-
-QR
-
-</a>
-
-<button class="action-btn view"
-onclick='editClient(
-${JSON.stringify(documentItem.id)},
-${JSON.stringify(client.id)},
-${JSON.stringify(client.name)},
-${JSON.stringify(client.role)},
-${JSON.stringify(client.company)},
-${JSON.stringify(client.bio)},
-${JSON.stringify(client.phone)},
-${JSON.stringify(client.landline || "")},
-${JSON.stringify(client.extension || "")},
-${JSON.stringify(client.email)},
-${JSON.stringify(client.image)},
-${JSON.stringify(client.socials?.instagram || "")},
-${JSON.stringify(client.socials?.whatsapp || "")}
-)'>
-
-Edit
-
+<button class="btn primary" onclick="saveContact()">
+<i class="fas fa-user-plus"></i> Add To Contacts
 </button>
 
-<button class="action-btn delete"
-onclick="deleteClient('${documentItem.id}')">
-
-Delete
-
+<button class="btn secondary" onclick="shareCard()">
+<i class="fas fa-share-alt"></i> Share Card
 </button>
+</div>
 
+<div class="footer">
+<div class="created">powered by</div>
+<a href="https://instagram.com/flex.tech1" target="_blank">
+<img src="https://i.imgur.com/LmWt6sc.png">
+</a>
 </div>
 
 </div>
 
 </div>
 
+<script type="module">
+
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import { 
+getFirestore, 
+doc, 
+getDoc 
+} 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* FIREBASE CONFIG */
+const firebaseConfig = {
+apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+authDomain: "flextech-2324d.firebaseapp.com",
+projectId: "flextech-2324d",
+storageBucket: "flextech-2324d.firebasestorage.app",
+messagingSenderId: "511190640221",
+appId: "1:511190640221:web:20701272956f01e22c0fb4"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* GET CLIENT ID FROM URL */
+const params = new URLSearchParams(window.location.search);
+const clientId = params.get("id");
+
+/* LOAD CLIENT DIRECTLY BY DOCUMENT ID */
+async function loadClient() {
+
+const ref = doc(db, "clients", clientId);
+const snap = await getDoc(ref);
+
+if (!snap.exists()) {
+document.body.innerHTML = "<h2 style='color:white;text-align:center;margin-top:40px;'>Client Not Found</h2>";
+return;
+}
+
+const client = snap.data();
+
+/* FILL DATA */
+document.getElementById("name").innerHTML = client.name || "";
+document.getElementById("role").innerHTML = client.role || "";
+document.getElementById("company").innerHTML = client.company || "";
+document.getElementById("bio").innerHTML = client.bio || "";
+
+document.getElementById("landlineBox").innerHTML =
+client.landline
+? `Landline: ${client.landline}${client.extension ? " | EXT: " + client.extension : ""}`
+: "";
+
+document.getElementById("phone").innerHTML = client.phone || "";
+document.getElementById("email").innerHTML = client.email || "";
+document.getElementById("profileImage").src = client.image || "";
+
+document.getElementById("phoneLink").href = `tel:${client.phone}`;
+document.getElementById("emailLink").href = `mailto:${client.email}`;
+
+/* SOCIALS */
+let socialsHTML = "";
+const icons = {
+instagram: "fab fa-instagram",
+whatsapp: "fab fa-whatsapp",
+linkedin: "fab fa-linkedin-in",
+facebook: "fab fa-facebook-f",
+telegram: "fab fa-telegram-plane",
+tiktok: "fab fa-tiktok"
+};
+
+if (client.socials) {
+for (let social in client.socials) {
+if (client.socials[social]) {
+socialsHTML += `
+<a class="social ${social}" href="${client.socials[social]}" target="_blank">
+<i class="${icons[social]}"></i>
+</a>
+`;
+}
+}
+}
+
+document.getElementById("socials").innerHTML = socialsHTML;
+
+}
+
+loadClient();
+
+/* SHARE */
+window.shareCard = function () {
+if (navigator.share) {
+navigator.share({
+title: "FlexTech Digital Card",
+text: "Check my digital business card",
+url: window.location.href
+});
+}
+};
+
+/* SAVE CONTACT */
+window.saveContact = function () {
+
+const name = document.getElementById("name").innerText;
+const phone = document.getElementById("phone").innerText;
+const email = document.getElementById("email").innerText;
+
+const vcf = `
+BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+TEL:${phone}
+EMAIL:${email}
+END:VCARD
 `;
 
-});
-
-document.getElementById("clientsList").innerHTML =
-html;
-
-}
-
-/* EDIT CLIENT */
-
-window.editClient = function(
-
-docId,
-id,
-name,
-role,
-company,
-bio,
-phone,
-landline,
-extension,
-email,
-image,
-instagram,
-whatsapp
-
-){
-
-editingDocId = docId;
-
-document.getElementById("id").value = id;
-document.getElementById("name").value = name;
-document.getElementById("role").value = role;
-document.getElementById("company").value = company;
-document.getElementById("bio").value = bio;
-document.getElementById("phone").value = phone;
-document.getElementById("landline").value = landline;
-document.getElementById("extension").value = extension;
-document.getElementById("email").value = email;
-document.getElementById("image").value = image;
-document.getElementById("instagram").value = instagram;
-document.getElementById("whatsapp").value = whatsapp;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+const blob = new Blob([vcf], { type: 'text/vcard' });
+const link = document.createElement('a');
+link.href = URL.createObjectURL(blob);
+link.download = `${name}.vcf`;
+link.click();
 
 };
-
-/* DELETE CLIENT */
-
-window.deleteClient =
-async function(docId){
-
-const confirmDelete =
-confirm("Delete this client?");
-
-if(confirmDelete){
-
-await deleteDoc(
-doc(db,"clients",docId)
-);
-
-loadClients();
-
-}
-
-};
-
-/* START */
-
-loadClients();
 
 </script>
 
