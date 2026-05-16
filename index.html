@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -239,11 +238,20 @@ color:#cbd5e1;
 padding:18px;
 }
 
+/* EMAIL */
+
+.email{
+
+word-break:break-word;
+overflow-wrap:anywhere;
+}
+
 /* ACTIONS */
 
 .actions{
 
 display:flex;
+flex-wrap:wrap;
 
 gap:10px;
 
@@ -256,15 +264,21 @@ margin-top:16px;
 
 flex:1;
 
+min-width:120px;
+
 text-align:center;
 
 padding:14px;
+
+border:none;
 
 border-radius:14px;
 
 text-decoration:none;
 
 font-weight:700;
+
+cursor:pointer;
 
 transition:.25s;
 }
@@ -279,6 +293,13 @@ color:white;
 .qr{
 
 background:#06b6d4;
+
+color:white;
+}
+
+.delete{
+
+background:#ef4444;
 
 color:white;
 }
@@ -366,7 +387,7 @@ placeholder="WhatsApp Link">
 onclick="addClient()">
 
 <i class="fas fa-plus"></i>
-Add Client
+Save Client
 
 </button>
 
@@ -390,7 +411,10 @@ import {
 getFirestore,
 collection,
 addDoc,
-getDocs
+getDocs,
+doc,
+deleteDoc,
+updateDoc
 
 }
 from
@@ -435,6 +459,8 @@ getFirestore(app);
 const auth =
 getAuth(app);
 
+let editingDocId = null;
+
 /* CHECK LOGIN */
 
 onAuthStateChanged(auth,(user)=>{
@@ -460,7 +486,7 @@ window.location.href =
 
 };
 
-/* ADD CLIENT */
+/* ADD OR UPDATE CLIENT */
 
 window.addClient =
 async function(){
@@ -503,12 +529,33 @@ document.getElementById("whatsapp").value
 
 };
 
+if(editingDocId){
+
+await updateDoc(
+doc(db,"clients",editingDocId),
+client
+);
+
+alert("Client Updated ✅");
+
+editingDocId = null;
+
+}else{
+
 await addDoc(
 collection(db,"clients"),
 client
 );
 
 alert("Client Added 🔥");
+
+}
+
+document.querySelectorAll(".input").forEach(input=>{
+
+input.value = "";
+
+});
 
 loadClients();
 
@@ -523,9 +570,9 @@ await getDocs(collection(db,"clients"));
 
 let html = "";
 
-querySnapshot.forEach((doc)=>{
+querySnapshot.forEach((documentItem)=>{
 
-const client = doc.data();
+const client = documentItem.data();
 
 const link =
 `clients/template.html?id=${client.id}`;
@@ -557,10 +604,7 @@ ${client.role}
 
 <div class="content">
 
-<p style="
-word-break:break-word;
-overflow-wrap:anywhere;
-">
+<p class="email">
 ${client.email}
 </p>
 
@@ -582,6 +626,32 @@ QR
 
 </a>
 
+<button class="action-btn view"
+onclick='editClient(
+${JSON.stringify(documentItem.id)},
+${JSON.stringify(client.id)},
+${JSON.stringify(client.name)},
+${JSON.stringify(client.role)},
+${JSON.stringify(client.company)},
+${JSON.stringify(client.bio)},
+${JSON.stringify(client.phone)},
+${JSON.stringify(client.email)},
+${JSON.stringify(client.image)},
+${JSON.stringify(client.socials?.instagram || "")},
+${JSON.stringify(client.socials?.whatsapp || "")}
+)'>
+
+Edit
+
+</button>
+
+<button class="action-btn delete"
+onclick="deleteClient('${documentItem.id}')">
+
+Delete
+
+</button>
+
 </div>
 
 </div>
@@ -597,6 +667,64 @@ html;
 
 }
 
+/* EDIT CLIENT */
+
+window.editClient = function(
+
+docId,
+id,
+name,
+role,
+company,
+bio,
+phone,
+email,
+image,
+instagram,
+whatsapp
+
+){
+
+editingDocId = docId;
+
+document.getElementById("id").value = id;
+document.getElementById("name").value = name;
+document.getElementById("role").value = role;
+document.getElementById("company").value = company;
+document.getElementById("bio").value = bio;
+document.getElementById("phone").value = phone;
+document.getElementById("email").value = email;
+document.getElementById("image").value = image;
+document.getElementById("instagram").value = instagram;
+document.getElementById("whatsapp").value = whatsapp;
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+/* DELETE CLIENT */
+
+window.deleteClient =
+async function(docId){
+
+const confirmDelete =
+confirm("Delete this client?");
+
+if(confirmDelete){
+
+await deleteDoc(
+doc(db,"clients",docId)
+);
+
+loadClients();
+
+}
+
+};
+
 /* START */
 
 loadClients();
@@ -605,4 +733,3 @@ loadClients();
 
 </body>
 </html>
-```
