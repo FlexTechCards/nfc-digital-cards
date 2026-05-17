@@ -477,39 +477,39 @@ const client = {
 id: cleanId,
 
 name:
-document.getElementById("name").value,
+document.getElementById("name").value || "",
 
 role:
-document.getElementById("role").value,
+document.getElementById("role").value || "",
 
 company:
-document.getElementById("company").value,
+document.getElementById("company").value || "",
 
 bio:
-document.getElementById("bio").value,
+document.getElementById("bio").value || "",
 
 phone:
-document.getElementById("phone").value,
+document.getElementById("phone").value || "",
 
 landline:
-document.getElementById("landline").value,
+document.getElementById("landline").value || "",
 
 extension:
-document.getElementById("extension").value,
+document.getElementById("extension").value || "",
 
 email:
-document.getElementById("email").value,
+document.getElementById("email").value || "",
 
 image:
-document.getElementById("image").value,
+document.getElementById("image").value || "",
 
 socials:{
 
 instagram:
-document.getElementById("instagram").value,
+document.getElementById("instagram").value || "",
 
 whatsapp:
-document.getElementById("whatsapp").value
+document.getElementById("whatsapp").value || ""
 
 }
 
@@ -559,10 +559,10 @@ querySnapshot.forEach((documentItem)=>{
 const client = documentItem.data();
 
 const link =
-`template.html?id=${encodeURIComponent(client.id)}`;
+`clients/template.html?id=${encodeURIComponent(client.id)}`;
 
 const qr =
-`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${window.location.origin}/${link}`;
+`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(window.location.origin + "/" + link)}`;
 
 html += `
 
@@ -716,4 +716,5 @@ loadClients();
 </script>
 
 </body>
+
 </html>
