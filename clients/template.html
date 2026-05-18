@@ -77,7 +77,10 @@ body{
     <div class="section">
         <h3>Social Media</h3>
         <a id="instagram" class="link" href="#">Instagram</a>
-        <a id="whatsapp" class="link" href="#">WhatsApp</a>
+
+        <!-- 🔥 زر الواتساب بعد التعديل الصحيح -->
+        <a id="whatsapp" class="link" href="#" target="_blank">WhatsApp</a>
+
         <a id="linkedin" class="link" href="#">LinkedIn</a>
         <a id="facebook" class="link" href="#">Facebook</a>
         <a id="tiktok" class="link" href="#">TikTok</a>
@@ -88,8 +91,6 @@ body{
 
 <script type="module">
 
-/* ---------------- FIREBASE IMPORTS ---------------- */
-
 import { 
     initializeApp 
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -99,12 +100,8 @@ import {
     collection, 
     query, 
     where, 
-    getDocs, 
-    updateDoc, 
-    doc 
+    getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-/* ---------------- FIREBASE CONFIG ---------------- */
 
 const firebaseConfig = {
     apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
@@ -118,29 +115,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-/* ---------------- GET CLIENT ID ---------------- */
-
 const urlParams = new URLSearchParams(window.location.search);
 const clientId = urlParams.get("id");
-
-/* ---------------- RECORD VISIT ---------------- */
-
-async function recordVisit(clientId) {
-    const q = query(collection(db, "clients"), where("id", "==", clientId));
-    const snapshot = await getDocs(q);
-
-    snapshot.forEach(async (docItem) => {
-        const data = docItem.data();
-        const ref = doc(db, "clients", docItem.id);
-
-        await updateDoc(ref, {
-            visits: (data.visits || 0) + 1,
-            lastVisit: new Date().toISOString()
-        });
-    });
-}
-
-/* ---------------- LOAD CLIENT DATA ---------------- */
 
 async function loadClient() {
     const q = query(collection(db, "clients"), where("id", "==", clientId));
@@ -161,14 +137,18 @@ async function loadClient() {
         document.getElementById("email").innerText = c.email || "Email";
 
         document.getElementById("instagram").href = c.socials?.instagram || "#";
-        document.getElementById("whatsapp").href = c.socials?.whatsapp || "#";
+
+        /* 🔥 زر الواتساب بعد التعديل */
+        document.getElementById("whatsapp").href =
+            c.socials?.whatsapp
+            ? `https://wa.me/${c.socials.whatsapp.replace(/[^0-9]/g, "")}`
+            : "#";
+
         document.getElementById("linkedin").href = c.socials?.linkedin || "#";
         document.getElementById("facebook").href = c.socials?.facebook || "#";
         document.getElementById("tiktok").href = c.socials?.tiktok || "#";
         document.getElementById("telegram").href = c.socials?.telegram || "#";
     });
-
-    recordVisit(clientId);
 }
 
 loadClient();
