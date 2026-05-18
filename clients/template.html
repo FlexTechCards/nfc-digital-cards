@@ -1,801 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FlexTech Card</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-font-family:Arial,sans-serif;
-
-background:
-radial-gradient(circle at top,#08245f 0%,#020817 100%);
-
-display:flex;
-justify-content:center;
-
-padding:20px;
-
-min-height:100vh;
-}
-
-/* CARD */
-
-.card{
-
-width:400px;
-
-background:#f8fafc;
-
-border-radius:40px;
-
-overflow:hidden;
-
-box-shadow:
-0 30px 80px rgba(0,0,0,.45);
-}
-
-/* HEADER */
-
-.header{
-
-background:
-linear-gradient(rgba(2,15,45,.92),rgba(2,15,45,.96)),
-url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
-
-background-size:cover;
-background-position:center;
-
-padding:35px 25px 120px;
-
-border-bottom-left-radius:90px;
-
-position:relative;
-
-overflow:hidden;
-}
-
-/* PROFILE AREA */
-
-.profile-area{
-
-display:flex;
-align-items:flex-start;
-
-gap:22px;
-}
-
-/* IMAGE */
-
-.profile{
-
-width:170px;
-height:170px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-border:6px solid white;
-
-box-shadow:
-0 15px 40px rgba(0,0,0,.35);
-}
-
-/* INFO */
-
-.info{
-flex:1;
-padding-top:8px;
-}
-
-.name{
-
-font-size:34px;
-font-weight:800;
-
-color:white;
-
-line-height:1.05;
-
-margin-bottom:14px;
-}
-
-.role{
-
-font-size:17px;
-
-line-height:1.6;
-
-color:#dbeafe;
-
-margin-bottom:18px;
-}
-
-.line{
-
-width:78px;
-height:6px;
-
-border-radius:50px;
-
-background:#22d3ee;
-
-margin-bottom:20px;
-}
-
-.company{
-
-font-size:16px;
-
-line-height:1.8;
-
-color:#cbd5e1;
-}
-
-/* CONTENT */
-
-.content{
-
-padding:35px 22px 25px;
-}
-
-/* BIO */
-
-.bio{
-
-font-size:17px;
-
-line-height:1.9;
-
-color:#4b5563;
-
-margin-bottom:28px;
-}
-
-/* CONTACT BOX */
-
-.contact-box{
-
-background:white;
-
-border-radius:22px;
-
-padding:16px;
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-margin-bottom:16px;
-
-text-decoration:none;
-
-border:1px solid #dbe2ea;
-
-box-shadow:
-0 5px 10px rgba(0,0,0,.03);
-}
-
-.contact-left{
-
-display:flex;
-align-items:center;
-
-gap:16px;
-}
-
-/* ICON */
-
-.icon{
-
-width:64px;
-height:64px;
-
-border-radius:20px;
-
-background:
-linear-gradient(145deg,#02142f,#07245f);
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:28px;
-
-color:white;
-}
-
-/* TEXT */
-
-.contact-text{
-display:flex;
-flex-direction:column;
-}
-
-.label{
-
-font-size:15px;
-
-color:#64748b;
-
-margin-bottom:6px;
-}
-
-.value{
-
-font-size:18px;
-font-weight:800;
-
-color:#0f172a;
-
-word-break:break-word;
-
-overflow-wrap:break-word;
-
-max-width:190px;
-
-line-height:1.5;
-}
-
-.arrow{
-
-font-size:30px;
-
-color:#64748b;
-}
-
-/* SOCIALS */
-
-.socials{
-
-display:flex;
-justify-content:center;
-
-gap:18px;
-
-margin:30px 0;
-}
-
-/* SOCIAL */
-
-.social{
-
-width:82px;
-height:82px;
-
-border-radius:28px;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:44px;
-
-color:white;
-
-text-decoration:none;
-
-transition:.25s;
-
-box-shadow:
-0 8px 20px rgba(0,0,0,.15);
-}
-
-.social:hover{
-
-transform:
-translateY(-4px)
-scale(1.05);
-}
-
-.instagram{
-background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
-}
-
-.whatsapp{
-background:#22c55e;
-}
-
-.linkedin{
-background:#0077b5;
-}
-
-.tiktok{
-background:black;
-}
-
-.facebook{
-background:#1877f2;
-}
-
-.telegram{
-background:#229ED9;
-}
-
-/* BUTTONS */
-
-.actions{
-
-display:flex;
-flex-direction:column;
-
-gap:18px;
-}
-
-/* BUTTON */
-
-.btn{
-
-border:none;
-
-border-radius:24px;
-
-padding:22px;
-
-font-size:20px;
-font-weight:800;
-
-cursor:pointer;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-gap:14px;
-
-transition:.25s;
-}
-
-.btn:hover{
-transform:translateY(-2px);
-}
-
-.primary{
-
-background:
-linear-gradient(145deg,#02142f,#07245f);
-
-color:white;
-}
-
-.secondary{
-
-background:
-linear-gradient(145deg,#e0e7ff,#dbeafe);
-
-color:#173a7a;
-}
-
-/* FOOTER */
-
-/* FOOTER */
-
-.footer{
-
-margin-top:14px;
-
-padding-top:10px;
-
-padding-bottom:2px;
-
-border-top:1px solid #dbe2ea;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-gap:8px;
-}
-
-.created{
-
-font-size:13px;
-
-color:#64748b;
-}
-
-.footer img{
-
-width:110px;
-
-object-fit:contain;
-}
-
-/* MOBILE */
-
-@media(max-width:450px){
-
-.card{
-width:100%;
-}
-
-.profile{
-width:150px;
-height:150px;
-}
-
-.name{
-font-size:30px;
-}
-
-.social{
-width:74px;
-height:74px;
-font-size:38px;
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="card">
-
-<div class="header">
-
-<div class="profile-area">
-
-<img id="profileImage"
-class="profile">
-
-<div class="info">
-
-<div id="name"
-class="name"></div>
-
-<div id="role"
-class="role"></div>
-
-<div class="line"></div>
-
-<div id="company"
-class="company"></div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="content">
-
-<div id="bio"
-class="bio"></div>
-
-<div
-id="landlineBox"
-class="bio"
-style="
-font-size:15px;
-margin-top:-10px;
-margin-bottom:25px;
-color:#64748b;
-">
-</div>
-
-
-<a id="phoneLink"
-class="contact-box">
-
-<div class="contact-left">
-
-<div class="icon">
-<i class="fas fa-phone"></i>
-</div>
-
-<div class="contact-text">
-
-<div class="label">
-Mobile
-</div>
-
-<div id="phone"
-class="value"></div>
-
-</div>
-
-</div>
-
-<div class="arrow">
-›
-</div>
-
-</a>
-
-<a id="emailLink"
-class="contact-box">
-
-<div class="contact-left">
-
-<div class="icon">
-<i class="fas fa-envelope"></i>
-</div>
-
-<div class="contact-text">
-
-<div class="label">
-Email
-</div>
-
-<div id="email"
-class="value"></div>
-
-</div>
-
-</div>
-
-<div class="arrow">
-›
-</div>
-
-</a>
-
-<div id="socials"
-class="socials"></div>
-
-<div class="actions">
-
-<button class="btn primary"
-onclick="saveContact()">
-
-<i class="fas fa-user-plus"></i>
-Add To Contacts
-
-</button>
-
-<button class="btn secondary"
-onclick="shareCard()">
-
-<i class="fas fa-share-alt"></i>
-Share Card
-
-</button>
-
-</div>
-
-<div class="footer">
-
-<div class="created">
-powered by
-</div>
-
-<a href="https://instagram.com/flex.tech1"
-target="_blank">
-
-<img src="https://i.imgur.com/LmWt6sc.png">
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
 <script type="module">
 
-import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { 
+    initializeApp 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-import {
-getFirestore,
-collection,
-getDocs
-}
-from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { 
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    doc,
+    updateDoc,
+    increment
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-
-apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
-
-authDomain: "flextech-2324d.firebaseapp.com",
-
-projectId: "flextech-2324d",
-
-storageBucket: "flextech-2324d.firebasestorage.app",
-
-messagingSenderId: "511190640221",
-
-appId: "1:511190640221:web:20701272956f01e22c0fb4"
-
+    apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+    authDomain: "flextech-2324d.firebaseapp.com",
+    projectId: "flextech-2324d",
+    storageBucket: "flextech-2324d.firebasestorage.app",
+    messagingSenderId: "511190640221",
+    appId: "1:511190640221:web:20701272956f01e22c0fb4"
 };
 
-const app =
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const db =
-getFirestore(app);
+const params = new URLSearchParams(window.location.search);
+const clientId = params.get("id");
 
-const params =
-new URLSearchParams(window.location.search);
+async function loadClient() {
 
-const clientId =
-params.get("id");
+    const q = query(
+        collection(db, "clients"),
+        where("id", "==", clientId)
+    );
 
-async function loadClient(){
+    const querySnapshot = await getDocs(q);
 
-const querySnapshot =
-await getDocs(collection(db,"clients"));
+    if (querySnapshot.empty) {
+        document.body.innerHTML = `
+            <div style="color:white;text-align:center;margin-top:40px;font-size:22px;">
+                Client Not Found ❌
+            </div>
+        `;
+        return;
+    }
 
-querySnapshot.forEach((doc)=>{
+    const docRef = querySnapshot.docs[0].ref;
+    const client = querySnapshot.docs[0].data();
 
-const client = doc.data();
+    // تسجيل زيارة
+    await updateDoc(docRef, {
+        views: increment(1)
+    });
 
-if(client.id === clientId){
+    // تعبئة البيانات
+    document.getElementById("name").innerHTML = client.name || "";
+    document.getElementById("role").innerHTML = client.role || "";
+    document.getElementById("company").innerHTML = client.company || "";
+    document.getElementById("bio").innerHTML = client.bio || "";
 
-document.getElementById("name").innerHTML =
-client.name || "";
+    document.getElementById("landlineBox").innerHTML =
+        client.landline
+            ? `Landline: ${client.landline} ${client.extension ? " | EXT: " + client.extension : ""}`
+            : "";
 
-document.getElementById("role").innerHTML =
-client.role || "";
+    document.getElementById("phone").innerHTML = client.phone || "";
+    document.getElementById("email").innerHTML = client.email || "";
+    document.getElementById("profileImage").src = client.image || "";
 
-document.getElementById("company").innerHTML =
-client.company || "";
+    document.getElementById("phoneLink").href = `tel:${client.phone}`;
+    document.getElementById("emailLink").href = `mailto:${client.email}`;
 
-document.getElementById("bio").innerHTML =
-client.bio || "";
-  
-document.getElementById("landlineBox").innerHTML =
+    // السوشيال ميديا
+    let socialsHTML = "";
+    const icons = {
+        instagram: "fab fa-instagram",
+        whatsapp: "fab fa-whatsapp",
+        linkedin: "fab fa-linkedin-in",
+        facebook: "fab fa-facebook-f",
+        telegram: "fab fa-telegram-plane",
+        tiktok: "fab fa-tiktok"
+    };
 
-client.landline
+    if (client.socials) {
+        for (let social in client.socials) {
+            if (client.socials[social]) {
+                socialsHTML += `
+                    <a class="social ${social}" href="${client.socials[social]}" target="_blank">
+                        <i class="${icons[social]}"></i>
+                    </a>
+                `;
+            }
+        }
+    }
 
-?
-
-`Landline: ${client.landline}
-${client.extension ? " | EXT: " + client.extension : ""}`
-
-:
-
-"";
-
-document.getElementById("phone").innerHTML =
-client.phone || "";
-
-document.getElementById("email").innerHTML =
-client.email || "";
-
-document.getElementById("profileImage").src =
-client.image || "";
-
-document.getElementById("phoneLink").href =
-`tel:${client.phone}`;
-
-document.getElementById("emailLink").href =
-`mailto:${client.email}`;
-
-let socialsHTML = "";
-
-const icons = {
-
-instagram:"fab fa-instagram",
-
-whatsapp:"fab fa-whatsapp",
-
-linkedin:"fab fa-linkedin-in",
-
-facebook:"fab fa-facebook-f",
-
-telegram:"fab fa-telegram-plane",
-
-tiktok:"fab fa-tiktok"
-
-};
-
-if(client.socials){
-
-for(let social in client.socials){
-
-if(client.socials[social]){
-
-socialsHTML += `
-
-<a class="social ${social}"
-href="${client.socials[social]}"
-target="_blank">
-
-<i class="${icons[social]}"></i>
-
-</a>
-
-`;
-
-}
-
-}
-
-}
-
-document.getElementById("socials").innerHTML =
-socialsHTML;
-
-}
-
-});
-
+    document.getElementById("socials").innerHTML = socialsHTML;
 }
 
 loadClient();
 
-window.shareCard = function(){
+// مشاركة البطاقة
+window.shareCard = function () {
+    if (navigator.share) {
+        navigator.share({
+            title: "FlexTech Digital Card",
+            text: "Check my digital business card",
+            url: window.location.href
+        });
+    }
+};
 
-if(navigator.share){
+// حفظ جهة الاتصال
+window.saveContact = function () {
+    const name = document.getElementById("name").innerText;
+    const phone = document.getElementById("phone").innerText;
+    const email = document.getElementById("email").innerText;
 
-navigator.share({
-
-title:"FlexTech Digital Card",
-
-text:"Check my digital business card",
-
-url:window.location.href
-
-});
-
-}
-
-}
-
-window.saveContact = function(){
-
-const name =
-document.getElementById("name").innerText;
-
-const phone =
-document.getElementById("phone").innerText;
-
-const email =
-document.getElementById("email").innerText;
-
-const vcf = `
-
+    const vcf = `
 BEGIN:VCARD
 VERSION:3.0
 FN:${name}
 TEL:${phone}
 EMAIL:${email}
 END:VCARD
-
 `;
 
-const blob =
-new Blob([vcf], { type: 'text/vcard' });
-
-const link =
-document.createElement('a');
-
-link.href =
-URL.createObjectURL(blob);
-
-link.download =
-`${name}.vcf`;
-
-link.click();
-
-}
+    const blob = new Blob([vcf], { type: 'text/vcard' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${name}.vcf`;
+    link.click();
+};
 
 </script>
-
-</body>
-</html>
