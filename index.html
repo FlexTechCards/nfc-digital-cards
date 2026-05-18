@@ -351,6 +351,9 @@ html += `
 <div class="content">
 <p class="email">${client.email || ""}</p>
 
+<p>Visits: ${client.visits || 0}</p>
+<p>Last Visit: ${client.lastVisit || "—"}</p>
+
 <div class="actions">
 
 <a class="action-btn view" target="_blank" href="${link}">View</a>
