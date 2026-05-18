@@ -307,10 +307,17 @@ object-fit:contain;
 
 <div id="bio" class="bio"></div>
 
-<div id="landlineBox"
-class="bio"
-style="font-size:15px;margin-top:-10px;margin-bottom:25px;color:#64748b;">
-</div>
+<!-- NEW LANDLINE BOX -->
+<a id="landlineLink" class="contact-box">
+    <div class="contact-left">
+        <div class="icon"><i class="fas fa-phone"></i></div>
+        <div class="contact-text">
+            <div class="label">Landline</div>
+            <div id="landline" class="value"></div>
+        </div>
+    </div>
+    <div class="arrow">›</div>
+</a>
 
 <a id="phoneLink" class="contact-box">
 <div class="contact-left">
@@ -423,17 +430,24 @@ document.getElementById("role").innerHTML = client.role || "";
 document.getElementById("company").innerHTML = client.company || "";
 document.getElementById("bio").innerHTML = client.bio || "";
 
-document.getElementById("landlineBox").innerHTML =
-client.landline
-? `Landline: ${client.landline} ${client.extension ? " | EXT: " + client.extension : ""}`
-: "";
-
 document.getElementById("phone").innerHTML = client.phone || "";
 document.getElementById("email").innerHTML = client.email || "";
 document.getElementById("profileImage").src = client.image || "";
 
 document.getElementById("phoneLink").href = `tel:${client.phone}`;
 document.getElementById("emailLink").href = `mailto:${client.email}`;
+
+// LANDLINE + EXT
+if (client.landline) {
+    document.getElementById("landline").innerHTML =
+        client.extension
+            ? `${client.landline} | EXT: ${client.extension}`
+            : client.landline;
+
+    document.getElementById("landlineLink").href = `tel:${client.landline}`;
+} else {
+    document.getElementById("landlineLink").style.display = "none";
+}
 
 // السوشيال ميديا
 let socialsHTML = "";
