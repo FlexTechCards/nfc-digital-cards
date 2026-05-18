@@ -113,7 +113,7 @@ window.shareCard = function () {
     }
 };
 
-// حفظ جهة الاتصال
+// حفظ جهة الاتصال (يدعم العربية 100%)
 window.saveContact = function () {
     const name = document.getElementById("name").innerText;
     const phone = document.getElementById("phone").innerText;
@@ -122,14 +122,15 @@ window.saveContact = function () {
     const vcf = `
 BEGIN:VCARD
 VERSION:3.0
-FN:${name}
-TEL:${phone}
-EMAIL:${email}
+N;CHARSET=UTF-8:${name}
+FN;CHARSET=UTF-8:${name}
+TEL;TYPE=CELL:${phone}
+EMAIL;CHARSET=UTF-8:${email}
 END:VCARD
 `;
 
-    const blob = new Blob([vcf], { type: 'text/vcard' });
-    const link = document.createElement('a');
+    const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+    const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = `${name}.vcf`;
     link.click();
