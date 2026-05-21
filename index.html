@@ -11,12 +11,10 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-<!-- إضافة أيقونة apk_install -->
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apk_install" />
 
 <style>
-/* نفس التنسيقات الأصلية بدون تغيير */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:system-ui,-apple-system,Segoe UI,Roboto;
@@ -99,7 +97,6 @@ Logout
 <input class="input" id="tiktok" placeholder="TikTok Link">
 <input class="input" id="telegram" placeholder="Telegram Link">
 
-<!-- 🔥 إضافة خانة رابط تحميل التطبيق -->
 <input class="input" id="appLink" placeholder="App Download Link">
 
 </div>
@@ -174,7 +171,10 @@ role: document.getElementById("role").value || "",
 company: document.getElementById("company").value || "",
 bio: document.getElementById("bio").value || "",
 phone: document.getElementById("phone").value || "",
-landline: document.getElementById("landland").value || "",
+
+/* 🔥 تم إصلاح المشكلة هنا */
+landline: document.getElementById("landline").value || "",
+
 extension: document.getElementById("extension").value || "",
 email: document.getElementById("email").value || "",
 image: document.getElementById("image").value || "",
@@ -232,7 +232,6 @@ html += `
 <p>Visits: ${client.visits || 0}</p>
 <p>Last Visit: ${client.lastVisit || "—"}</p>
 
-<!-- 🔥 عرض رابط التطبيق داخل الكرت -->
 ${client.socials?.appLink ? `
 <p style="margin-top:10px;font-weight:700;">
 <span class="material-symbols-outlined" style="vertical-align:middle;font-size:22px;color:#2563eb;">apk_install</span>
