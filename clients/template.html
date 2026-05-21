@@ -1,365 +1,515 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlexTech Premium Card</title>
 
-<title>FlexTech Digital Card</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-body{
-background:#0b1a3a;
-display:flex;
-justify-content:center;
-padding:25px;
-min-height:100vh;
-}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto;
+      background:radial-gradient(circle at center,#07245f 0%,#020817 100%);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:24px 14px;
+    }
 
-/* CARD */
-.card{
-width:390px;
-background:#f8fafc;
-border-radius:40px;
-overflow:hidden;
-box-shadow:0 25px 70px rgba(0,0,0,.45);
-}
+    /* CARD */
+    .card{
+      width:390px;
+      background:#f8fafc;
+      border-radius:40px;
+      overflow:hidden;
+      box-shadow:0 40px 100px rgba(0,0,0,.55);
+      position:relative;
+    }
 
-/* HEADER — NEW DESIGN */
-.header{
-background:linear-gradient(180deg,#0d1f4d,#07142f);
-padding:35px 25px 90px;
-position:relative;
-text-align:center;
-}
+    /* HEADER (as your design) */
+    .header{
+      background:
+        linear-gradient(rgba(1,15,45,.88),rgba(1,15,45,.94)),
+        url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
+      background-size:cover;
+      background-position:center;
+      min-height:350px;
+      padding:26px 22px;
+      border-bottom-left-radius:70px;
+      position:relative;
+      overflow:hidden;
+    }
 
-.profile{
-width:150px;
-height:150px;
-border-radius:50%;
-object-fit:cover;
-border:6px solid white;
-box-shadow:0 10px 30px rgba(0,0,0,.35);
-position:absolute;
-bottom:-75px;
-left:50%;
-transform:translateX(-50%);
-}
+    .header::after{
+      content:"";
+      position:absolute;
+      top:-120px;
+      right:-120px;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:
+        0 0 0 35px rgba(255,255,255,.03),
+        0 0 0 70px rgba(255,255,255,.025),
+        0 0 0 105px rgba(255,255,255,.02);
+    }
 
-.header-info .name{
-font-size:30px;
-font-weight:800;
-color:white;
-margin-top:90px;
-}
+    .profile-section{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      position:relative;
+      z-index:2;
+    }
 
-.header-info .role{
-font-size:17px;
-color:#dbeafe;
-margin-top:8px;
-}
+    .profile{
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center top;
+      border:6px solid rgba(255,255,255,.98);
+      box-shadow:0 15px 35px rgba(0,0,0,.38);
+      position:relative;
+      top:-8px;
+    }
 
-.header-info .company{
-font-size:15px;
-color:#9fb6d9;
-margin-top:6px;
-}
+    .info{flex:1;}
 
-/* CONTENT */
-.content{
-padding:100px 25px 30px;
-text-align:center;
-}
+    .name{
+      font-size:34px;
+      font-weight:800;
+      color:white;
+      line-height:1.1;
+      margin-bottom:12px;
+    }
 
-.bio{
-font-size:15px;
-line-height:1.7;
-color:#475569;
-margin-bottom:25px;
-}
+    .role{
+      font-size:16px;
+      color:#dbeafe;
+      line-height:1.6;
+      margin-bottom:18px;
+    }
 
-/* CONTACT BOX */
-.contact-box{
-background:#eef2ff;
-padding:14px 18px;
-border-radius:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:12px;
-text-decoration:none;
-}
+    .line{
+      width:56px;
+      height:5px;
+      background:#22d3ee;
+      border-radius:50px;
+      margin-bottom:18px;
+    }
 
-.contact-left{
-display:flex;
-align-items:center;
-gap:12px;
-}
+    .job{
+      color:#cbd5e1;
+      line-height:1.7;
+      font-size:15px;
+    }
 
-.icon{
-width:46px;
-height:46px;
-border-radius:14px;
-background:linear-gradient(145deg,#02142f,#07245f);
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-font-size:22px;
-}
+    /* CONTENT */
+    .content{
+      padding:24px 22px 20px;
+    }
 
-.label{
-font-size:12px;
-color:#64748b;
-}
+    .bio{
+      font-size:16px;
+      color:#4b5563;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
 
-.value{
-font-size:15px;
-font-weight:700;
-color:#0f172a;
-}
+    .contact{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
 
-/* SOCIAL ICONS */
-.socials{
-display:flex;
-justify-content:center;
-gap:18px;
-margin:30px 0;
-}
+    .contact-box{
+      background:white;
+      border-radius:18px;
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border:1px solid #dbe2ea;
+      text-decoration:none;
+      transition:.25s;
+    }
 
-.social{
-width:82px;
-height:82px;
-border-radius:28px;
-background:rgba(255,255,255,0.10);
-backdrop-filter:blur(6px);
-box-shadow:0 8px 20px rgba(0,0,0,.15);
-display:flex;
-justify-content:center;
-align-items:center;
-}
+    .contact-box:hover{
+      transform:translateY(-3px);
+    }
 
-.social img{
-width:60%;
-height:60%;
-object-fit:contain;
-filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35)) brightness(1.1);
-}
+    .contact-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
-/* BUTTONS */
-.btn{
-width:100%;
-padding:20px;
-border-radius:20px;
-font-size:18px;
-font-weight:800;
-border:none;
-cursor:pointer;
-margin-bottom:15px;
-}
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      background:linear-gradient(145deg,#02142f,#07245f);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      font-size:20px;
+      box-shadow:0 8px 18px rgba(0,0,0,.15);
+    }
 
-.primary{
-background:linear-gradient(145deg,#02142f,#07245f);
-color:white;
-}
+    .contact-text{
+      display:flex;
+      flex-direction:column;
+    }
 
-.secondary{
-background:#e2e8f0;
-color:#1e293b;
-}
+    .label{
+      font-size:13px;
+      color:#64748b;
+    }
 
-/* FOOTER */
-.footer{
-text-align:center;
-padding:10px 0 20px;
-font-size:13px;
-color:#64748b;
-}
-</style>
+    .value{
+      font-size:16px;
+      font-weight:800;
+      color:#0f172a;
+    }
 
+    .arrow{
+      color:#64748b;
+      font-size:20px;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin:22px 0;
+    }
+
+    .social{
+      width:68px;
+      height:68px;
+      border-radius:22px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-decoration:none;
+      font-size:36px;
+      color:white;
+      transition:.25s;
+      box-shadow:0 10px 20px rgba(0,0,0,.15);
+    }
+
+    .social:hover{
+      transform:translateY(-5px) scale(1.04);
+    }
+
+    .instagram{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);}
+    .whatsapp{background:#22c55e;}
+    .linkedin{background:#0077b5;}
+    .tiktok{background:black;}
+    .facebook{background:#1877f2;}
+    .telegram{background:#229ED9;}
+
+    .actions{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .btn{
+      border:none;
+      border-radius:20px;
+      padding:17px;
+      font-size:17px;
+      font-weight:800;
+      cursor:pointer;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      transition:.25s;
+    }
+
+    .primary{
+      background:linear-gradient(145deg,#02142f,#07245f);
+      color:white;
+    }
+
+    .secondary{
+      background:linear-gradient(145deg,#eef2ff,#dbe7ff);
+      color:#173a7a;
+    }
+
+    .btn:hover{
+      transform:scale(1.02);
+    }
+
+    .footer{
+      margin-top:22px;
+      padding-top:18px;
+      border-top:1px solid #dbe2ea;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      transition:.25s;
+    }
+
+    .footer:hover{
+      transform:scale(1.02);
+    }
+
+    .created{
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .footer img{
+      width:155px;
+      object-fit:contain;
+    }
+
+    @media(max-width:450px){
+      .card{
+        width:100%;
+        border-radius:34px;
+      }
+      .profile-section{
+        flex-direction:row;
+        align-items:center;
+        gap:12px;
+      }
+      .profile{
+        width:190px;
+        height:190px;
+      }
+      .name{font-size:28px;}
+      .role{font-size:14px;}
+      .job{font-size:13px;}
+      .social{
+        width:60px;
+        height:60px;
+        font-size:32px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
 <div class="card">
 
-<!-- HEADER -->
-<div class="header">
-    <img id="profileImage" class="profile" loading="lazy">
-
-    <div class="header-info">
+  <!-- HEADER (dynamic with Firebase IDs) -->
+  <div class="header">
+    <div class="profile-section">
+      <img id="profileImage" class="profile" loading="lazy">
+      <div class="info">
         <div id="name" class="name"></div>
         <div id="role" class="role"></div>
-        <div id="company" class="company"></div>
+        <div class="line"></div>
+        <div id="company" class="job"></div>
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- CONTENT -->
-<div class="content">
+  <!-- CONTENT -->
+  <div class="content">
 
+    <!-- BIO -->
     <div id="bio" class="bio"></div>
 
-    <!-- CONTACT BOXES -->
-    <a id="phoneLink" class="contact-box">
-        <div class="contact-left">
-            <div class="icon">📞</div>
-            <div class="contact-text">
-                <div class="label">Mobile</div>
-                <div id="phone" class="value"></div>
-            </div>
-        </div>
-    </a>
+    <!-- CONTACT -->
+    <div class="contact">
 
-    <a id="emailLink" class="contact-box">
+      <a id="phoneLink" class="contact-box">
         <div class="contact-left">
-            <div class="icon">✉️</div>
-            <div class="contact-text">
-                <div class="label">Email</div>
-                <div id="email" class="value"></div>
-            </div>
+          <div class="icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-text">
+            <div class="label">Phone</div>
+            <div id="phone" class="value"></div>
+          </div>
         </div>
-    </a>
+        <div class="arrow"><i class="fas fa-angle-right"></i></div>
+      </a>
 
-    <a id="landlineLink" class="contact-box">
+      <a id="emailLink" class="contact-box">
         <div class="contact-left">
-            <div class="icon">☎️</div>
-            <div class="contact-text">
-                <div class="label">Landline</div>
-                <div id="landline" class="value"></div>
-            </div>
+          <div class="icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-text">
+            <div class="label">Email</div>
+            <div id="email" class="value"></div>
+          </div>
         </div>
-    </a>
+        <div class="arrow"><i class="fas fa-angle-right"></i></div>
+      </a>
 
-    <!-- SOCIAL ICONS -->
+      <a id="landlineLink" class="contact-box">
+        <div class="contact-left">
+          <div class="icon"><i class="fas fa-phone-volume"></i></div>
+          <div class="contact-text">
+            <div class="label">Landline</div>
+            <div id="landline" class="value"></div>
+          </div>
+        </div>
+        <div class="arrow"><i class="fas fa-angle-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- SOCIALS (filled by JS) -->
     <div id="socials" class="socials"></div>
 
-    <!-- BUTTONS -->
-    <button class="btn primary" onclick="saveContact()">Add To Contacts</button>
-    <button class="btn secondary" onclick="shareCard()">Share Card</button>
+    <!-- ACTIONS -->
+    <div class="actions">
+      <button class="btn primary" onclick="saveContact()">
+        <i class="fas fa-user-plus"></i> Add To Contacts
+      </button>
+      <button class="btn secondary" onclick="shareCard()">
+        <i class="fas fa-share-alt"></i> Share Card
+      </button>
+    </div>
 
     <!-- FOOTER -->
-    <div class="footer">Powered by FlexTech</div>
+    <a class="footer"
+       href="https://www.instagram.com/flex.tech1?igsh=MWxoajk3aDg5Y3BqYQ%3D%3D&utm_source=qr"
+       target="_blank">
+      <span class="created">Created by</span>
+      <img src="https://i.imgur.com/LmWt6sc.png">
+    </a>
 
+  </div>
 </div>
 
-</div>
-
-<!-- FIREBASE + JS -->
+<!-- FIREBASE + LOGIC -->
 <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    updateDoc,
+    increment
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, updateDoc, increment } 
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+    authDomain: "flextech-2324d.firebaseapp.com",
+    projectId: "flextech-2324d",
+    storageBucket: "flextech-2324d.firebasestorage.app",
+    messagingSenderId: "511190640221",
+    appId: "1:511190640221:web:20701272956f01e22c0fb4"
+  };
 
-const firebaseConfig = {
-apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
-authDomain: "flextech-2324d.firebaseapp.com",
-projectId: "flextech-2324d",
-storageBucket: "flextech-2324d.firebasestorage.app",
-messagingSenderId: "511190640221",
-appId: "1:511190640221:web:20701272956f01e22c0fb4"
-};
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  const params = new URLSearchParams(window.location.search);
+  const clientId = params.get("id");
 
-const params = new URLSearchParams(window.location.search);
-const clientId = params.get("id");
+  async function loadClient() {
+    try {
+      const q = query(collection(db, "clients"), where("id", "==", clientId));
+      const querySnapshot = await getDocs(q);
 
-async function loadClient() {
+      if (querySnapshot.empty) {
+        document.body.innerHTML =
+          `<div style="color:white;text-align:center;margin-top:40px;font-size:22px;">Client Not Found ❌</div>`;
+        return;
+      }
 
-try {
+      const docRef = querySnapshot.docs[0].ref;
+      const client = querySnapshot.docs[0].data();
 
-const q = query(collection(db, "clients"), where("id", "==", clientId));
-const querySnapshot = await getDocs(q);
+      await updateDoc(docRef, { views: increment(1) });
 
-if (querySnapshot.empty) {
-document.body.innerHTML = `<div style="color:white;text-align:center;margin-top:40px;font-size:22px;">Client Not Found ❌</div>`;
-return;
-}
+      document.getElementById("name").innerHTML = client.name || "";
+      document.getElementById("role").innerHTML = client.role || "";
+      document.getElementById("company").innerHTML = client.company || "";
+      document.getElementById("bio").innerHTML = client.bio || "";
+      document.getElementById("phone").innerHTML = client.phone || "";
+      document.getElementById("email").innerHTML = client.email || "";
+      document.getElementById("profileImage").src = client.image || "";
 
-const docRef = querySnapshot.docs[0].ref;
-const client = querySnapshot.docs[0].data();
+      document.getElementById("phoneLink").href =
+        client.phone ? `tel:${client.phone}` : "#";
+      document.getElementById("emailLink").href =
+        client.email ? `mailto:${client.email}` : "#";
 
-await updateDoc(docRef, { views: increment(1) });
+      if (client.landline) {
+        document.getElementById("landline").innerHTML =
+          client.extension
+            ? `${client.landline} | EXT: ${client.extension}`
+            : client.landline;
+        document.getElementById("landlineLink").href = `tel:${client.landline}`;
+      } else {
+        document.getElementById("landlineLink").style.display = "none";
+      }
 
-document.getElementById("name").innerHTML = client.name || "";
-document.getElementById("role").innerHTML = client.role || "";
-document.getElementById("company").innerHTML = client.company || "";
-document.getElementById("bio").innerHTML = client.bio || "";
-document.getElementById("phone").innerHTML = client.phone || "";
-document.getElementById("email").innerHTML = client.email || "";
-document.getElementById("profileImage").src = client.image || "";
+      // SOCIALS (Font Awesome style, same design)
+      let socialsHTML = "";
+      if (client.socials && typeof client.socials === "object") {
+        const map = {
+          instagram: { cls: "instagram", icon: "fab fa-instagram" },
+          whatsapp: { cls: "whatsapp", icon: "fab fa-whatsapp" },
+          linkedin: { cls: "linkedin", icon: "fab fa-linkedin-in" },
+          tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
+          facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
+          telegram: { cls: "telegram", icon: "fab fa-telegram" }
+        };
 
-document.getElementById("phoneLink").href = client.phone ? `tel:${client.phone}` : "#";
-document.getElementById("emailLink").href = client.email ? `mailto:${client.email}` : "#";
+        for (let key in map) {
+          if (client.socials[key]) {
+            socialsHTML += `
+              <a class="social ${map[key].cls}" href="${client.socials[key]}" target="_blank">
+                <i class="${map[key].icon}"></i>
+              </a>`;
+          }
+        }
+      }
+      document.getElementById("socials").innerHTML = socialsHTML;
 
-if (client.landline) {
-document.getElementById("landline").innerHTML =
-client.extension ? `${client.landline} | EXT: ${client.extension}` : client.landline;
-document.getElementById("landlineLink").href = `tel:${client.landline}`;
-} else {
-document.getElementById("landlineLink").style.display = "none";
-}
+    } catch (error) {
+      document.body.innerHTML = `
+        <div style="color:white;text-align:center;margin-top:40px;font-size:22px;">
+          Error Loading Card ❌<br><br>${error}
+        </div>`;
+    }
+  }
 
-/* SOCIAL ICONS — ORIGINAL APP ICONS */
-let socialsHTML = "";
+  loadClient();
 
-const icons = {
-instagram: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
-facebook: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
-whatsapp: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-linkedin: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
-telegram: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
-tiktok: "https://upload.wikimedia.org/wikipedia/en/0/0a/TikTok_logo.svg"
-};
+  window.shareCard = function () {
+    if (navigator.share) {
+      navigator.share({
+        title: "FlexTech Digital Card",
+        text: "Check my digital business card",
+        url: window.location.href
+      });
+    } else {
+      alert("Sharing not supported");
+    }
+  };
 
-if (client.socials && typeof client.socials === "object") {
+  window.saveContact = function () {
+    const name = document.getElementById("name").innerText;
+    const phone = document.getElementById("phone").innerText;
+    const email = document.getElementById("email").innerText;
 
-for (let social in icons) {
-if (client.socials[social]) {
-socialsHTML += `
-<a class="social ${social}" href="${client.socials[social]}" target="_blank">
-<img src="${icons[social]}">
-</a>`;
-}
-}
-
-}
-
-document.getElementById("socials").innerHTML = socialsHTML;
-
-} catch (error) {
-
-document.body.innerHTML = `
-<div style="color:white;text-align:center;margin-top:40px;font-size:22px;">
-Error Loading Card ❌<br><br>${error}
-</div>`;
-}
-
-}
-
-loadClient();
-
-window.shareCard = function () {
-if (navigator.share) {
-navigator.share({
-title: "FlexTech Digital Card",
-text: "Check my digital business card",
-url: window.location.href
-});
-}
-};
-
-window.saveContact = function () {
-
-const name = document.getElementById("name").innerText;
-const phone = document.getElementById("phone").innerText;
-const email = document.getElementById("email").innerText;
-
-const vcf = `
+    const vcf = `
 BEGIN:VCARD
 VERSION:3.0
 N;CHARSET=UTF-8:${name}
@@ -369,14 +519,12 @@ EMAIL;CHARSET=UTF-8:${email}
 END:VCARD
 `;
 
-const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
-const link = document.createElement("a");
-link.href = URL.createObjectURL(blob);
-link.download = `${name}.vcf`;
-link.click();
-};
-
+    const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${name}.vcf`;
+    link.click();
+  };
 </script>
-
 </body>
 </html>
