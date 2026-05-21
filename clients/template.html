@@ -1,165 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FlexTech Card</title>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-<link rel="stylesheet"
-href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apk_install" />
+<title>FlexTech Digital Card</title>
 
 <style>
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
 
 body{
-font-family:Arial,sans-serif;
-background:radial-gradient(circle at top,#08245f 0%,#020817 100%);
+background:#0b1a3a;
 display:flex;
 justify-content:center;
-padding:20px;
+padding:25px;
 min-height:100vh;
 }
 
 /* CARD */
 .card{
-width:400px;background:#f8fafc;border-radius:40px;overflow:hidden;
-box-shadow:0 30px 80px rgba(0,0,0,.45);
+width:390px;
+background:#f8fafc;
+border-radius:40px;
+overflow:hidden;
+box-shadow:0 25px 70px rgba(0,0,0,.45);
 }
 
-/* HEADER */
+/* HEADER — NEW DESIGN */
 .header{
-background:
-linear-gradient(rgba(1,15,45,.88),rgba(1,15,45,.94)),
-url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
-background-size:cover;background-position:center;
-padding:22px 20px 65px;border-bottom-left-radius:90px;
-position:relative;overflow:hidden;opacity:0;
-animation: fadeInUp 0.9s cubic-bezier(.25,.46,.45,.94) forwards;
-animation-delay:0.1s;
+background:linear-gradient(180deg,#0d1f4d,#07142f);
+padding:35px 25px 90px;
+position:relative;
+text-align:center;
 }
-
-.profile-area{display:flex;align-items:flex-start;gap:22px;}
 
 .profile{
-width:170px;height:170px;border-radius:50%;object-fit:cover;
-border:6px solid white;box-shadow:0 15px 40px rgba(0,0,0,.35);
-opacity:0;animation: fadeInUp 1s ease-out forwards, softFloat 6s ease-in-out infinite;
-animation-delay:0.25s;
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid white;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+position:absolute;
+bottom:-75px;
+left:50%;
+transform:translateX(-50%);
 }
 
-.info{flex:1;padding-top:8px;opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:0.35s;}
+.header-info .name{
+font-size:30px;
+font-weight:800;
+color:white;
+margin-top:90px;
+}
 
-.name{font-size:34px;font-weight:800;color:white;line-height:1.05;margin-bottom:14px;}
-.role{font-size:17px;line-height:1.6;color:#dbeafe;margin-bottom:18px;}
-.line{width:78px;height:6px;border-radius:50px;background:#22d3ee;margin-bottom:20px;}
-.company{font-size:16px;line-height:1.8;color:#cbd5e1;}
+.header-info .role{
+font-size:17px;
+color:#dbeafe;
+margin-top:8px;
+}
 
-.content{padding:15px 22px 20px;}
+.header-info .company{
+font-size:15px;
+color:#9fb6d9;
+margin-top:6px;
+}
+
+/* CONTENT */
+.content{
+padding:100px 25px 30px;
+text-align:center;
+}
 
 .bio{
-font-size:17px;line-height:1.9;color:#4b5563;margin-bottom:22px;
-opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:0.45s;
-word-wrap: break-word;overflow-wrap: break-word;white-space: normal;
+font-size:15px;
+line-height:1.7;
+color:#475569;
+margin-bottom:25px;
 }
 
 /* CONTACT BOX */
 .contact-box{
-background:rgba(255,255,255,0.65);backdrop-filter:blur(8px);
-border-radius:18px;padding:12px 16px;display:flex;align-items:center;
-justify-content:space-between;margin-bottom:12px;text-decoration:none;
-border:1px solid rgba(255,255,255,0.35);box-shadow:0 3px 8px rgba(0,0,0,.05);
-opacity:0;animation: fadeInUp 1s ease-out forwards;transition:0.35s;
-color:#0f172a !important;
+background:#eef2ff;
+padding:14px 18px;
+border-radius:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+text-decoration:none;
 }
 
-.contact-left{display:flex;align-items:center;gap:12px;}
+.contact-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
 
 .icon{
-width:46px;height:46px;border-radius:14px;
+width:46px;
+height:46px;
+border-radius:14px;
 background:linear-gradient(145deg,#02142f,#07245f);
-display:flex;justify-content:center;align-items:center;
-font-size:22px;color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:22px;
 }
 
-.contact-text{display:flex;flex-direction:column;}
-.label{font-size:13px;color:#64748b;margin-bottom:4px;}
-.value{font-size:15px;font-weight:700;color:#0f172a !important;max-width:190px;line-height:1.4;}
+.label{
+font-size:12px;
+color:#64748b;
+}
 
-.arrow{font-size:26px;color:#64748b;}
+.value{
+font-size:15px;
+font-weight:700;
+color:#0f172a;
+}
 
-/* SOCIALS — WhatsApp Effect Applied to All */
+/* SOCIAL ICONS */
 .socials{
-display:flex;justify-content:center;gap:18px;margin:25px 0;
-opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:0.9s;
+display:flex;
+justify-content:center;
+gap:18px;
+margin:30px 0;
 }
 
 .social{
-width:82px;height:82px;border-radius:28px;
+width:82px;
+height:82px;
+border-radius:28px;
 background:rgba(255,255,255,0.10);
 backdrop-filter:blur(6px);
 box-shadow:0 8px 20px rgba(0,0,0,.15);
-display:flex;justify-content:center;align-items:center;
-transition:0.35s;
-color:unset !important;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .social img{
-width:58%;
-height:58%;
+width:60%;
+height:60%;
 object-fit:contain;
 filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35)) brightness(1.1);
-opacity:1 !important;
-mix-blend-mode:normal !important;
 }
 
-/* ACTION BUTTONS */
-.actions{display:flex;flex-direction:column;gap:18px;opacity:0;
-animation: fadeInUp 1s ease-out forwards;animation-delay:1.05s;}
-
+/* BUTTONS */
 .btn{
-border:none;border-radius:24px;padding:22px;font-size:20px;
-font-weight:800;cursor:pointer;display:flex;justify-content:center;
-align-items:center;gap:14px;transition:0.35s;
+width:100%;
+padding:20px;
+border-radius:20px;
+font-size:18px;
+font-weight:800;
+border:none;
+cursor:pointer;
+margin-bottom:15px;
 }
 
-.primary{background:linear-gradient(145deg,#02142f,#07245f);color:white;}
-.secondary{background:linear-gradient(145deg,#e0e7ff,#dbeafe);color:#173a7a;}
+.primary{
+background:linear-gradient(145deg,#02142f,#07245f);
+color:white;
+}
+
+.secondary{
+background:#e2e8f0;
+color:#1e293b;
+}
 
 /* FOOTER */
 .footer{
-margin-top:14px;padding-top:10px;padding-bottom:2px;border-top:1px solid #dbe2ea;
-display:flex;justify-content:center;align-items:center;gap:8px;
-opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:1.2s;
+text-align:center;
+padding:10px 0 20px;
+font-size:13px;
+color:#64748b;
 }
-
-.footer img{width:110px;}
-
-@media(max-width:450px){
-.card{width:100%;}
-.profile{width:150px;height:150px;}
-.name{font-size:30px;}
-.social{width:74px;height:74px;}
-}
-
-/* ANIMATIONS */
-@keyframes fadeInUp {
-0% {opacity:0;transform:translateY(20px) scale(0.98);filter:blur(6px);}
-60% {opacity:1;transform:translateY(-2px) scale(1.01);filter:blur(0);}
-100% {opacity:1;transform:translateY(0) scale(1);}
-}
-
-@keyframes softFloat {
-0% {transform:translateY(0);}
-50% {transform:translateY(-6px);}
-100% {transform:translateY(0);}
-}
-
 </style>
 
 </head>
@@ -168,79 +185,68 @@ opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:1.2s;
 
 <div class="card">
 
+<!-- HEADER -->
 <div class="header">
-<div class="profile-area">
-<img id="profileImage" class="profile" loading="lazy">
-<div class="info">
-<div id="name" class="name"></div>
-<div id="role" class="role"></div>
-<div class="line"></div>
-<div id="company" class="company"></div>
-</div>
-</div>
+    <img id="profileImage" class="profile" loading="lazy">
+
+    <div class="header-info">
+        <div id="name" class="name"></div>
+        <div id="role" class="role"></div>
+        <div id="company" class="company"></div>
+    </div>
 </div>
 
+<!-- CONTENT -->
 <div class="content">
 
-<div id="bio" class="bio"></div>
+    <div id="bio" class="bio"></div>
 
-<a id="landlineLink" class="contact-box">
-<div class="contact-left">
-<div class="icon"><i class="bi bi-telephone-fill"></i></div>
-<div class="contact-text">
-<div class="label">Landline</div>
-<div id="landline" class="value"></div>
-</div>
-</div>
-<div class="arrow">›</div>
-</a>
+    <!-- CONTACT BOXES -->
+    <a id="phoneLink" class="contact-box">
+        <div class="contact-left">
+            <div class="icon">📞</div>
+            <div class="contact-text">
+                <div class="label">Mobile</div>
+                <div id="phone" class="value"></div>
+            </div>
+        </div>
+    </a>
 
-<a id="phoneLink" class="contact-box">
-<div class="contact-left">
-<div class="icon"><i class="bi bi-phone-fill"></i></div>
-<div class="contact-text">
-<div class="label">Mobile</div>
-<div id="phone" class="value"></div>
-</div>
-</div>
-<div class="arrow">›</div>
-</a>
+    <a id="emailLink" class="contact-box">
+        <div class="contact-left">
+            <div class="icon">✉️</div>
+            <div class="contact-text">
+                <div class="label">Email</div>
+                <div id="email" class="value"></div>
+            </div>
+        </div>
+    </a>
 
-<a id="emailLink" class="contact-box">
-<div class="contact-left">
-<div class="icon"><i class="bi bi-envelope-fill"></i></div>
-<div class="contact-text">
-<div class="label">Email</div>
-<div id="email" class="value"></div>
-</div>
-</div>
-<div class="arrow">›</div>
-</a>
+    <a id="landlineLink" class="contact-box">
+        <div class="contact-left">
+            <div class="icon">☎️</div>
+            <div class="contact-text">
+                <div class="label">Landline</div>
+                <div id="landline" class="value"></div>
+            </div>
+        </div>
+    </a>
 
-<div id="socials" class="socials"></div>
+    <!-- SOCIAL ICONS -->
+    <div id="socials" class="socials"></div>
 
-<div class="actions">
-<button class="btn primary" onclick="saveContact()">
-<i class="bi bi-person-plus-fill"></i> Add To Contacts
-</button>
+    <!-- BUTTONS -->
+    <button class="btn primary" onclick="saveContact()">Add To Contacts</button>
+    <button class="btn secondary" onclick="shareCard()">Share Card</button>
 
-<button class="btn secondary" onclick="shareCard()">
-<i class="bi bi-share-fill"></i> Share Card
-</button>
-</div>
-
-<div class="footer">
-<div class="created">powered by</div>
-<a href="https://instagram.com/flex.tech1" target="_blank">
-<img src="https://i.imgur.com/LmWt6sc.png">
-</a>
-</div>
+    <!-- FOOTER -->
+    <div class="footer">Powered by FlexTech</div>
 
 </div>
 
 </div>
 
-<!-- FIREBASE SCRIPT -->
+<!-- FIREBASE + JS -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -298,7 +304,7 @@ document.getElementById("landlineLink").href = `tel:${client.landline}`;
 document.getElementById("landlineLink").style.display = "none";
 }
 
-/* SOCIALS — WhatsApp Effect for All */
+/* SOCIAL ICONS — ORIGINAL APP ICONS */
 let socialsHTML = "";
 
 const icons = {
@@ -319,13 +325,6 @@ socialsHTML += `
 <img src="${icons[social]}">
 </a>`;
 }
-}
-
-if (client.socials.appLink) {
-socialsHTML += `
-<a class="social app" href="${client.socials.appLink}" target="_blank">
-<span class="material-symbols-outlined" style="font-size:44px;color:#02142f;">apk_install</span>
-</a>`;
 }
 
 }
