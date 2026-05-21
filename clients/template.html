@@ -14,7 +14,7 @@
 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apk_install" />
 
 <style>
-/* ———— RESET ———— */
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
@@ -26,13 +26,13 @@ padding:20px;
 min-height:100vh;
 }
 
-/* ———— CARD ———— */
+/* CARD */
 .card{
 width:400px;background:#f8fafc;border-radius:40px;overflow:hidden;
 box-shadow:0 30px 80px rgba(0,0,0,.45);
 }
 
-/* ———— HEADER ———— */
+/* HEADER */
 .header{
 background:
 linear-gradient(rgba(1,15,45,.88),rgba(1,15,45,.94)),
@@ -68,7 +68,7 @@ opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:0.45s;
 word-wrap: break-word;overflow-wrap: break-word;white-space: normal;
 }
 
-/* ———— CONTACT BOX ———— */
+/* CONTACT BOX */
 .contact-box{
 background:rgba(255,255,255,0.65);backdrop-filter:blur(8px);
 border-radius:18px;padding:12px 16px;display:flex;align-items:center;
@@ -93,29 +93,32 @@ font-size:22px;color:white;
 
 .arrow{font-size:26px;color:#64748b;}
 
-/* ———— SOCIALS ———— */
+/* SOCIALS — WhatsApp Effect Applied to All */
 .socials{
 display:flex;justify-content:center;gap:18px;margin:25px 0;
 opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:0.9s;
 }
 
 .social{
-width:82px;height:82px;border-radius:28px;display:flex;
-justify-content:center;align-items:center;font-size:44px;
-text-decoration:none;transition:0.35s;
-background:rgba(255,255,255,0.1);backdrop-filter:blur(6px);
+width:82px;height:82px;border-radius:28px;
+background:rgba(255,255,255,0.10);
+backdrop-filter:blur(6px);
 box-shadow:0 8px 20px rgba(0,0,0,.15);
-color: unset !important; /* يمنع تبييض الأيقونة */
+display:flex;justify-content:center;align-items:center;
+transition:0.35s;
+color:unset !important;
 }
 
-.social img {
-width:44px;
-height:44px;
+.social img{
+width:58%;
+height:58%;
 object-fit:contain;
-filter:none !important; /* يمنع تبييض الأيقونة */
+filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35)) brightness(1.1);
+opacity:1 !important;
+mix-blend-mode:normal !important;
 }
 
-/* ———— ACTION BUTTONS ———— */
+/* ACTION BUTTONS */
 .actions{display:flex;flex-direction:column;gap:18px;opacity:0;
 animation: fadeInUp 1s ease-out forwards;animation-delay:1.05s;}
 
@@ -128,7 +131,7 @@ align-items:center;gap:14px;transition:0.35s;
 .primary{background:linear-gradient(145deg,#02142f,#07245f);color:white;}
 .secondary{background:linear-gradient(145deg,#e0e7ff,#dbeafe);color:#173a7a;}
 
-/* ———— FOOTER ———— */
+/* FOOTER */
 .footer{
 margin-top:14px;padding-top:10px;padding-bottom:2px;border-top:1px solid #dbe2ea;
 display:flex;justify-content:center;align-items:center;gap:8px;
@@ -141,10 +144,10 @@ opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:1.2s;
 .card{width:100%;}
 .profile{width:150px;height:150px;}
 .name{font-size:30px;}
-.social{width:74px;height:74px;font-size:38px;}
+.social{width:74px;height:74px;}
 }
 
-/* ———— ANIMATIONS ———— */
+/* ANIMATIONS */
 @keyframes fadeInUp {
 0% {opacity:0;transform:translateY(20px) scale(0.98);filter:blur(6px);}
 60% {opacity:1;transform:translateY(-2px) scale(1.01);filter:blur(0);}
@@ -237,7 +240,7 @@ opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:1.2s;
 
 </div>
 
-<!-- ———— FIREBASE SCRIPT ———— -->
+<!-- FIREBASE SCRIPT -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -295,36 +298,36 @@ document.getElementById("landlineLink").href = `tel:${client.landline}`;
 document.getElementById("landlineLink").style.display = "none";
 }
 
-/* ———— SOCIALS (Colored Icons Without White Tint) ———— */
-/* ———— SOCIALS (Beautiful Filled Icons Like WhatsApp) ———— */
+/* SOCIALS — WhatsApp Effect for All */
 let socialsHTML = "";
 
 const icons = {
-    instagram: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
-    facebook: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
-    whatsapp: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-    linkedin: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
-    telegram: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
-    tiktok: "https://upload.wikimedia.org/wikipedia/en/0/0a/TikTok_logo.svg"
+instagram: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
+facebook: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
+whatsapp: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+linkedin: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
+telegram: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
+tiktok: "https://upload.wikimedia.org/wikipedia/en/0/0a/TikTok_logo.svg"
 };
 
 if (client.socials && typeof client.socials === "object") {
 
-    for (let social in icons) {
-        if (client.socials[social]) {
-            socialsHTML += `
-            <a class="social ${social}" href="${client.socials[social]}" target="_blank">
-                <img src="${icons[social]}">
-            </a>`;
-        }
-    }
+for (let social in icons) {
+if (client.socials[social]) {
+socialsHTML += `
+<a class="social ${social}" href="${client.socials[social]}" target="_blank">
+<img src="${icons[social]}">
+</a>`;
+}
+}
 
-    if (client.socials.appLink) {
-        socialsHTML += `
-        <a class="social app" href="${client.socials.appLink}" target="_blank">
-            <span class="material-symbols-outlined" style="font-size:44px;color:#02142f;">apk_install</span>
-        </a>`;
-    }
+if (client.socials.appLink) {
+socialsHTML += `
+<a class="social app" href="${client.socials.appLink}" target="_blank">
+<span class="material-symbols-outlined" style="font-size:44px;color:#02142f;">apk_install</span>
+</a>`;
+}
+
 }
 
 document.getElementById("socials").innerHTML = socialsHTML;
