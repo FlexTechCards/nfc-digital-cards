@@ -102,9 +102,17 @@ opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:0.9s;
 .social{
 width:82px;height:82px;border-radius:28px;display:flex;
 justify-content:center;align-items:center;font-size:44px;
-color:white;text-decoration:none;transition:0.35s;
+text-decoration:none;transition:0.35s;
 background:rgba(255,255,255,0.1);backdrop-filter:blur(6px);
 box-shadow:0 8px 20px rgba(0,0,0,.15);
+color: unset !important; /* يمنع تبييض الأيقونة */
+}
+
+.social img {
+width:44px;
+height:44px;
+object-fit:contain;
+filter:none !important; /* يمنع تبييض الأيقونة */
 }
 
 /* ———— ACTION BUTTONS ———— */
@@ -207,6 +215,28 @@ opacity:0;animation: fadeInUp 1s ease-out forwards;animation-delay:1.2s;
 </a>
 
 <div id="socials" class="socials"></div>
+
+<div class="actions">
+<button class="btn primary" onclick="saveContact()">
+<i class="bi bi-person-plus-fill"></i> Add To Contacts
+</button>
+
+<button class="btn secondary" onclick="shareCard()">
+<i class="bi bi-share-fill"></i> Share Card
+</button>
+</div>
+
+<div class="footer">
+<div class="created">powered by</div>
+<a href="https://instagram.com/flex.tech1" target="_blank">
+<img src="https://i.imgur.com/LmWt6sc.png">
+</a>
+</div>
+
+</div>
+
+</div>
+
 <!-- ———— FIREBASE SCRIPT ———— -->
 <script type="module">
 
@@ -265,7 +295,7 @@ document.getElementById("landlineLink").href = `tel:${client.landline}`;
 document.getElementById("landlineLink").style.display = "none";
 }
 
-/* ———— SOCIALS (Official Colored Icons) ———— */
+/* ———— SOCIALS (Colored Icons Without White Tint) ———— */
 let socialsHTML = "";
 
 const icons = {
@@ -283,7 +313,7 @@ for (let social in icons) {
 if (client.socials[social]) {
 socialsHTML += `
 <a class="social ${social}" href="${client.socials[social]}" target="_blank">
-<img src="${icons[social]}" style="width:44px;height:44px;border-radius:12px;">
+<img src="${icons[social]}">
 </a>`;
 }
 }
@@ -345,9 +375,6 @@ link.click();
 };
 
 </script>
-</div> <!-- نهاية .content -->
-
-</div> <!-- نهاية .card -->
 
 </body>
 </html>
