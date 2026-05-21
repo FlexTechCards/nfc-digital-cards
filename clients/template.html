@@ -290,60 +290,16 @@ document.getElementById("landlineLink").style.display = "none";
 }
 
 // SOCIALS (Colored SVG Icons)
+// SOCIALS
 let socialsHTML = "";
-
 const icons = {
-instagram: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg",
-facebook: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg",
-whatsapp: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg",
-linkedin: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg",
-telegram: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg",
-tiktok: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
+instagram: "bi bi-instagram",
+whatsapp: "bi bi-whatsapp",
+linkedin: "bi bi-linkedin",
+facebook: "bi bi-facebook",
+telegram: "bi bi-telegram",
+tiktok: "bi bi-tiktok"
 };
-
-if (client.socials && typeof client.socials === "object") {
-
-    for (let social in icons) {
-        if (client.socials[social]) {
-            socialsHTML += `
-            <a class="social ${social}" href="${client.socials[social]}" target="_blank">
-                <img src="${icons[social]}" style="width:44px;height:44px;">
-            </a>`;
-        }
-    }
-
-    // زر التطبيق
-    if (client.socials.appLink) {
-        socialsHTML += `
-        <a class="social app" href="${client.socials.appLink}" target="_blank">
-            <span class="material-symbols-outlined" style="font-size:44px;color:#02142f;">apk_install</span>
-        </a>`;
-    }
-}
-
-document.getElementById("socials").innerHTML = socialsHTML;
-
-if (client.socials && typeof client.socials === "object") {
-
-for (let social in icons) {
-if (client.socials[social]) {
-socialsHTML += `
-<a class="social ${social}" href="${client.socials[social]}" target="_blank">
-<i class="${icons[social]}"></i>
-</a>`;
-}
-}
-
-if (client.socials.appLink) {
-socialsHTML += `
-<a class="social app" href="${client.socials.appLink}" target="_blank">
-<span class="material-symbols-outlined" style="font-size:44px;color:#02142f;">apk_install</span>
-</a>`;
-}
-
-}
-
-document.getElementById("socials").innerHTML = socialsHTML;
 
 } catch (error) {
 
