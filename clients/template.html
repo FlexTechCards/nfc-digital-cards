@@ -296,35 +296,35 @@ document.getElementById("landlineLink").style.display = "none";
 }
 
 /* ———— SOCIALS (Colored Icons Without White Tint) ———— */
+/* ———— SOCIALS (Beautiful Filled Icons Like WhatsApp) ———— */
 let socialsHTML = "";
 
 const icons = {
-instagram: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
-facebook: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
-whatsapp: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
-linkedin: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
-telegram: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
-tiktok: "https://upload.wikimedia.org/wikipedia/en/0/0a/TikTok_logo.svg"
+    instagram: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
+    facebook: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
+    whatsapp: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+    linkedin: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
+    telegram: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
+    tiktok: "https://upload.wikimedia.org/wikipedia/en/0/0a/TikTok_logo.svg"
 };
 
 if (client.socials && typeof client.socials === "object") {
 
-for (let social in icons) {
-if (client.socials[social]) {
-socialsHTML += `
-<a class="social ${social}" href="${client.socials[social]}" target="_blank">
-<img src="${icons[social]}">
-</a>`;
-}
-}
+    for (let social in icons) {
+        if (client.socials[social]) {
+            socialsHTML += `
+            <a class="social ${social}" href="${client.socials[social]}" target="_blank">
+                <img src="${icons[social]}">
+            </a>`;
+        }
+    }
 
-if (client.socials.appLink) {
-socialsHTML += `
-<a class="social app" href="${client.socials.appLink}" target="_blank">
-<span class="material-symbols-outlined" style="font-size:44px;color:#02142f;">apk_install</span>
-</a>`;
-}
-
+    if (client.socials.appLink) {
+        socialsHTML += `
+        <a class="social app" href="${client.socials.appLink}" target="_blank">
+            <span class="material-symbols-outlined" style="font-size:44px;color:#02142f;">apk_install</span>
+        </a>`;
+    }
 }
 
 document.getElementById("socials").innerHTML = socialsHTML;
