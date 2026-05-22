@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlexTech Premium Card</title>
 
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
@@ -36,70 +35,52 @@
       position:relative;
     }
 
-    /* HEADER (as your design) */
+    /* HEADER — Smaller + Clean */
     .header{
-      background:
-        linear-gradient(rgba(1,15,45,.88),rgba(1,15,45,.94)),
-        url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
-      background-size:cover;
-      background-position:center;
-      min-height:350px;
+      background:#010f2d;
+      min-height:220px;
       padding:26px 22px;
-      border-bottom-left-radius:70px;
+      border-bottom-left-radius:50px;
       position:relative;
       overflow:hidden;
     }
 
     .header::after{
-      content:"";
-      position:absolute;
-      top:-120px;
-      right:-120px;
-      width:420px;
-      height:420px;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:
-        0 0 0 35px rgba(255,255,255,.03),
-        0 0 0 70px rgba(255,255,255,.025),
-        0 0 0 105px rgba(255,255,255,.02);
+      display:none;
     }
 
     .profile-section{
       display:flex;
       align-items:center;
-      gap:18px;
+      gap:14px;
       position:relative;
       z-index:2;
     }
 
     .profile{
-      width:220px;
-      height:220px;
+      width:160px;
+      height:160px;
       border-radius:50%;
       object-fit:cover;
-      object-position:center top;
       border:6px solid rgba(255,255,255,.98);
       box-shadow:0 15px 35px rgba(0,0,0,.38);
       position:relative;
-      top:-8px;
+      top:0;
     }
 
     .info{flex:1;}
 
     .name{
-      font-size:34px;
+      font-size:28px;
       font-weight:800;
       color:white;
-      line-height:1.1;
-      margin-bottom:12px;
+      margin-bottom:8px;
     }
 
     .role{
-      font-size:16px;
+      font-size:15px;
       color:#dbeafe;
-      line-height:1.6;
-      margin-bottom:18px;
+      margin-bottom:12px;
     }
 
     .line{
@@ -107,13 +88,12 @@
       height:5px;
       background:#22d3ee;
       border-radius:50px;
-      margin-bottom:18px;
+      margin-bottom:12px;
     }
 
     .job{
+      font-size:14px;
       color:#cbd5e1;
-      line-height:1.7;
-      font-size:15px;
     }
 
     /* CONTENT */
@@ -190,6 +170,7 @@
       font-size:20px;
     }
 
+    /* SOCIALS */
     .socials{
       display:flex;
       justify-content:center;
@@ -221,6 +202,11 @@
     .tiktok{background:black;}
     .facebook{background:#1877f2;}
     .telegram{background:#229ED9;}
+
+    /* ⭐ التطبيق الإلكتروني */
+    .app{
+      background:#0ea5e9;
+    }
 
     .actions{
       display:flex;
@@ -281,37 +267,13 @@
       width:155px;
       object-fit:contain;
     }
-
-    @media(max-width:450px){
-      .card{
-        width:100%;
-        border-radius:34px;
-      }
-      .profile-section{
-        flex-direction:row;
-        align-items:center;
-        gap:12px;
-      }
-      .profile{
-        width:190px;
-        height:190px;
-      }
-      .name{font-size:28px;}
-      .role{font-size:14px;}
-      .job{font-size:13px;}
-      .social{
-        width:60px;
-        height:60px;
-        font-size:32px;
-      }
-    }
   </style>
 </head>
 
 <body>
 <div class="card">
 
-  <!-- HEADER (dynamic with Firebase IDs) -->
+  <!-- HEADER -->
   <div class="header">
     <div class="profile-section">
       <img id="profileImage" class="profile" loading="lazy">
@@ -327,10 +289,8 @@
   <!-- CONTENT -->
   <div class="content">
 
-    <!-- BIO -->
     <div id="bio" class="bio"></div>
 
-    <!-- CONTACT -->
     <div class="contact">
 
       <a id="phoneLink" class="contact-box">
@@ -368,10 +328,9 @@
 
     </div>
 
-    <!-- SOCIALS (filled by JS) -->
+    <!-- SOCIALS -->
     <div id="socials" class="socials"></div>
 
-    <!-- ACTIONS -->
     <div class="actions">
       <button class="btn primary" onclick="saveContact()">
         <i class="fas fa-user-plus"></i> Add To Contacts
@@ -381,9 +340,8 @@
       </button>
     </div>
 
-    <!-- FOOTER -->
     <a class="footer"
-       href="https://www.instagram.com/flex.tech1?igsh=MWxoajk3aDg5Y3BqYQ%3D%3D&utm_source=qr"
+       href="https://www.instagram.com/flex.tech1"
        target="_blank">
       <span class="created">Created by</span>
       <img src="https://i.imgur.com/LmWt6sc.png">
@@ -392,7 +350,6 @@
   </div>
 </div>
 
-<!-- FIREBASE + LOGIC -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import {
@@ -459,7 +416,7 @@
         document.getElementById("landlineLink").style.display = "none";
       }
 
-      // SOCIALS (Font Awesome style, same design)
+      /* SOCIALS + APP ICON */
       let socialsHTML = "";
       if (client.socials && typeof client.socials === "object") {
         const map = {
@@ -468,7 +425,10 @@
           linkedin: { cls: "linkedin", icon: "fab fa-linkedin-in" },
           tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
           facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
-          telegram: { cls: "telegram", icon: "fab fa-telegram" }
+          telegram: { cls: "telegram", icon: "fab fa-telegram" },
+
+          /* ⭐ التطبيق الإلكتروني */
+          app: { cls: "app", icon: "fab fa-android" }
         };
 
         for (let key in map) {
