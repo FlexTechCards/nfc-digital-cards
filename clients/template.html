@@ -419,31 +419,43 @@
         document.getElementById("landlineLink").style.display = "none";
       }
 
-      /* SOCIALS + APP ICON */
-      let socialsHTML = "";
-      if (client.socials && typeof client.socials === "object") {
-        const map = {
-          instagram: { cls: "instagram", icon: "fab fa-instagram" },
-          whatsapp: { cls: "whatsapp", icon: "fab fa-whatsapp" },
-          linkedin: { cls: "linkedin", icon: "fab fa-linkedin-in" },
-          tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
-          facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
-          telegram: { cls: "telegram", icon: "fab fa-telegram" },
+/* SOCIALS + APP ICON */
+let socialsHTML = "";
 
-          /* ⭐ التطبيق الإلكتروني */
-          app: { cls: "app", icon: "fab fa-android" }
-        };
+if (client.socials && typeof client.socials === "object") {
 
-        for (let key in map) {
-          if (client.socials[key]) {
-            socialsHTML += `
-              <a class="social ${map[key].cls}" href="${client.socials[key]}" target="_blank">
-                <i class="${map[key].icon}"></i>
-              </a>`;
-          }
-        }
-      }
-      document.getElementById("socials").innerHTML = socialsHTML;
+  const map = {
+    instagram: { cls: "instagram", icon: "fab fa-instagram" },
+    whatsapp: { cls: "whatsapp", icon: "fab fa-whatsapp" },
+    linkedin: { cls: "linkedin", icon: "fab fa-linkedin-in" },
+    tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
+    facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
+    telegram: { cls: "telegram", icon: "fab fa-telegram" },
+
+    /* ⭐ التطبيق الإلكتروني */
+    app: { cls: "app", icon: "fab fa-android" }
+  };
+
+  console.log("🔍 DEBUG: Socials object received:", client.socials);
+
+  for (let key in map) {
+
+    console.log(`🔎 DEBUG: Checking key "${key}" →`, client.socials[key]);
+
+    // ⭐ يظهر فقط إذا القيمة موجودة وغير فارغة
+    if (client.socials[key] && client.socials[key].trim() !== "") {
+
+      socialsHTML += `
+        <a class="social ${map[key].cls}" href="${client.socials[key]}" target="_blank">
+          <i class="${map[key].icon}"></i>
+        </a>`;
+
+      console.log(`✅ DEBUG: Added icon for "${key}"`);
+    }
+  }
+}
+
+document.getElementById("socials").innerHTML = socialsHTML;
 
     } catch (error) {
       document.body.innerHTML = `
