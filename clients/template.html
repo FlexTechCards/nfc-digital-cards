@@ -152,13 +152,13 @@
       color:#64748b;
     }
 
-.value{
-  font-size:16px;
-  font-weight:800;
-  color:#0f172a;
-  word-break: break-all;
-  white-space: normal;
-}
+    .value{
+      font-size:16px;
+      font-weight:800;
+      color:#0f172a;
+      word-break:break-all;
+      white-space:normal;
+    }
 
     .arrow{
       color:#64748b;
@@ -170,6 +170,7 @@
       justify-content:center;
       gap:14px;
       margin:22px 0;
+      flex-wrap:wrap;
     }
 
     .social{
@@ -196,10 +197,7 @@
     .tiktok{background:black;}
     .facebook{background:#1877f2;}
     .telegram{background:#229ED9;}
-
-    .app{
-      background:#0ea5e9;
-    }
+    .app{background:#0ea5e9;}
 
     .actions{
       display:flex;
@@ -364,6 +362,8 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  const $ = (id) => document.getElementById(id);
+
   const params = new URLSearchParams(window.location.search);
   const clientId = params.get("id");
 
@@ -383,49 +383,35 @@
 
       await updateDoc(docRef, { views: increment(1) });
 
-      document.getElementById("name").innerHTML = client.name || "";
-      document.getElementById("role").innerHTML = client.role || "";
-      document.getElementById("company").innerHTML = client.company || "";
-      document.getElementById("bio").innerHTML = client.bio || "";
-      document.getElementById("phone").innerHTML = client.phone || "";
-      document.getElementById("email").innerHTML = client.email || "";
-      document.getElementById("profileImage").src = client.image || "";
+      $("name").innerHTML = client.name || "";
+      $("role").innerHTML = client.role || "";
+      $("company").innerHTML = client.company || "";
+      $("bio").innerHTML = client.bio || "";
+      $("phone").innerHTML = client.phone || "";
+      $("email").innerHTML = client.email || "";
+      $("profileImage").src = client.image || "";
 
-      document.getElementById("phoneLink").href =
-        client.phone ? `tel:${client.phone}` : "#";
-      document.getElementById("emailLink").href =
-        client.email ? `mailto:${client.email}` : "#";
+      $("phoneLink").href = client.phone ? `tel:${client.phone}` : "#";
+      $("emailLink").href = client.email ? `mailto:${client.email}` : "#";
 
       if (client.landline) {
-        document.getElementById("landline").innerHTML =
+        $("landline").innerHTML =
           client.extension
             ? `${client.landline} | EXT: ${client.extension}`
             : client.landline;
-        document.getElementById("landlineLink").href = `tel:${client.landline}`;
+        $("landlineLink").href = `tel:${client.landline}`;
       } else {
-        document.getElementById("landlineLink").style.display = "none";
+        $("landlineLink").style.display = "none";
       }
 
-      /* ⭐⭐⭐ الحل الجذري — إصلاح appLink للأبد ⭐⭐⭐ */
+      // ⭐ تحسين جذري + إصلاح appLink
+      client.socials = client.socials || {};
 
-      // إذا لم يكن socials موجود → ننشئه
-      if (!client.socials || typeof client.socials !== "object") {
-        client.socials = {};
-      }
-
-      // إذا كان appLink موجود داخل socials → ننقله إلى socials.app
-      if (client.socials.appLink && (!client.socials.app || client.socials.app.trim() === "")) {
-        client.socials.app = client.socials.appLink;
-      }
-
-      // إذا كان appLink موجود خارج socials → ننقله أيضًا
-      if (client.appLink && (!client.socials.app || client.socials.app.trim() === "")) {
-        client.socials.app = client.appLink;
-      }
-
-      /* ⭐⭐⭐ بناء أيقونات السوشيال ⭐⭐⭐ */
-
-      let socialsHTML = "";
+      client.socials.app =
+        client.socials.app ||
+        client.socials.appLink ||
+        client.appLink ||
+        "";
 
       const map = {
         instagram: { cls: "instagram", icon: "fab fa-instagram" },
@@ -434,23 +420,26 @@
         tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
         facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
         telegram: { cls: "telegram", icon: "fab fa-telegram" },
-
-        /* ⭐ التطبيق الإلكتروني */
         app: { cls: "app", icon: "fab fa-android" }
       };
 
+      const socialsList = [];
+
       for (let key in map) {
-        if (client.socials[key] && client.socials[key].trim() !== "") {
-          socialsHTML += `
-            <a class="social ${map[key].cls}" href="${client.socials[key]}" target="_blank">
+        const link = client.socials[key];
+        if (link && link.trim() !== "") {
+          socialsList.push(`
+            <a class="social ${map[key].cls}" href="${link}" target="_blank">
               <i class="${map[key].icon}"></i>
-            </a>`;
+            </a>
+          `);
         }
       }
 
-      document.getElementById("socials").innerHTML = socialsHTML;
+      $("socials").innerHTML = socialsList.join("");
 
     } catch (error) {
+      console.error(error);
       document.body.innerHTML = `
         <div style="color:white;text-align:center;margin-top:40px;font-size:22px;">
           Error Loading Card ❌<br><br>${error}
@@ -461,31 +450,32 @@
   loadClient();
 
   window.shareCard = function () {
+    const name = $("name")?.innerText || "FlexTech Digital Card";
     if (navigator.share) {
       navigator.share({
-        title: "FlexTech Digital Card",
+        title: name,
         text: "Check my digital business card",
         url: window.location.href
-      });
+      }).catch(()=>{});
     } else {
-      alert("Sharing not supported");
+      prompt("Copy this link:", window.location.href);
     }
   };
 
   window.saveContact = function () {
-    const name = document.getElementById("name").innerText;
-    const phone = document.getElementById("phone").innerText;
-    const email = document.getElementById("email").innerText;
+    const name = $("name").innerText;
+    const phone = $("phone").innerText;
+    const email = $("email").innerText;
 
-    const vcf = `
-BEGIN:VCARD
-VERSION:3.0
-N;CHARSET=UTF-8:${name}
-FN;CHARSET=UTF-8:${name}
-TEL;TYPE=CELL:${phone}
-EMAIL;CHARSET=UTF-8:${email}
-END:VCARD
-`;
+    const vcf = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      `N;CHARSET=UTF-8:${name}`,
+      `FN;CHARSET=UTF-8:${name}`,
+      `TEL;TYPE=CELL:${phone}`,
+      `EMAIL;CHARSET=UTF-8:${email}`,
+      "END:VCARD"
+    ].join("\n");
 
     const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
     const link = document.createElement("a");
