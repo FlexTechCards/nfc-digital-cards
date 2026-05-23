@@ -25,7 +25,6 @@
       padding:24px 14px;
     }
 
-    /* CARD */
     .card{
       width:390px;
       background:#f8fafc;
@@ -35,7 +34,6 @@
       position:relative;
     }
 
-    /* HEADER — Smaller + Clean */
     .header{
       background:#010f2d;
       min-height:220px;
@@ -43,10 +41,6 @@
       border-bottom-left-radius:50px;
       position:relative;
       overflow:hidden;
-    }
-
-    .header::after{
-      display:none;
     }
 
     .profile-section{
@@ -96,7 +90,6 @@
       color:#cbd5e1;
     }
 
-    /* CONTENT */
     .content{
       padding:24px 22px 20px;
     }
@@ -165,7 +158,6 @@
   color:#0f172a;
   word-break: break-all;
   white-space: normal;
-
 }
 
     .arrow{
@@ -173,7 +165,6 @@
       font-size:20px;
     }
 
-    /* SOCIALS */
     .socials{
       display:flex;
       justify-content:center;
@@ -206,7 +197,6 @@
     .facebook{background:#1877f2;}
     .telegram{background:#229ED9;}
 
-    /* ⭐ التطبيق الإلكتروني */
     .app{
       background:#0ea5e9;
     }
@@ -276,7 +266,6 @@
 <body>
 <div class="card">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="profile-section">
       <img id="profileImage" class="profile" loading="lazy">
@@ -289,7 +278,6 @@
     </div>
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
 
     <div id="bio" class="bio"></div>
@@ -331,7 +319,6 @@
 
     </div>
 
-    <!-- SOCIALS -->
     <div id="socials" class="socials"></div>
 
     <div class="actions">
@@ -419,39 +406,49 @@
         document.getElementById("landlineLink").style.display = "none";
       }
 
-/* SOCIALS + APP ICON */
-let socialsHTML = "";
+      /* ⭐⭐⭐ الحل الجذري — إصلاح appLink للأبد ⭐⭐⭐ */
 
-if (client.socials && typeof client.socials === "object") {
+      // إذا لم يكن socials موجود → ننشئه
+      if (!client.socials || typeof client.socials !== "object") {
+        client.socials = {};
+      }
 
-  // ⭐ الحل الدائم: تحويل appLink إلى socials.app تلقائيًا
-  if (client.appLink) {
-    client.socials.app = client.appLink;
-  }
+      // إذا كان appLink موجود داخل socials → ننقله إلى socials.app
+      if (client.socials.appLink && (!client.socials.app || client.socials.app.trim() === "")) {
+        client.socials.app = client.socials.appLink;
+      }
 
-  const map = {
-    instagram: { cls: "instagram", icon: "fab fa-instagram" },
-    whatsapp: { cls: "whatsapp", icon: "fab fa-whatsapp" },
-    linkedin: { cls: "linkedin", icon: "fab fa-linkedin-in" },
-    tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
-    facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
-    telegram: { cls: "telegram", icon: "fab fa-telegram" },
+      // إذا كان appLink موجود خارج socials → ننقله أيضًا
+      if (client.appLink && (!client.socials.app || client.socials.app.trim() === "")) {
+        client.socials.app = client.appLink;
+      }
 
-    /* ⭐ التطبيق الإلكتروني */
-    app: { cls: "app", icon: "fab fa-android" }
-  };
+      /* ⭐⭐⭐ بناء أيقونات السوشيال ⭐⭐⭐ */
 
-  for (let key in map) {
-    if (client.socials[key] && client.socials[key].trim() !== "") {
-      socialsHTML += `
-        <a class="social ${map[key].cls}" href="${client.socials[key]}" target="_blank">
-          <i class="${map[key].icon}"></i>
-        </a>`;
-    }
-  }
-}
+      let socialsHTML = "";
 
-document.getElementById("socials").innerHTML = socialsHTML;
+      const map = {
+        instagram: { cls: "instagram", icon: "fab fa-instagram" },
+        whatsapp: { cls: "whatsapp", icon: "fab fa-whatsapp" },
+        linkedin: { cls: "linkedin", icon: "fab fa-linkedin-in" },
+        tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
+        facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
+        telegram: { cls: "telegram", icon: "fab fa-telegram" },
+
+        /* ⭐ التطبيق الإلكتروني */
+        app: { cls: "app", icon: "fab fa-android" }
+      };
+
+      for (let key in map) {
+        if (client.socials[key] && client.socials[key].trim() !== "") {
+          socialsHTML += `
+            <a class="social ${map[key].cls}" href="${client.socials[key]}" target="_blank">
+              <i class="${map[key].icon}"></i>
+            </a>`;
+        }
+      }
+
+      document.getElementById("socials").innerHTML = socialsHTML;
 
     } catch (error) {
       document.body.innerHTML = `
