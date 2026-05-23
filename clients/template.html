@@ -293,28 +293,29 @@
         <div class="arrow"><i class="fas fa-angle-right"></i></div>
       </a>
 
-<a id="emailLink" class="contact-box">
-  <div class="contact-left">
-    <div class="icon"><i class="fas fa-envelope"></i></div>
-    <div class="contact-text">
-      <div class="label">Email</div>
-      <div id="email" class="value"></div>
-    </div>
-  </div>
-  <div class="arrow"><i class="fas fa-angle-right"></i></div>
-</a>
+      <a id="emailLink" class="contact-box">
+        <div class="contact-left">
+          <div class="icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-text">
+            <div class="label">Email</div>
+            <div id="email" class="value"></div>
+          </div>
+        </div>
+        <div class="arrow"><i class="fas fa-angle-right"></i></div>
+      </a>
 
-<a id="landlineLink" class="contact-box">
-  <div class="contact-left">
-    <div class="icon"><i class="fas fa-building"></i></div>
-    <div class="contact-text">
-      <div class="label">Landline</div>
-      <div id="landline" class="value"></div>
-    </div>
-  </div>
-  <div class="arrow"><i class="fas fa-angle-right"></i></div>
-</a>
+      <a id="landlineLink" class="contact-box">
+        <div class="contact-left">
+          <div class="icon"><i class="fas fa-building"></i></div>
+          <div class="contact-text">
+            <div class="label">Landline</div>
+            <div id="landline" class="value"></div>
+          </div>
+        </div>
+        <div class="arrow"><i class="fas fa-angle-right"></i></div>
+      </a>
 
+    </div>
 
     <div id="socials" class="socials"></div>
 
@@ -379,17 +380,19 @@
 
       const docRef = querySnapshot.docs[0].ref;
       const client = querySnapshot.docs[0].data();
-      const client = querySnapshot.docs[0].data();
 
-// ⭐ تطبيق خلفية الهيدر إذا كانت موجودة
-if (client.headerImage && client.headerImage.trim() !== "") {
-    document.querySelector(".header").style.background = `
-        url('${client.headerImage}') center/cover no-repeat
-    `;
-} else {
-    document.querySelector(".header").style.background = "#010f2d";
-}
-
+      // ⭐ تطبيق خلفية الهيدر
+      const headerEl = document.querySelector(".header");
+      if (headerEl) {
+        if (client.headerImage && typeof client.headerImage === "string" && client.headerImage.trim() !== "") {
+          headerEl.style.backgroundImage = `url('${client.headerImage}')`;
+          headerEl.style.backgroundSize = "cover";
+          headerEl.style.backgroundPosition = "center";
+          headerEl.style.backgroundRepeat = "no-repeat";
+        } else {
+          headerEl.style.background = "#010f2d";
+        }
+      }
 
       await updateDoc(docRef, { views: increment(1) });
 
@@ -414,7 +417,6 @@ if (client.headerImage && client.headerImage.trim() !== "") {
         $("landlineLink").style.display = "none";
       }
 
-      // ⭐ تحسين جذري + إصلاح appLink
       client.socials = client.socials || {};
 
       client.socials.app =
