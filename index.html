@@ -8,6 +8,7 @@
 
 <title>FlexTech Dashboard</title>
 
+<!-- Icons -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
@@ -15,51 +16,185 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apk_install" />
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
-background:linear-gradient(135deg,#020617,#07245f);
-min-height:100vh;padding:30px 16px;color:white;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-.title{text-align:center;font-size:38px;font-weight:800;margin-bottom:10px;}
-.subtitle{text-align:center;color:#cbd5e1;margin-bottom:30px;}
-.btn{width:100%;margin-top:18px;padding:18px;border:none;border-radius:18px;
-background:linear-gradient(145deg,#06b6d4,#2563eb);color:white;font-size:17px;
-font-weight:800;cursor:pointer;transition:.25s;}
-.btn:hover{transform:scale(1.02);}
-.form{max-width:700px;margin:auto;background:rgba(255,255,255,.06);
-backdrop-filter:blur(12px);padding:24px;border-radius:30px;
-border:1px solid rgba(255,255,255,.08);margin-bottom:30px;}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-@media(max-width:700px){.grid{grid-template-columns:1fr;}}
-.input{width:100%;padding:16px;border:none;border-radius:16px;
-background:rgba(255,255,255,.1);color:white;font-size:15px;outline:none;}
-.input::placeholder{color:#cbd5e1;}
-.section-title{grid-column:1 / -1;margin-top:10px;margin-bottom:5px;
-font-size:18px;font-weight:700;color:#38bdf8;}
-.clients{max-width:1100px;margin:auto;display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
-.client-card{background:white;border-radius:26px;overflow:hidden;color:#0f172a;
-box-shadow:0 20px 50px rgba(0,0,0,.3);}
-.top{background:linear-gradient(rgba(2,20,47,.88),rgba(2,20,47,.92)),
-url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
-background-size:cover;padding:20px;display:flex;align-items:center;gap:14px;}
-.top img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:4px solid white;}
-.info h2{color:white;font-size:24px;margin-bottom:6px;}
-.info p{color:#cbd5e1;}
-.content{padding:18px;}
-.email{word-break:break-word;overflow-wrap:anywhere;}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
-.action-btn{flex:1;min-width:120px;text-align:center;padding:14px;border:none;
-border-radius:14px;text-decoration:none;font-weight:700;cursor:pointer;transition:.25s;}
-.view{background:#07245f;color:white;}
-.qr{background:#06b6d4;color:white;}
-.delete{background:#ef4444;color:white;}
-.action-btn:hover{transform:translateY(-2px);}
+
+body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto;
+    background:linear-gradient(135deg,#020617,#07245f);
+    min-height:100vh;
+    padding:30px 16px;
+    color:white;
+}
+
+/* Titles */
+.title{
+    text-align:center;
+    font-size:38px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+/* Buttons */
+.btn{
+    width:100%;
+    margin-top:18px;
+    padding:18px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(145deg,#06b6d4,#2563eb);
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:scale(1.02);
+}
+
+/* Form */
+.form{
+    max-width:700px;
+    margin:auto;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(12px);
+    padding:24px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.08);
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+@media(max-width:700px){
+    .grid{ grid-template-columns:1fr; }
+}
+
+.input{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:16px;
+    background:rgba(255,255,255,.1);
+    color:white;
+    font-size:15px;
+    outline:none;
+}
+
+.input::placeholder{
+    color:#cbd5e1;
+}
+
+.section-title{
+    grid-column:1 / -1;
+    margin-top:10px;
+    margin-bottom:5px;
+    font-size:18px;
+    font-weight:700;
+    color:#38bdf8;
+}
+
+/* Clients Grid */
+.clients{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+/* Client Card */
+.client-card{
+    background:white;
+    border-radius:26px;
+    overflow:hidden;
+    color:#0f172a;
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+.top{
+    background:linear-gradient(rgba(2,20,47,.88),rgba(2,20,47,.92)),
+    url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
+    background-size:cover;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.top img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid white;
+}
+
+.info h2{
+    color:white;
+    font-size:24px;
+    margin-bottom:6px;
+}
+
+.info p{
+    color:#cbd5e1;
+}
+
+.content{
+    padding:18px;
+}
+
+.email{
+    word-break:break-word;
+    overflow-wrap:anywhere;
+}
+
+/* Action Buttons */
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:16px;
+}
+
+.action-btn{
+    flex:1;
+    min-width:120px;
+    text-align:center;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.view{ background:#07245f; color:white; }
+.qr{ background:#06b6d4; color:white; }
+.delete{ background:#ef4444; color:white; }
+
+.action-btn:hover{
+    transform:translateY(-2px);
+}
 </style>
 
 </head>
-
 <body>
 
 <h1 class="title">FlexTech Dashboard</h1>
@@ -68,81 +203,92 @@ border-radius:14px;text-decoration:none;font-weight:700;cursor:pointer;transitio
 <button class="btn"
 style="max-width:220px;margin:0 auto 30px;display:block;"
 onclick="logout()">
-Logout
+    Logout
 </button>
 
+<!-- ============================
+     FORM SECTION
+============================= -->
 <div class="form">
 
-<div class="grid">
+    <div class="grid">
 
-<input class="input" id="id" placeholder="Client ID">
-<input class="input" id="name" placeholder="Full Name">
-<input class="input" id="role" placeholder="Job Title">
-<input class="input" id="company" placeholder="Company">
+        <input class="input" id="id" placeholder="Client ID">
+        <input class="input" id="name" placeholder="Full Name">
+        <input class="input" id="role" placeholder="Job Title">
+        <input class="input" id="company" placeholder="Company">
 
-<textarea class="input" id="bio" placeholder="Bio" style="min-height:120px"></textarea>
+        <textarea class="input" id="bio" placeholder="Bio" style="min-height:120px"></textarea>
 
-<input class="input" id="phone" placeholder="Mobile Phone">
-<input class="input" id="landline" placeholder="Landline Phone">
-<input class="input" id="extension" placeholder="Extension">
-<input class="input" id="email" placeholder="Email">
+        <input class="input" id="phone" placeholder="Mobile Phone">
+        <input class="input" id="landline" placeholder="Landline Phone">
+        <input class="input" id="extension" placeholder="Extension">
+        <input class="input" id="email" placeholder="Email">
 
-<input class="input" id="image" placeholder="Profile Image URL">
+        <input class="input" id="image" placeholder="Profile Image URL">
 
-<!-- ⭐ NEW: Header Background Image -->
-<input class="input" id="headerImage" placeholder="Header Background Image URL (اختياري)">
-<button class="btn" type="button" onclick="uploadHeaderImage()">Upload Header Image</button>
+        <!-- Header Background Image -->
+        <input class="input" id="headerImage" placeholder="Header Background Image URL (اختياري)">
+        <button class="btn" type="button" onclick="uploadHeaderImage()">Upload Header Image</button>
 
-<h3 class="section-title">Social Media</h3>
+        <h3 class="section-title">Social Media</h3>
 
-<input class="input" id="instagram" placeholder="Instagram Link">
-<input class="input" id="whatsapp" placeholder="WhatsApp Link">
-<input class="input" id="linkedin" placeholder="LinkedIn Link">
-<input class="input" id="facebook" placeholder="Facebook Link">
-<input class="input" id="tiktok" placeholder="TikTok Link">
-<input class="input" id="telegram" placeholder="Telegram Link">
+        <input class="input" id="instagram" placeholder="Instagram Link">
+        <input class="input" id="whatsapp" placeholder="WhatsApp Link">
+        <input class="input" id="linkedin" placeholder="LinkedIn Link">
+        <input class="input" id="facebook" placeholder="Facebook Link">
+        <input class="input" id="tiktok" placeholder="TikTok Link">
+        <input class="input" id="telegram" placeholder="Telegram Link">
 
-<input class="input" id="appLink" placeholder="App Download Link">
+        <input class="input" id="appLink" placeholder="App Download Link">
+
+    </div>
+
+    <button class="btn" onclick="addClient()">
+        <i class="fas fa-plus"></i> Save Client
+    </button>
 
 </div>
 
-<button class="btn" onclick="addClient()">
-<i class="fas fa-plus"></i> Save Client
-</button>
-
-</div>
-
+<!-- ============================
+     CLIENTS LIST
+============================= -->
 <div class="clients" id="clientsList"></div>
-
 <script type="module">
 
+/* ============================
+   Firebase Imports
+============================= */
 import {
-initializeApp
+    initializeApp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-doc,
-deleteDoc,
-updateDoc
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
-getAuth,
-onAuthStateChanged,
-signOut
+    getAuth,
+    onAuthStateChanged,
+    signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+/* ============================
+   Firebase Config
+============================= */
 const firebaseConfig = {
-apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
-authDomain: "flextech-2324d.firebaseapp.com",
-projectId: "flextech-2324d",
-storageBucket: "flextech-2324d.firebasestorage.app",
-messagingSenderId: "511190640221",
-appId: "1:511190640221:web:20701272956f01e22c0fb4"
+    apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+    authDomain: "flextech-2324d.firebaseapp.com",
+    projectId: "flextech-2324d",
+    storageBucket: "flextech-2324d.firebasestorage.app",
+    messagingSenderId: "511190640221",
+    appId: "1:511190640221:web:20701272956f01e22c0fb4"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -151,209 +297,237 @@ const auth = getAuth(app);
 
 let editingDocId = null;
 
-onAuthStateChanged(auth,(user)=>{
-if(!user){ window.location.href = "login.html"; }
+/* ============================
+   Auth Check
+============================= */
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        window.location.href = "login.html";
+    }
 });
 
-window.logout = async function(){
-await signOut(auth);
-window.location.href = "login.html";
+/* ============================
+   Logout
+============================= */
+window.logout = async function () {
+    await signOut(auth);
+    window.location.href = "login.html";
 };
 
-window.addClient = async function(){
+/* ============================
+   Add / Update Client
+============================= */
+window.addClient = async function () {
 
-const cleanId = document.getElementById("id").value.trim().toLowerCase().replace(/\s+/g,"-");
+    const cleanId = document.getElementById("id").value.trim().toLowerCase().replace(/\s+/g, "-");
 
-if(!cleanId){
-alert("Client ID Required");
-return;
-}
+    if (!cleanId) {
+        alert("Client ID Required");
+        return;
+    }
 
-const client = {
-id: cleanId,
-name: document.getElementById("name").value || "",
-role: document.getElementById("role").value || "",
-company: document.getElementById("company").value || "",
-bio: document.getElementById("bio").value || "",
-phone: document.getElementById("phone").value || "",
-landline: document.getElementById("landline").value || "",
-extension: document.getElementById("extension").value || "",
-email: document.getElementById("email").value || "",
-image: document.getElementById("image").value || "",
+    const client = {
+        id: cleanId,
+        name: document.getElementById("name").value || "",
+        role: document.getElementById("role").value || "",
+        company: document.getElementById("company").value || "",
+        bio: document.getElementById("bio").value || "",
+        phone: document.getElementById("phone").value || "",
+        landline: document.getElementById("landline").value || "",
+        extension: document.getElementById("extension").value || "",
+        email: document.getElementById("email").value || "",
+        image: document.getElementById("image").value || "",
+        headerImage: document.getElementById("headerImage").value || "",
 
-/* ⭐ NEW: Header Background Image */
-headerImage: document.getElementById("headerImage").value || "",
+        socials: {
+            instagram: document.getElementById("instagram").value || "",
+            whatsapp: document.getElementById("whatsapp").value || "",
+            linkedin: document.getElementById("linkedin").value || "",
+            facebook: document.getElementById("facebook").value || "",
+            tiktok: document.getElementById("tiktok").value || "",
+            telegram: document.getElementById("telegram").value || "",
+            appLink: document.getElementById("appLink").value || ""
+        }
+    };
 
-socials:{
-instagram: document.getElementById("instagram").value || "",
-whatsapp: document.getElementById("whatsapp").value || "",
-linkedin: document.getElementById("linkedin").value || "",
-facebook: document.getElementById("facebook").value || "",
-tiktok: document.getElementById("tiktok").value || "",
-telegram: document.getElementById("telegram").value || "",
-appLink: document.getElementById("appLink").value || ""
-}
+    if (editingDocId) {
+        await updateDoc(doc(db, "clients", editingDocId), client);
+        alert("Client Updated ✅");
+        editingDocId = null;
+    } else {
+        await addDoc(collection(db, "clients"), client);
+        alert("Client Added 🔥");
+    }
+
+    document.querySelectorAll(".input").forEach(input => input.value = "");
+    loadClients();
 };
 
-if(editingDocId){
-await updateDoc(doc(db,"clients",editingDocId), client);
-alert("Client Updated ✅");
-editingDocId = null;
-}else{
-await addDoc(collection(db,"clients"), client);
-alert("Client Added 🔥");
+/* ============================
+   Load Clients
+============================= */
+async function loadClients() {
+
+    const querySnapshot = await getDocs(collection(db, "clients"));
+    let html = "";
+
+    querySnapshot.forEach((documentItem) => {
+
+        const client = documentItem.data();
+
+        const link = `clients/template.html?id=${encodeURIComponent(client.id)}`;
+
+        /* ⭐ FIXED QR CODE — now uses appLink */
+        const qr = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${
+            encodeURIComponent(client.socials?.appLink || "")
+        }`;
+
+        html += `
+        <div class="client-card">
+
+            <div class="top">
+                <img src="${client.image || ""}">
+                <div class="info">
+                    <h2>${client.name || ""}</h2>
+                    <p>${client.role || ""}</p>
+                </div>
+            </div>
+
+            <div class="content">
+
+                <p class="email">${client.email || ""}</p>
+                <p>Visits: ${client.visits || 0}</p>
+                <p>Last Visit: ${client.lastVisit || "—"}</p>
+
+                ${client.socials?.appLink ? `
+                <p style="margin-top:10px;font-weight:700;">
+                    <span class="material-symbols-outlined" 
+                    style="vertical-align:middle;font-size:22px;color:#2563eb;">apk_install</span>
+                    <a href="${client.socials.appLink}" target="_blank">Download App</a>
+                </p>
+                ` : ""}
+
+                <div class="actions">
+
+                    <a class="action-btn view" target="_blank" href="${link}">View</a>
+
+                    <a class="action-btn qr" target="_blank" href="${qr}">QR</a>
+
+                    <button class="action-btn view"
+                        onclick='editClient(
+                            ${JSON.stringify(documentItem.id)},
+                            ${JSON.stringify(client.id || "")},
+                            ${JSON.stringify(client.name || "")},
+                            ${JSON.stringify(client.role || "")},
+                            ${JSON.stringify(client.company || "")},
+                            ${JSON.stringify(client.bio || "")},
+                            ${JSON.stringify(client.phone || "")},
+                            ${JSON.stringify(client.landline || "")},
+                            ${JSON.stringify(client.extension || "")},
+                            ${JSON.stringify(client.email || "")},
+                            ${JSON.stringify(client.image || "")},
+                            ${JSON.stringify(client.headerImage || "")},
+                            ${JSON.stringify(client.socials?.instagram || "")},
+                            ${JSON.stringify(client.socials?.whatsapp || "")},
+                            ${JSON.stringify(client.socials?.linkedin || "")},
+                            ${JSON.stringify(client.socials?.facebook || "")},
+                            ${JSON.stringify(client.socials?.tiktok || "")},
+                            ${JSON.stringify(client.socials?.telegram || "")},
+                            ${JSON.stringify(client.socials?.appLink || "")}
+                        )'>
+                        Edit
+                    </button>
+
+                    <button class="action-btn delete"
+                        onclick="deleteClient('${documentItem.id}')">
+                        Delete
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        `;
+    });
+
+    document.getElementById("clientsList").innerHTML = html;
 }
 
-document.querySelectorAll(".input").forEach(input=> input.value = "");
+/* ============================
+   Edit Client
+============================= */
+window.editClient = function (
+    docId,
+    id,
+    name,
+    role,
+    company,
+    bio,
+    phone,
+    landline,
+    extension,
+    email,
+    image,
+    headerImage,
+    instagram,
+    whatsapp,
+    linkedin,
+    facebook,
+    tiktok,
+    telegram,
+    appLink
+) {
+
+    editingDocId = docId;
+
+    document.getElementById("id").value = id || "";
+    document.getElementById("name").value = name || "";
+    document.getElementById("role").value = role || "";
+    document.getElementById("company").value = company || "";
+    document.getElementById("bio").value = bio || "";
+    document.getElementById("phone").value = phone || "";
+    document.getElementById("landline").value = landline || "";
+    document.getElementById("extension").value = extension || "";
+    document.getElementById("email").value = email || "";
+    document.getElementById("image").value = image || "";
+    document.getElementById("headerImage").value = headerImage || "";
+
+    document.getElementById("instagram").value = instagram || "";
+    document.getElementById("whatsapp").value = whatsapp || "";
+    document.getElementById("linkedin").value = linkedin || "";
+    document.getElementById("facebook").value = facebook || "";
+    document.getElementById("tiktok").value = tiktok || "";
+    document.getElementById("telegram").value = telegram || "";
+    document.getElementById("appLink").value = appLink || "";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+/* ============================
+   Delete Client
+============================= */
+window.deleteClient = async function (docId) {
+    if (confirm("Delete this client?")) {
+        await deleteDoc(doc(db, "clients", docId));
+        loadClients();
+    }
+};
+
+/* ============================
+   Load Clients on Start
+============================= */
 loadClients();
-};
 
-async function loadClients(){
-
-const querySnapshot = await getDocs(collection(db,"clients"));
-let html = "";
-
-querySnapshot.forEach((documentItem)=>{
-
-const client = documentItem.data();
-
-const link = `clients/template.html?id=${encodeURIComponent(client.id)}`;
-
-const qr = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(window.location.origin + "/" + link)}`;
-
-html += `
-<div class="client-card">
-<div class="top">
-<img src="${client.image || ""}">
-<div class="info">
-<h2>${client.name || ""}</h2>
-<p>${client.role || ""}</p>
-</div>
-</div>
-
-<div class="content">
-<p class="email">${client.email || ""}</p>
-
-<p>Visits: ${client.visits || 0}</p>
-<p>Last Visit: ${client.lastVisit || "—"}</p>
-
-${client.socials?.appLink ? `
-<p style="margin-top:10px;font-weight:700;">
-<span class="material-symbols-outlined" style="vertical-align:middle;font-size:22px;color:#2563eb;">apk_install</span>
- <a href="${client.socials.appLink}" target="_blank">Download App</a>
-</p>
-` : ""}
-
-<div class="actions">
-
-<a class="action-btn view" target="_blank" href="${link}">View</a>
-
-<a class="action-btn qr" target="_blank" href="${qr}">QR</a>
-
-<button class="action-btn view"
-onclick='editClient(
-${JSON.stringify(documentItem.id)},
-${JSON.stringify(client.id || "")},
-${JSON.stringify(client.name || "")},
-${JSON.stringify(client.role || "")},
-${JSON.stringify(client.company || "")},
-${JSON.stringify(client.bio || "")},
-${JSON.stringify(client.phone || "")},
-${JSON.stringify(client.landline || "")},
-${JSON.stringify(client.extension || "")},
-${JSON.stringify(client.email || "")},
-${JSON.stringify(client.image || "")},
-${JSON.stringify(client.headerImage || "")},
-${JSON.stringify(client.socials?.instagram || "")},
-${JSON.stringify(client.socials?.whatsapp || "")},
-${JSON.stringify(client.socials?.linkedin || "")},
-${JSON.stringify(client.socials?.facebook || "")},
-${JSON.stringify(client.socials?.tiktok || "")},
-${JSON.stringify(client.socials?.telegram || "")},
-${JSON.stringify(client.socials?.appLink || "")}
-)'>
-Edit
-</button>
-
-<button class="action-btn delete"
-onclick="deleteClient('${documentItem.id}')">
-Delete
-</button>
-
-</div>
-</div>
-</div>
-`;
-});
-
-document.getElementById("clientsList").innerHTML = html;
-}
-
-window.editClient = function(
-docId,
-id,
-name,
-role,
-company,
-bio,
-phone,
-landline,
-extension,
-email,
-image,
-headerImage,
-instagram,
-whatsapp,
-linkedin,
-facebook,
-tiktok,
-telegram,
-appLink
-){
-
-editingDocId = docId;
-
-document.getElementById("id").value = id || "";
-document.getElementById("name").value = name || "";
-document.getElementById("role").value = role || "";
-document.getElementById("company").value = company || "";
-document.getElementById("bio").value = bio || "";
-document.getElementById("phone").value = phone || "";
-document.getElementById("landline").value = landline || "";
-document.getElementById("extension").value = extension || "";
-document.getElementById("email").value = email || "";
-document.getElementById("image").value = image || "";
-
-/* ⭐ NEW: Load header background image */
-document.getElementById("headerImage").value = headerImage || "";
-
-document.getElementById("instagram").value = instagram || "";
-document.getElementById("whatsapp").value = whatsapp || "";
-document.getElementById("linkedin").value = linkedin || "";
-document.getElementById("facebook").value = facebook || "";
-document.getElementById("tiktok").value = tiktok || "";
-document.getElementById("telegram").value = telegram || "";
-document.getElementById("appLink").value = appLink || "";
-
-window.scrollTo({top:0,behavior:"smooth"});
-};
-
-window.deleteClient = async function(docId){
-if(confirm("Delete this client?")){
-await deleteDoc(doc(db,"clients",docId));
-loadClients();
-}
-};
-
-loadClients();
-
-/* ⭐ NEW: Upload Header Image to Imgur */
+/* ============================
+   Upload Header Image (Imgur)
+============================= */
 window.uploadHeaderImage = function () {
+
     const input = document.createElement("input");
     input.type = "file";
     input.accept = "image/*";
 
     input.onchange = async () => {
+
         const file = input.files[0];
         if (!file) return;
 
@@ -363,7 +537,7 @@ window.uploadHeaderImage = function () {
         const res = await fetch("https://api.imgur.com/3/image", {
             method: "POST",
             headers: {
-                Authorization: "Client-ID xxxxxxxxx" /* ضع نفس Client-ID المستخدم لصورة البروفايل */
+                Authorization: "Client-ID xxxxxxxxx"
             },
             body: formData
         });
@@ -382,6 +556,3 @@ window.uploadHeaderImage = function () {
 };
 
 </script>
-
-</body>
-</html>
