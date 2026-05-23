@@ -424,6 +424,11 @@ let socialsHTML = "";
 
 if (client.socials && typeof client.socials === "object") {
 
+  // ⭐ الحل الدائم: تحويل appLink إلى socials.app تلقائيًا
+  if (client.appLink) {
+    client.socials.app = client.appLink;
+  }
+
   const map = {
     instagram: { cls: "instagram", icon: "fab fa-instagram" },
     whatsapp: { cls: "whatsapp", icon: "fab fa-whatsapp" },
@@ -436,21 +441,12 @@ if (client.socials && typeof client.socials === "object") {
     app: { cls: "app", icon: "fab fa-android" }
   };
 
-  console.log("🔍 DEBUG: Socials object received:", client.socials);
-
   for (let key in map) {
-
-    console.log(`🔎 DEBUG: Checking key "${key}" →`, client.socials[key]);
-
-    // ⭐ يظهر فقط إذا القيمة موجودة وغير فارغة
     if (client.socials[key] && client.socials[key].trim() !== "") {
-
       socialsHTML += `
         <a class="social ${map[key].cls}" href="${client.socials[key]}" target="_blank">
           <i class="${map[key].icon}"></i>
         </a>`;
-
-      console.log(`✅ DEBUG: Added icon for "${key}"`);
     }
   }
 }
