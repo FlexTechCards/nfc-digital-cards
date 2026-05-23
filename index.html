@@ -86,7 +86,12 @@ Logout
 <input class="input" id="landline" placeholder="Landline Phone">
 <input class="input" id="extension" placeholder="Extension">
 <input class="input" id="email" placeholder="Email">
+
 <input class="input" id="image" placeholder="Profile Image URL">
+
+<!-- ⭐ NEW: Header Background Image -->
+<input class="input" id="headerImage" placeholder="Header Background Image URL (اختياري)">
+<button class="btn" type="button" onclick="uploadHeaderImage()">Upload Header Image</button>
 
 <h3 class="section-title">Social Media</h3>
 
@@ -171,13 +176,13 @@ role: document.getElementById("role").value || "",
 company: document.getElementById("company").value || "",
 bio: document.getElementById("bio").value || "",
 phone: document.getElementById("phone").value || "",
-
-/* 🔥 تم إصلاح المشكلة هنا */
 landline: document.getElementById("landline").value || "",
-
 extension: document.getElementById("extension").value || "",
 email: document.getElementById("email").value || "",
 image: document.getElementById("image").value || "",
+
+/* ⭐ NEW: Header Background Image */
+headerImage: document.getElementById("headerImage").value || "",
 
 socials:{
 instagram: document.getElementById("instagram").value || "",
@@ -258,6 +263,7 @@ ${JSON.stringify(client.landline || "")},
 ${JSON.stringify(client.extension || "")},
 ${JSON.stringify(client.email || "")},
 ${JSON.stringify(client.image || "")},
+${JSON.stringify(client.headerImage || "")},
 ${JSON.stringify(client.socials?.instagram || "")},
 ${JSON.stringify(client.socials?.whatsapp || "")},
 ${JSON.stringify(client.socials?.linkedin || "")},
@@ -295,6 +301,7 @@ landline,
 extension,
 email,
 image,
+headerImage,
 instagram,
 whatsapp,
 linkedin,
@@ -317,6 +324,9 @@ document.getElementById("extension").value = extension || "";
 document.getElementById("email").value = email || "";
 document.getElementById("image").value = image || "";
 
+/* ⭐ NEW: Load header background image */
+document.getElementById("headerImage").value = headerImage || "";
+
 document.getElementById("instagram").value = instagram || "";
 document.getElementById("whatsapp").value = whatsapp || "";
 document.getElementById("linkedin").value = linkedin || "";
@@ -336,6 +346,40 @@ loadClients();
 };
 
 loadClients();
+
+/* ⭐ NEW: Upload Header Image to Imgur */
+window.uploadHeaderImage = function () {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+
+    input.onchange = async () => {
+        const file = input.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        const res = await fetch("https://api.imgur.com/3/image", {
+            method: "POST",
+            headers: {
+                Authorization: "Client-ID xxxxxxxxx" /* ضع نفس Client-ID المستخدم لصورة البروفايل */
+            },
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            document.getElementById("headerImage").value = data.data.link;
+            alert("تم رفع صورة الهيدر بنجاح");
+        } else {
+            alert("فشل رفع الصورة");
+        }
+    };
+
+    input.click();
+};
 
 </script>
 
