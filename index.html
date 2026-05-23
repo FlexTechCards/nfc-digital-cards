@@ -375,13 +375,22 @@ async function loadClients() {
 
         const client = documentItem.data();
 
-        const link = `clients/template.html?id=${encodeURIComponent(client.id)}`;
+        /* ============================
+           FIXED QR — ALWAYS CLIENT PAGE
+        ============================= */
 
-        /* ⭐ FIXED QR CODE — now uses appLink */
-        const qrData = `${window.location.origin}/clients/template.html?id=${encodeURIComponent(client.id)}`;
-const qr = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qrData)}`;
+        // استخدم دومينك الحقيقي هنا إذا كنت مستضيف الموقع
+        const BASE_URL = window.location.origin.startsWith("http")
+            ? window.location.origin
+            : "https://flextech-2324d.web.app";  // ضع دومينك هنا
 
+        const qrData = `${BASE_URL}/clients/template.html?id=${encodeURIComponent(client.id)}`;
+
+        const qr = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${
+            encodeURIComponent(qrData)
         }`;
+
+        const link = `clients/template.html?id=${encodeURIComponent(client.id)}`;
 
         html += `
         <div class="client-card">
