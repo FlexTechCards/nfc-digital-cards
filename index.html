@@ -378,8 +378,9 @@ async function loadClients() {
         const link = `clients/template.html?id=${encodeURIComponent(client.id)}`;
 
         /* ⭐ FIXED QR CODE — now uses appLink */
-        const qr = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${
-            encodeURIComponent(client.socials?.appLink || "")
+        const qrData = `${window.location.origin}/clients/template.html?id=${encodeURIComponent(client.id)}`;
+const qr = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qrData)}`;
+
         }`;
 
         html += `
