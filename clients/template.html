@@ -198,7 +198,7 @@
     .facebook{background:#1877f2;}
     .telegram{background:#229ED9;}
     .app{background:#0ea5e9;}
-
+    .wechat {background: #09b83e;}
     .actions{
       display:flex;
       flex-direction:column;
@@ -283,6 +283,17 @@
     <div class="contact">
 
       <a id="phoneLink" class="contact-box">
+        <a id="phone2Link" class="contact-box">
+  <div class="contact-left">
+    <div class="icon"><i class="fas fa-phone"></i></div>
+    <div class="contact-text">
+      <div class="label">Mobile 2</div>
+      <div id="phone2" class="value"></div>
+    </div>
+  </div>
+  <div class="arrow"><i class="fas fa-angle-right"></i></div>
+</a>
+
         <div class="contact-left">
           <div class="icon"><i class="fas fa-phone"></i></div>
           <div class="contact-text">
@@ -405,6 +416,12 @@
       $("company").innerHTML = client.company || "";
       $("bio").innerHTML = client.bio || "";
       $("phone").innerHTML = client.phone || "";
+      $("phone2").innerHTML = client.phone2 || "";
+      $("phone2Link").href = client.phone2 ? `tel:${client.phone2}` : "#";
+   if (!client.phone2) {
+  $("phone2Link").style.display = "none";
+}
+
       $("email").innerHTML = client.email || "";
       $("profileImage").src = client.image || "";
 
@@ -429,15 +446,22 @@
         client.appLink ||
         "";
 
-      const map = {
-        instagram: { cls: "instagram", icon: "fab fa-instagram" },
-        whatsapp: { cls: "whatsapp", icon: "fab fa-whatsapp" },
-        linkedin: { cls: "linkedin", icon: "fab fa-linkedin-in" },
-        tiktok: { cls: "tiktok", icon: "fab fa-tiktok" },
-        facebook: { cls: "facebook", icon: "fab fa-facebook-f" },
-        telegram: { cls: "telegram", icon: "fab fa-telegram" },
-        app: { cls: "app", icon: "fab fa-android" }
-      };
+     const map = {
+  instagram:  { cls: "instagram", icon: "fab fa-instagram" },
+  instagram2: { cls: "instagram", icon: "fab fa-instagram" },
+
+  facebook:   { cls: "facebook", icon: "fab fa-facebook-f" },
+  facebook2:  { cls: "facebook", icon: "fab fa-facebook-f" },
+
+  wechat:     { cls: "wechat", icon: "fab fa-weixin" },
+
+  whatsapp:   { cls: "whatsapp", icon: "fab fa-whatsapp" },
+  linkedin:   { cls: "linkedin", icon: "fab fa-linkedin-in" },
+  tiktok:     { cls: "tiktok", icon: "fab fa-tiktok" },
+  telegram:   { cls: "telegram", icon: "fab fa-telegram" },
+  app:        { cls: "app", icon: "fab fa-android" }
+};
+
 
       const socialsList = [];
 
