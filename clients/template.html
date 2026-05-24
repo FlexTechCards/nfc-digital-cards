@@ -9,11 +9,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
 
     body{
       font-family:system-ui,-apple-system,Segoe UI,Roboto;
@@ -58,8 +54,6 @@
       object-fit:cover;
       border:6px solid rgba(255,255,255,.98);
       box-shadow:0 15px 35px rgba(0,0,0,.38);
-      position:relative;
-      top:0;
     }
 
     .info{flex:1;}
@@ -142,28 +136,18 @@
       box-shadow:0 8px 18px rgba(0,0,0,.15);
     }
 
-    .contact-text{
-      display:flex;
-      flex-direction:column;
-    }
+    .contact-text{display:flex;flex-direction:column;}
 
-    .label{
-      font-size:13px;
-      color:#64748b;
-    }
+    .label{font-size:13px;color:#64748b;}
 
     .value{
       font-size:16px;
       font-weight:800;
       color:#0f172a;
       word-break:break-all;
-      white-space:normal;
     }
 
-    .arrow{
-      color:#64748b;
-      font-size:20px;
-    }
+    .arrow{color:#64748b;font-size:20px;}
 
     .socials{
       display:flex;
@@ -187,9 +171,7 @@
       box-shadow:0 10px 20px rgba(0,0,0,.15);
     }
 
-    .social:hover{
-      transform:translateY(-5px) scale(1.04);
-    }
+    .social:hover{transform:translateY(-5px) scale(1.04);}
 
     .instagram{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);}
     .whatsapp{background:#22c55e;}
@@ -198,12 +180,9 @@
     .facebook{background:#1877f2;}
     .telegram{background:#229ED9;}
     .app{background:#0ea5e9;}
-    .wechat {background: #09b83e;}
-    .actions{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
+    .wechat{background:#09b83e;}
+
+    .actions{display:flex;flex-direction:column;gap:12px;}
 
     .btn{
       border:none;
@@ -219,19 +198,10 @@
       transition:.25s;
     }
 
-    .primary{
-      background:linear-gradient(145deg,#02142f,#07245f);
-      color:white;
-    }
+    .primary{background:linear-gradient(145deg,#02142f,#07245f);color:white;}
+    .secondary{background:linear-gradient(145deg,#eef2ff,#dbe7ff);color:#173a7a;}
 
-    .secondary{
-      background:linear-gradient(145deg,#eef2ff,#dbe7ff);
-      color:#173a7a;
-    }
-
-    .btn:hover{
-      transform:scale(1.02);
-    }
+    .btn:hover{transform:scale(1.02);}
 
     .footer{
       margin-top:14px;
@@ -245,19 +215,9 @@
       transition:.25s;
     }
 
-    .footer:hover{
-      transform:scale(1.02);
-    }
-
-    .created{
-      color:#64748b;
-      font-size:15px;
-    }
-
-    .footer img{
-      width:110px;
-      object-fit:contain;
-    }
+    .footer:hover{transform:scale(1.02);}
+    .created{color:#64748b;font-size:15px;}
+    .footer img{width:110px;object-fit:contain;}
   </style>
 </head>
 
@@ -282,18 +242,8 @@
 
     <div class="contact">
 
+      <!-- Mobile -->
       <a id="phoneLink" class="contact-box">
-        <a id="phone2Link" class="contact-box">
-  <div class="contact-left">
-    <div class="icon"><i class="fas fa-phone"></i></div>
-    <div class="contact-text">
-      <div class="label">Mobile 2</div>
-      <div id="phone2" class="value"></div>
-    </div>
-  </div>
-  <div class="arrow"><i class="fas fa-angle-right"></i></div>
-</a>
-
         <div class="contact-left">
           <div class="icon"><i class="fas fa-phone"></i></div>
           <div class="contact-text">
@@ -304,6 +254,19 @@
         <div class="arrow"><i class="fas fa-angle-right"></i></div>
       </a>
 
+      <!-- Mobile 2 -->
+      <a id="phone2Link" class="contact-box">
+        <div class="contact-left">
+          <div class="icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-text">
+            <div class="label">Mobile 2</div>
+            <div id="phone2" class="value"></div>
+          </div>
+        </div>
+        <div class="arrow"><i class="fas fa-angle-right"></i></div>
+      </a>
+
+      <!-- Email -->
       <a id="emailLink" class="contact-box">
         <div class="contact-left">
           <div class="icon"><i class="fas fa-envelope"></i></div>
@@ -315,6 +278,7 @@
         <div class="arrow"><i class="fas fa-angle-right"></i></div>
       </a>
 
+      <!-- Landline -->
       <a id="landlineLink" class="contact-box">
         <div class="contact-left">
           <div class="icon"><i class="fas fa-building"></i></div>
@@ -392,42 +356,40 @@
       const docRef = querySnapshot.docs[0].ref;
       const client = querySnapshot.docs[0].data();
 
-      // ⭐ تطبيق خلفية الهيدر
+      // ⭐ Header background
       const headerEl = document.querySelector(".header");
-      if (headerEl) {
-        if (client.headerImage && typeof client.headerImage === "string" && client.headerImage.trim() !== "") {
-          headerEl.style.backgroundImage = `url('${client.headerImage}')`;
-          headerEl.style.backgroundSize = "cover";
-          headerEl.style.backgroundPosition = "center";
-          headerEl.style.backgroundRepeat = "no-repeat";
-        } else {
-          headerEl.style.background = "#010f2d";
-        }
+      if (client.headerImage && client.headerImage.trim() !== "") {
+        headerEl.style.backgroundImage = `url('${client.headerImage}')`;
+        headerEl.style.backgroundSize = "cover";
+        headerEl.style.backgroundPosition = "center";
       }
 
+      // ⭐ Visits
       await updateDoc(docRef, {
-  visits: increment(1),
-  lastVisit: new Date().toISOString()
-});
+        visits: increment(1),
+        lastVisit: new Date().toISOString()
+      });
 
-
+      // ⭐ Basic info
       $("name").innerHTML = client.name || "";
       $("role").innerHTML = client.role || "";
       $("company").innerHTML = client.company || "";
       $("bio").innerHTML = client.bio || "";
-      $("phone").innerHTML = client.phone || "";
-      $("phone2").innerHTML = client.phone2 || "";
-      $("phone2Link").href = client.phone2 ? `tel:${client.phone2}` : "#";
-   if (!client.phone2) {
-  $("phone2Link").style.display = "none";
-}
-
-      $("email").innerHTML = client.email || "";
       $("profileImage").src = client.image || "";
 
+      // ⭐ Phones
+      $("phone").innerHTML = client.phone || "";
       $("phoneLink").href = client.phone ? `tel:${client.phone}` : "#";
+
+      $("phone2").innerHTML = client.phone2 || "";
+      $("phone2Link").href = client.phone2 ? `tel:${client.phone2}` : "#";
+      if (!client.phone2) $("phone2Link").style.display = "none";
+
+      // ⭐ Email
+      $("email").innerHTML = client.email || "";
       $("emailLink").href = client.email ? `mailto:${client.email}` : "#";
 
+      // ⭐ Landline
       if (client.landline) {
         $("landline").innerHTML =
           client.extension
@@ -438,6 +400,7 @@
         $("landlineLink").style.display = "none";
       }
 
+      // ⭐ Socials
       client.socials = client.socials || {};
 
       client.socials.app =
@@ -446,22 +409,21 @@
         client.appLink ||
         "";
 
-     const map = {
-  instagram:  { cls: "instagram", icon: "fab fa-instagram" },
-  instagram2: { cls: "instagram", icon: "fab fa-instagram" },
+      const map = {
+        instagram:  { cls: "instagram", icon: "fab fa-instagram" },
+        instagram2: { cls: "instagram", icon: "fab fa-instagram" },
 
-  facebook:   { cls: "facebook", icon: "fab fa-facebook-f" },
-  facebook2:  { cls: "facebook", icon: "fab fa-facebook-f" },
+        facebook:   { cls: "facebook", icon: "fab fa-facebook-f" },
+        facebook2:  { cls: "facebook", icon: "fab fa-facebook-f" },
 
-  wechat:     { cls: "wechat", icon: "fab fa-weixin" },
+        wechat:     { cls: "wechat", icon: "fab fa-weixin" },
 
-  whatsapp:   { cls: "whatsapp", icon: "fab fa-whatsapp" },
-  linkedin:   { cls: "linkedin", icon: "fab fa-linkedin-in" },
-  tiktok:     { cls: "tiktok", icon: "fab fa-tiktok" },
-  telegram:   { cls: "telegram", icon: "fab fa-telegram" },
-  app:        { cls: "app", icon: "fab fa-android" }
-};
-
+        whatsapp:   { cls: "whatsapp", icon: "fab fa-whatsapp" },
+        linkedin:   { cls: "linkedin", icon: "fab fa-linkedin-in" },
+        tiktok:     { cls: "tiktok", icon: "fab fa-tiktok" },
+        telegram:   { cls: "telegram", icon: "fab fa-telegram" },
+        app:        { cls: "app", icon: "fab fa-android" }
+      };
 
       const socialsList = [];
 
@@ -479,7 +441,6 @@
       $("socials").innerHTML = socialsList.join("");
 
     } catch (error) {
-      console.error(error);
       document.body.innerHTML = `
         <div style="color:white;text-align:center;margin-top:40px;font-size:22px;">
           Error Loading Card ❌<br><br>${error}
@@ -489,6 +450,7 @@
 
   loadClient();
 
+  // ⭐ Share
   window.shareCard = function () {
     const name = $("name")?.innerText || "FlexTech Digital Card";
     if (navigator.share) {
@@ -502,20 +464,25 @@
     }
   };
 
+  // ⭐ Save Contact
   window.saveContact = function () {
     const name = $("name").innerText;
     const phone = $("phone").innerText;
+    const phone2 = $("phone2").innerText;
     const email = $("email").innerText;
 
-    const vcf = [
+    const vcfLines = [
       "BEGIN:VCARD",
       "VERSION:3.0",
       `N;CHARSET=UTF-8:${name}`,
       `FN;CHARSET=UTF-8:${name}`,
-      `TEL;TYPE=CELL:${phone}`,
-      `EMAIL;CHARSET=UTF-8:${email}`,
+      phone ? `TEL;TYPE=CELL:${phone}` : "",
+      phone2 ? `TEL;TYPE=CELL:${phone2}` : "",
+      email ? `EMAIL;CHARSET=UTF-8:${email}` : "",
       "END:VCARD"
-    ].join("\n");
+    ].filter(Boolean);
+
+    const vcf = vcfLines.join("\n");
 
     const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
     const link = document.createElement("a");
@@ -524,5 +491,6 @@
     link.click();
   };
 </script>
+
 </body>
 </html>
