@@ -8,7 +8,6 @@
 
 <title>FlexTech Dashboard</title>
 
-<!-- Icons -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
@@ -30,7 +29,6 @@ body{
     color:white;
 }
 
-/* Titles */
 .title{
     text-align:center;
     font-size:38px;
@@ -44,7 +42,6 @@ body{
     margin-bottom:30px;
 }
 
-/* Buttons */
 .btn{
     width:100%;
     margin-top:18px;
@@ -63,7 +60,6 @@ body{
     transform:scale(1.02);
 }
 
-/* Form */
 .form{
     max-width:700px;
     margin:auto;
@@ -109,7 +105,6 @@ body{
     color:#38bdf8;
 }
 
-/* Clients Grid */
 .clients{
     max-width:1100px;
     margin:auto;
@@ -118,7 +113,6 @@ body{
     gap:20px;
 }
 
-/* Client Card */
 .client-card{
     background:white;
     border-radius:26px;
@@ -164,7 +158,6 @@ body{
     overflow-wrap:anywhere;
 }
 
-/* Action Buttons */
 .actions{
     display:flex;
     flex-wrap:wrap;
@@ -206,9 +199,6 @@ onclick="logout()">
     Logout
 </button>
 
-<!-- ============================
-     FORM SECTION
-============================= -->
 <div class="form">
 
     <div class="grid">
@@ -221,24 +211,32 @@ onclick="logout()">
         <textarea class="input" id="bio" placeholder="Bio" style="min-height:120px"></textarea>
 
         <input class="input" id="phone" placeholder="Mobile Phone">
+        <input class="input" id="phone2" placeholder="Mobile Phone 2">
+
         <input class="input" id="landline" placeholder="Landline Phone">
         <input class="input" id="extension" placeholder="Extension">
         <input class="input" id="email" placeholder="Email">
 
         <input class="input" id="image" placeholder="Profile Image URL">
 
-        <!-- Header Background Image -->
         <input class="input" id="headerImage" placeholder="Header Background Image URL (اختياري)">
         <button class="btn" type="button" onclick="uploadHeaderImage()">Upload Header Image</button>
 
         <h3 class="section-title">Social Media</h3>
 
         <input class="input" id="instagram" placeholder="Instagram Link">
+        <input class="input" id="instagram2" placeholder="Instagram 2 Link">
+
         <input class="input" id="whatsapp" placeholder="WhatsApp Link">
         <input class="input" id="linkedin" placeholder="LinkedIn Link">
+
         <input class="input" id="facebook" placeholder="Facebook Link">
+        <input class="input" id="facebook2" placeholder="Facebook 2 Link">
+
         <input class="input" id="tiktok" placeholder="TikTok Link">
         <input class="input" id="telegram" placeholder="Telegram Link">
+
+        <input class="input" id="wechat" placeholder="WeChat Link">
 
         <input class="input" id="appLink" placeholder="App Download Link">
 
@@ -250,15 +248,10 @@ onclick="logout()">
 
 </div>
 
-<!-- ============================
-     CLIENTS LIST
-============================= -->
 <div class="clients" id="clientsList"></div>
+
 <script type="module">
 
-/* ============================
-   Firebase Imports
-============================= */
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -279,9 +272,6 @@ import {
     signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-/* ============================
-   Firebase Config
-============================= */
 const firebaseConfig = {
     apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
     authDomain: "flextech-2324d.firebaseapp.com",
@@ -297,18 +287,12 @@ const auth = getAuth(app);
 
 let editingDocId = null;
 
-/* ============================
-   Auth Check
-============================= */
 onAuthStateChanged(auth, (user) => {
     if (!user) {
         window.location.href = "login.html";
     }
 });
 
-/* ============================
-   Logout
-============================= */
 window.logout = async function () {
     await signOut(auth);
     window.location.href = "login.html";
@@ -333,6 +317,7 @@ window.addClient = async function () {
         company: document.getElementById("company").value || "",
         bio: document.getElementById("bio").value || "",
         phone: document.getElementById("phone").value || "",
+        phone2: document.getElementById("phone2").value || "",
         landline: document.getElementById("landline").value || "",
         extension: document.getElementById("extension").value || "",
         email: document.getElementById("email").value || "",
@@ -341,11 +326,14 @@ window.addClient = async function () {
 
         socials: {
             instagram: document.getElementById("instagram").value || "",
+            instagram2: document.getElementById("instagram2").value || "",
             whatsapp: document.getElementById("whatsapp").value || "",
             linkedin: document.getElementById("linkedin").value || "",
             facebook: document.getElementById("facebook").value || "",
+            facebook2: document.getElementById("facebook2").value || "",
             tiktok: document.getElementById("tiktok").value || "",
             telegram: document.getElementById("telegram").value || "",
+            wechat: document.getElementById("wechat").value || "",
             appLink: document.getElementById("appLink").value || ""
         }
     };
@@ -374,10 +362,6 @@ async function loadClients() {
     querySnapshot.forEach((documentItem) => {
 
         const client = documentItem.data();
-
-        /* ============================
-           FIXED QR — CLIENT PAGE ONLY
-        ============================= */
 
         const BASE_URL = "https://flextechcards.github.io/nfc-digital-cards";
 
@@ -429,17 +413,22 @@ async function loadClients() {
                             ${JSON.stringify(client.company || "")},
                             ${JSON.stringify(client.bio || "")},
                             ${JSON.stringify(client.phone || "")},
+                            ${JSON.stringify(client.phone2 || "")},
                             ${JSON.stringify(client.landline || "")},
                             ${JSON.stringify(client.extension || "")},
                             ${JSON.stringify(client.email || "")},
                             ${JSON.stringify(client.image || "")},
                             ${JSON.stringify(client.headerImage || "")},
+
                             ${JSON.stringify(client.socials?.instagram || "")},
+                            ${JSON.stringify(client.socials?.instagram2 || "")},
                             ${JSON.stringify(client.socials?.whatsapp || "")},
                             ${JSON.stringify(client.socials?.linkedin || "")},
                             ${JSON.stringify(client.socials?.facebook || "")},
+                            ${JSON.stringify(client.socials?.facebook2 || "")},
                             ${JSON.stringify(client.socials?.tiktok || "")},
                             ${JSON.stringify(client.socials?.telegram || "")},
+                            ${JSON.stringify(client.socials?.wechat || "")},
                             ${JSON.stringify(client.socials?.appLink || "")}
                         )'>
                         Edit
@@ -470,17 +459,22 @@ window.editClient = function (
     company,
     bio,
     phone,
+    phone2,
     landline,
     extension,
     email,
     image,
     headerImage,
+
     instagram,
+    instagram2,
     whatsapp,
     linkedin,
     facebook,
+    facebook2,
     tiktok,
     telegram,
+    wechat,
     appLink
 ) {
 
@@ -492,6 +486,7 @@ window.editClient = function (
     document.getElementById("company").value = company || "";
     document.getElementById("bio").value = bio || "";
     document.getElementById("phone").value = phone || "";
+    document.getElementById("phone2").value = phone2 || "";
     document.getElementById("landline").value = landline || "";
     document.getElementById("extension").value = extension || "";
     document.getElementById("email").value = email || "";
@@ -499,11 +494,14 @@ window.editClient = function (
     document.getElementById("headerImage").value = headerImage || "";
 
     document.getElementById("instagram").value = instagram || "";
+    document.getElementById("instagram2").value = instagram2 || "";
     document.getElementById("whatsapp").value = whatsapp || "";
     document.getElementById("linkedin").value = linkedin || "";
     document.getElementById("facebook").value = facebook || "";
+    document.getElementById("facebook2").value = facebook2 || "";
     document.getElementById("tiktok").value = tiktok || "";
     document.getElementById("telegram").value = telegram || "";
+    document.getElementById("wechat").value = wechat || "";
     document.getElementById("appLink").value = appLink || "";
 
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -563,3 +561,6 @@ window.uploadHeaderImage = function () {
 };
 
 </script>
+
+</body>
+</html>
