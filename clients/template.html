@@ -394,7 +394,11 @@
         }
       }
 
-      await updateDoc(docRef, { views: increment(1) });
+      await updateDoc(docRef, {
+  visits: increment(1),
+  lastVisit: new Date().toISOString()
+});
+
 
       $("name").innerHTML = client.name || "";
       $("role").innerHTML = client.role || "";
