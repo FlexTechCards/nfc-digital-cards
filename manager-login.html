@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager Login</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto;
+    background:linear-gradient(135deg,#020617,#07245f);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.box{
+    width:350px;
+    background:rgba(255,255,255,.06);
+    padding:30px;
+    border-radius:25px;
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.1);
+    text-align:center;
+}
+
+h2{
+    margin-bottom:20px;
+    font-size:28px;
+    font-weight:800;
+}
+
+.input{
+    width:100%;
+    padding:16px;
+    margin-bottom:14px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,.1);
+    color:white;
+    font-size:15px;
+    outline:none;
+}
+
+.input::placeholder{
+    color:#cbd5e1;
+}
+
+.btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(145deg,#06b6d4,#2563eb);
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Manager Login</h2>
+
+    <input id="email" class="input" placeholder="Email">
+    <input id="password" type="password" class="input" placeholder="Password">
+
+    <button class="btn" onclick="login()">Login</button>
+</div>
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+    authDomain: "flextech-2324d.firebaseapp.com",
+    projectId: "flextech-2324d",
+    storageBucket: "flextech-2324d.firebasestorage.app",
+    messagingSenderId: "511190640221",
+    appId: "1:511190640221:web:20701272956f01e22c0fb4"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.login = async function () {
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!email || !password) {
+        alert("Please enter email and password");
+        return;
+    }
+
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+
+        // ⭐ تحويل المدير إلى لوحة المدير
+        window.location.href = "manager-dashboard.html";
+
+    } catch (error) {
+        alert("Login Failed ❌");
+        console.log(error);
+    }
+};
+
+</script>
+
+</body>
+</html>
