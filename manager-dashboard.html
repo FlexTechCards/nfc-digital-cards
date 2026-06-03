@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+/* نفس تصميم الداشبورد الأصلي */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto;
+    background:linear-gradient(135deg,#020617,#07245f);
+    min-height:100vh;
+    padding:30px 16px;
+    color:white;
+}
+.title{text-align:center;font-size:38px;font-weight:800;margin-bottom:10px;}
+.subtitle{text-align:center;color:#cbd5e1;margin-bottom:30px;}
+.btn{
+    width:100%;margin-top:18px;padding:18px;border:none;border-radius:18px;
+    background:linear-gradient(145deg,#06b6d4,#2563eb);color:white;font-size:17px;
+    font-weight:800;cursor:pointer;transition:.25s;
+}
+.btn:hover{transform:scale(1.02);}
+.form{
+    max-width:700px;margin:auto;background:rgba(255,255,255,.06);
+    backdrop-filter:blur(12px);padding:24px;border-radius:30px;
+    border:1px solid rgba(255,255,255,.08);margin-bottom:30px;
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:700px){.grid{grid-template-columns:1fr;}}
+.input{
+    width:100%;padding:16px;border:none;border-radius:16px;
+    background:rgba(255,255,255,.1);color:white;font-size:15px;outline:none;
+}
+.input::placeholder{color:#cbd5e1;}
+.section-title{
+    grid-column:1 / -1;margin-top:10px;margin-bottom:5px;
+    font-size:18px;font-weight:700;color:#38bdf8;
+}
+.clients{
+    max-width:1100px;margin:auto;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+}
+.client-card{
+    background:white;border-radius:26px;overflow:hidden;color:#0f172a;
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+.top{
+    background:linear-gradient(rgba(2,20,47,.88),rgba(2,20,47,.92)),
+    url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200");
+    background-size:cover;padding:20px;display:flex;align-items:center;gap:14px;
+}
+.top img{
+    width:90px;height:90px;border-radius:50%;object-fit:cover;border:4px solid white;
+}
+.info h2{color:white;font-size:24px;margin-bottom:6px;}
+.info p{color:#cbd5e1;}
+.content{padding:18px;}
+.email{word-break:break-word;overflow-wrap:anywhere;}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+.action-btn{
+    flex:1;min-width:120px;text-align:center;padding:14px;border:none;
+    border-radius:14px;text-decoration:none;font-weight:700;cursor:pointer;
+    transition:.25s;
+}
+.view{background:#07245f;color:white;}
+.qr{background:#06b6d4;color:white;}
+.delete{background:#ef4444;color:white;}
+.action-btn:hover{transform:translateY(-2px);}
+</style>
+
+</head>
+<body>
+
+<h1 class="title">Manager Dashboard</h1>
+<p class="subtitle">Manage Your Clients Only</p>
+
+<button class="btn"
+style="max-width:220px;margin:0 auto 30px;display:block;"
+onclick="logout()">
+    Logout
+</button>
+
+<div class="form">
+
+    <div class="grid">
+
+        <input class="input" id="id" placeholder="Client ID">
+        <input class="input" id="name" placeholder="Full Name">
+        <input class="input" id="role" placeholder="Job Title">
+        <input class="input" id="company" placeholder="Company">
+
+        <textarea class="input" id="bio" placeholder="Bio" style="min-height:120px"></textarea>
+
+        <input class="input" id="phone" placeholder="Mobile Phone">
+        <input class="input" id="phone2" placeholder="Mobile Phone 2">
+
+        <input class="input" id="landline" placeholder="Landline Phone">
+        <input class="input" id="extension" placeholder="Extension">
+        <input class="input" id="email" placeholder="Email">
+
+        <input class="input" id="image" placeholder="Profile Image URL">
+
+        <h3 class="section-title">Social Media</h3>
+
+        <input class="input" id="instagram" placeholder="Instagram Link">
+        <input class="input" id="whatsapp" placeholder="WhatsApp Link">
+        <input class="input" id="linkedin" placeholder="LinkedIn Link">
+        <input class="input" id="facebook" placeholder="Facebook Link">
+        <input class="input" id="tiktok" placeholder="TikTok Link">
+        <input class="input" id="telegram" placeholder="Telegram Link">
+        <input class="input" id="website" placeholder="Website Link">
+        <input class="input" id="appLink" placeholder="App Download Link">
+
+    </div>
+
+    <button class="btn" onclick="addClient()">
+        <i class="fas fa-plus"></i> Save Client
+    </button>
+
+</div>
+
+<div class="clients" id="clientsList"></div>
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    updateDoc,
+    query,
+    where
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyD5XXOXRaVgXvkuwZ0hParJ-iipkA9uGKo",
+    authDomain: "flextech-2324d.firebaseapp.com",
+    projectId: "flextech-2324d",
+    storageBucket: "flextech-2324d.firebasestorage.app",
+    messagingSenderId: "511190640221",
+    appId: "1:511190640221:web:20701272956f01e22c0fb4"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+let currentUserId = null;
+let editingDocId = null;
+
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        window.location.href = "login.html";
+    } else {
+        currentUserId = user.uid;
+        loadClients();
+    }
+});
+
+window.logout = async function () {
+    await signOut(auth);
+    window.location.href = "login.html";
+};
+
+/* ============================
+   Add / Update Client
+============================= */
+window.addClient = async function () {
+
+    if (!currentUserId) return;
+
+    const cleanId = document.getElementById("id").value.trim().toLowerCase().replace(/\s+/g, "-");
+
+    const client = {
+        id: cleanId,
+        name: document.getElementById("name").value || "",
+        role: document.getElementById("role").value || "",
+        company: document.getElementById("company").value || "",
+        bio: document.getElementById("bio").value || "",
+        phone: document.getElementById("phone").value || "",
+        phone2: document.getElementById("phone2").value || "",
+        landline: document.getElementById("landline").value || "",
+        extension: document.getElementById("extension").value || "",
+        email: document.getElementById("email").value || "",
+        image: document.getElementById("image").value || "",
+        owner: currentUserId,   // ⭐ أهم شيء
+
+        socials: {
+            instagram: document.getElementById("instagram").value || "",
+            whatsapp: document.getElementById("whatsapp").value || "",
+            linkedin: document.getElementById("linkedin").value || "",
+            facebook: document.getElementById("facebook").value || "",
+            tiktok: document.getElementById("tiktok").value || "",
+            telegram: document.getElementById("telegram").value || "",
+            website: document.getElementById("website").value || "",
+            appLink: document.getElementById("appLink").value || ""
+        }
+    };
+
+    if (editingDocId) {
+        await updateDoc(doc(db, "clients", editingDocId), client);
+        alert("Client Updated");
+        editingDocId = null;
+    } else {
+        await addDoc(collection(db, "clients"), client);
+        alert("Client Added");
+    }
+
+    document.querySelectorAll(".input").forEach(i => i.value = "");
+    loadClients();
+};
+
+/* ============================
+   Load Clients (Only Owner)
+============================= */
+async function loadClients() {
+
+    if (!currentUserId) return;
+
+    const q = query(
+        collection(db, "clients"),
+        where("owner", "==", currentUserId)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    let html = "";
+
+    querySnapshot.forEach((documentItem) => {
+        const client = documentItem.data();
+
+        html += `
+        <div class="client-card">
+            <div class="top">
+                <img src="${client.image}">
+                <div class="info">
+                    <h2>${client.name}</h2>
+                    <p>${client.role}</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <p class="email">${client.email}</p>
+
+                <div class="actions">
+
+                    <button class="action-btn view"
+                        onclick='editClient(
+                            "${documentItem.id}",
+                            "${client.id}",
+                            "${client.name}",
+                            "${client.role}",
+                            "${client.company}",
+                            "${client.bio}",
+                            "${client.phone}",
+                            "${client.phone2}",
+                            "${client.landline}",
+                            "${client.extension}",
+                            "${client.email}",
+                            "${client.image}",
+                            "${client.socials.instagram}",
+                            "${client.socials.whatsapp}",
+                            "${client.socials.linkedin}",
+                            "${client.socials.facebook}",
+                            "${client.socials.tiktok}",
+                            "${client.socials.telegram}",
+                            "${client.socials.website}",
+                            "${client.socials.appLink}"
+                        )'>
+                        Edit
+                    </button>
+
+                    <button class="action-btn delete"
+                        onclick="deleteClient('${documentItem.id}')">
+                        Delete
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        `;
+    });
+
+    document.getElementById("clientsList").innerHTML = html;
+}
+
+/* ============================
+   Edit Client
+============================= */
+window.editClient = function (
+    docId,
+    id,
+    name,
+    role,
+    company,
+    bio,
+    phone,
+    phone2,
+    landline,
+    extension,
+    email,
+    image,
+    instagram,
+    whatsapp,
+    linkedin,
+    facebook,
+    tiktok,
+    telegram,
+    website,
+    appLink
+) {
+
+    editingDocId = docId;
+
+    document.getElementById("id").value = id;
+    document.getElementById("name").value = name;
+    document.getElementById("role").value = role;
+    document.getElementById("company").value = company;
+    document.getElementById("bio").value = bio;
+    document.getElementById("phone").value = phone;
+    document.getElementById("phone2").value = phone2;
+    document.getElementById("landline").value = landline;
+    document.getElementById("extension").value = extension;
+    document.getElementById("email").value = email;
+    document.getElementById("image").value = image;
+
+    document.getElementById("instagram").value = instagram;
+    document.getElementById("whatsapp").value = whatsapp;
+    document.getElementById("linkedin").value = linkedin;
+    document.getElementById("facebook").value = facebook;
+    document.getElementById("tiktok").value = tiktok;
+    document.getElementById("telegram").value = telegram;
+    document.getElementById("website").value = website;
+    document.getElementById("appLink").value = appLink;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+/* ============================
+   Delete Client
+============================= */
+window.deleteClient = async function (docId) {
+    if (confirm("Delete this client?")) {
+        await deleteDoc(doc(db, "clients", docId));
+        loadClients();
+    }
+};
+
+</script>
+
+</body>
+</html>
