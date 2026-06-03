@@ -182,6 +182,11 @@
     .app{background:#0ea5e9;}
     .wechat{background:#09b83e;}
 
+    /* ⭐ NEW — Website Icon */
+    .website{
+      background:#0ea5e9;
+    }
+
     .actions{display:flex;flex-direction:column;gap:12px;}
 
     .btn{
@@ -409,7 +414,10 @@
         client.appLink ||
         "";
 
+      // ⭐ NEW — Added Website Icon
       const map = {
+        website:   { cls: "website", icon: "fas fa-globe" },
+
         instagram:  { cls: "instagram", icon: "fab fa-instagram" },
         instagram2: { cls: "instagram", icon: "fab fa-instagram" },
 
