@@ -238,8 +238,7 @@ onclick="logout()">
 
         <input class="input" id="wechat" placeholder="WeChat Link">
 
-        <input class="input" id="website" placeholder="Website Link (New)">  <!-- ⭐ NEW -->
-
+        <input class="input" id="website" placeholder="Website Link (New)">
         <input class="input" id="appLink" placeholder="App Download Link">
 
     </div>
@@ -301,7 +300,7 @@ window.logout = async function () {
 };
 
 /* ============================
-   Add / Update Client
+   Add / Update Client (FIXED)
 ============================= */
 window.addClient = async function () {
 
@@ -326,6 +325,10 @@ window.addClient = async function () {
         image: document.getElementById("image").value || "",
         headerImage: document.getElementById("headerImage").value || "",
 
+        /* ⭐ FIX — إضافة الحقول الأساسية */
+        visits: 0,
+        lastVisit: "",
+
         socials: {
             instagram: document.getElementById("instagram").value || "",
             instagram2: document.getElementById("instagram2").value || "",
@@ -336,7 +339,7 @@ window.addClient = async function () {
             tiktok: document.getElementById("tiktok").value || "",
             telegram: document.getElementById("telegram").value || "",
             wechat: document.getElementById("wechat").value || "",
-            website: document.getElementById("website").value || "",   /* ⭐ NEW */
+            website: document.getElementById("website").value || "",
             appLink: document.getElementById("appLink").value || ""
         }
     };
@@ -432,7 +435,7 @@ async function loadClients() {
                             ${JSON.stringify(client.socials?.tiktok || "")},
                             ${JSON.stringify(client.socials?.telegram || "")},
                             ${JSON.stringify(client.socials?.wechat || "")},
-                            ${JSON.stringify(client.socials?.website || "")},   /* ⭐ NEW */
+                            ${JSON.stringify(client.socials?.website || "")},
                             ${JSON.stringify(client.socials?.appLink || "")}
                         )'>
                         Edit
@@ -479,7 +482,7 @@ window.editClient = function (
     tiktok,
     telegram,
     wechat,
-    website,   /* ⭐ NEW */
+    website,
     appLink
 ) {
 
@@ -507,7 +510,7 @@ window.editClient = function (
     document.getElementById("tiktok").value = tiktok || "";
     document.getElementById("telegram").value = telegram || "";
     document.getElementById("wechat").value = wechat || "";
-    document.getElementById("website").value = website || "";   /* ⭐ NEW */
+    document.getElementById("website").value = website || "";
     document.getElementById("appLink").value = appLink || "";
 
     window.scrollTo({ top: 0, behavior: "smooth" });
